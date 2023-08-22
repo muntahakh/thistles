@@ -2,7 +2,7 @@
 
 @section('signup-content')
 <div class="container-fluid">
-    <div class="row">   
+    <div class="row">
         {{-- Form Container --}}
         <div class="col-md-5 col-sm-12 form">
             {{-- Back to home icon --}}
@@ -16,20 +16,36 @@
             <div class="logo-fixed">
                 <img src="{{ asset('Images/thistles_logo.png') }}" class="img-fluid pt-5" alt="">
             </div>
+
+            @if(session('success'))
+            <div class="pt-3">
+                <div class="success-card container col-lg-8 pt-2">
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="{{ asset('svg/icon.svg') }}" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-10">
+                            <label for="file" class="fw-bold">Success!</label>
+                            <p>{{ session('success') }}</p>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
             <div class="container text-center p-5">
                 <h1 class="pt-2 fw-bold">Confirm Your Email</h1>
                 <p>We sent a confirmation email to:</p>
-                <a href="{{route('email')}}">abc@gmail.com</a>
+                <a href="https://mail.google.com/">{{ $userEmail }}</a>
                 <div class="pt-4">
-                    <a href="{{route('confirm.success')}}"><button type="submit" class="btn-pink">Resend Link</button></a>
+                    <a href="{{route('resend.email')}}"><button type="submit" class="btn-pink">Resend Link</button></a>
                 </div>
                 <div class="signin-link pt-3">
                     <p>If you do not see the email in your inbox then check your spam folder.</p>
                 </div>
             </div>
-           
+
         </div>
-        
+
         {{-- backgroud image --}}
         <div class="col-md-7 signup-img content-center">
             {{-- Back to home link --}}
@@ -40,7 +56,7 @@
                 </svg>
                 Back to Sign Up</a>
             </div>
-            <div class="center-text">       
+            <div class="center-text">
                 <img src="{{ asset('Images/disabled student-cuate 1.png') }}"  class="img-fluid" alt="">
                 <h1 class="pt-2">We are waiting for you! </h1>
             </div>
@@ -50,5 +66,4 @@
 @endsection
 
 
-        
-    
+

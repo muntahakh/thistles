@@ -29,11 +29,12 @@ h1, h2, h3, h4, h5, h6, p, .BT1, .C1, .B1, .BT2, .C2, .B2{
 .text-green{
     color: #03C03C;
 }
-c1{
-    font-size: 12px;
-    font-family: Inter;
-    line-height: 150%;
-    color: #A2A2A2;
+.text-red{
+    color: red;
+    font-size: 10px;
+}
+a{
+    text-decoration: none;
 }
 /*  Responsive Navbar */
 .navbar{

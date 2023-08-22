@@ -23,8 +23,8 @@
     <div id="app">
         @yield('background')
 
-        @unless(in_array(Route::currentRouteName(), ['signin', 'register', 'confirm', 'reset', 'resetSent',
-        'resetpass.email', 'confirm.success', 'new.password', 'email']))
+        @unless(in_array(Route::currentRouteName(), ['signin', 'register', 'signup', 'reset', 'resetSent',
+        'resetpass.email', 'resend.email', 'new.password', 'email']))
             @include('layouts.navbar')
         @endunless
 

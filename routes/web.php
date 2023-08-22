@@ -16,17 +16,23 @@ use App\Http\Controllers\{HomeController,AccountsController,QuestionsController}
 
 Route::get('/',[HomeController::class,'home'])->name('home');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/eula', [HomeController::class,'eula'])->name('eula');
 
-Route::post('/signUp',[AccountsController::class,'signUp'])->name('signup');
+Route::get('/signUp/confirm',[AccountsController::class,'signUp'])->name('signup');
 
-Route::get('/confirm',[AccountsController::class,'confirm'])->name('confirm');
+Route::post('/signUp/confirm',[AccountsController::class,'signUp'])->name('signup');
 
 Route::get('/email', [AccountsController::class,'confirmEmail'])->name('email');
 
-Route::get('confirm/success',[AccountsController::class,'confirmSuccess'])->name('confirm.success');
+Route::get('verification/resend', [AccountsController::class,'resendVerificationEmail'])
+    ->middleware(['auth', 'throttle:6,1'])
+    ->name('resend.email');
+
+Route::get('/email/verify/{id}/{hash}', [AccountsController::class,'emailVerification'])
+
+    ->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::get('/signin',[AccountsController::class,'login'] )->name('signin');
 

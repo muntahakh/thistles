@@ -2,7 +2,7 @@
 
 @section('signup-content')
 <div class="container-fluid">
-    <div class="row">   
+    <div class="row">
         {{-- Form Container --}}
         <div class="col-md-5 col-sm-12 form">
             {{-- Back to home icon --}}
@@ -24,13 +24,13 @@
                         @csrf
                         <div class="form-group">
                             <label for="Email">Email Address</label>
-                            <input type="email" class="form-fields" placeholder="Enter email">
+                            <input type="email" class="form-fields" name="email" placeholder="Enter email">
                         </div>
 
                         <div class="form-group">
                             <label for="Password">Password</label>
                             <div class="password-input">
-                                <input type="password" id="passwordField" class="form-fields" placeholder="Enter Password">
+                                <input type="password" id="passwordField" name="password" class="form-fields" placeholder="Enter Password">
                                 <img id="togglePassword" src="{{ asset('svg/fi-rr-eye-crossed.svg')}}" alt="Toggle Password">
                             </div>
                         </div>
@@ -38,7 +38,7 @@
 
                         const passwordField = document.getElementById('passwordField');
                         const togglePassword = document.getElementById('togglePassword');
-                        
+
                         togglePassword.addEventListener('click', function () {
                             if (passwordField.type === 'password') {
                                 passwordField.type = 'text';
@@ -49,11 +49,14 @@
                             }
                         });
                         </script>
-                        
-                        
+
+
                         <div class="form-group form-checkbox">
-                            <input type="checkbox" id="acceptEULA" class="form-check">
+                            <input type="checkbox" id="acceptEULA" name="accept_agreement" class="form-check">
                             <label for="acceptEULA" class="pt-1">I accept the <span class="fw-bold text-lpink">EULA</span> compiled by Thistles</label>
+                            @error('accept_agreement')
+                                <span class="text-red">*{{ $message }}</span>
+                            @enderror
                         </div>
                         <button type="submit" class="btn-pink">Sign Up</button>
 
@@ -61,9 +64,9 @@
                     <div class="sp-Line">
                         <div class="line"></div>
                         <span class="p-2 line-text">Or Sign Up Using</span>
-                        <div class="line"></div>   
-                    </div> 
-                    <div class="buttons-container"> 
+                        <div class="line"></div>
+                    </div>
+                    <div class="buttons-container">
                         <a href="/" class="btn-img"> <img src="{{asset('svg/Apple-icon.png')}}" alt=""> Apple</a>
                         <a href="/" class="btn-img"> <img src="{{asset('svg/Google-icon.png')}}" alt=""> Google</a>
                     </div>
@@ -73,7 +76,7 @@
                 </div>
             </div>
         </div>
-        
+
         {{-- backgroud image --}}
         <div class="col-md-7 signup-img content-center">
             {{-- Back to home link --}}
@@ -84,7 +87,7 @@
                 </svg>
                 Back to Homepage</a>
             </div>
-            <div class="center-text">       
+            <div class="center-text">
                 <img src="{{ asset('Images/disabled musician-bro 1.png') }}"  class="img-fluid" alt="">
                 <h1 class="pt-2">Let’s Get Started</h1>
             </div>
@@ -94,5 +97,4 @@
 @endsection
 
 
-        
-    
+
