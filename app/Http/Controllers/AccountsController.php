@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Support\Facades\Hash;
 
 class AccountsController extends Controller
 {
@@ -15,14 +17,15 @@ class AccountsController extends Controller
 
     public function confirmEmail()
     {
-        return view('auth/passwords/email');
+        return view('emails/custom_verify_email');
     }
 
     public function signUp(Request $request)
     {
         $user = new User;
-        $user -> email = $request -> email;
-        $user -> password = $request -> password;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required|min:8',
@@ -31,40 +34,31 @@ class AccountsController extends Controller
         $accept_agreement = $request->has('accept_agreement');
         $user->accept_agreement = $accept_agreement;
 
-        //$user->save();
-        $user = User::find(1);
-        // dd($user);
+        $user->save();
+
         $user->sendEmailVerificationNotification();
 
         return view('auth/passwords/confirm', ['userEmail' => $user -> email]);
     }
 
     public function resendVerificationEmail(Request $request){
-        if($request->user()->hasVerifiedEmail()){
+
+        $user = User::whereNull('email_verified_at')->first();
+        if($user){
+            $user->sendEmailVerificationNotification();
+            return back()->with('success' , " We sent your confirmation email again! ");
+        }
+        else{
             return redirect()->route('signin');
         }
-        $request->user()->sendEmailVerificationNotification();
+    }
+
+    public function resendPassEmail(Request $request){
+
+        $userEmail = $request->userEmail;
+        $user = User::where('email', $userEmail)->first();
+        $user->sendResetLinkEmail();
         return back()->with('success' , " We sent your confirmation email again! ");
-    }
-
-    public function emailVerification(EmailVerificationRequest $request) {
-       // dd('check');
-        $request->fulfill();
-
-        return redirect()->route('signin');
-    }
-
-    public function login() {
-        return view('auth/login');
-    }
-
-    public function confirmSuccess()
-    {
-        return view('auth/passwords/confirmSuccess');
-    }
-
-    public function resetPass(){
-        return view('auth/passwords/reset');
     }
 
     public function resetSent(){
@@ -78,5 +72,60 @@ class AccountsController extends Controller
     public function newPass() {
         return view('auth/passwords/newpassword');
     }
+
+    public function pass_reset(Request $request , $id, $token)  {
+        $user  = User::findOrFail($id);
+        if($user->verification_token  == $token){
+
+            return view('auth.passwords.newpassword',compact('user'));
+        }
+        else {
+            return redirect()->route('signup')->with('error', 'URL is broken or Expired.');
+        }
+    }
+
+    public function post_pass_reset(Request $request)  {
+        $user  = User::findOrFail($request->userId);
+
+        if($user->verification_token  == $request->token){
+
+            if($request->password == $request->cnpassword){
+                $user->password  = Hash::make($request->password);
+                $user->save();
+
+                return redirect()->route('signin');
+            }
+            else{
+                return back()->with('error' , 'Passwords did not matched');
+            }
+        }
+        else {
+            return redirect()->route('signin')->with('error', 'URL is broken or Expired.');
+        }
+    }
+
+    public function signin(){
+        return view('auth.login');
+    }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+        // dd(Auth::attempt($credentials));
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+
+            if ($user->email_verified_at !== 'null') {
+                return view('homeAth');
+            }
+            else {
+                return redirect()->route('signin')->with('error', 'Email not verified');
+            }
+        }
+        else {
+            return redirect()->route('signin')->with('error', 'Invalid ID or password');
+        }
+     }
+
 
 }

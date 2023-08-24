@@ -926,3 +926,40 @@ hr{
     display: flex;
     align-items: center;
 }
+.alert {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#image {
+    cursor: pointer;
+}
+
+.profile-card-container {
+    display: none;
+    position: absolute;
+    top: 90px;
+    left: 0;
+    width: 450px;
+    height: 30vh;
+    z-index: 1000;
+    transition: all 1s ease-out;
+}
+
+.profile-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-width: 80%;
+}
+
+#close-btn {
+    margin-top: 10px;
+}
+.custom-select{
+    cursor: pointer;
+}

@@ -23,6 +23,11 @@
                     <form action="{{route('signup')}}" method="post">
                         @csrf
                         <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="name" class="form-fields" name="name" placeholder="Enter name">
+                        </div>
+
+                        <div class="form-group">
                             <label for="Email">Email Address</label>
                             <input type="email" class="form-fields" name="email" placeholder="Enter email">
                         </div>
@@ -55,7 +60,7 @@
                             <input type="checkbox" id="acceptEULA" name="accept_agreement" class="form-check">
                             <label for="acceptEULA" class="pt-1">I accept the <span class="fw-bold text-lpink">EULA</span> compiled by Thistles</label>
                             @error('accept_agreement')
-                                <span class="text-red">*{{ $message }}</span>
+                                <span class="text-red-500">*{{ $message }}</span>
                             @enderror
                         </div>
                         <button type="submit" class="btn-pink">Sign Up</button>

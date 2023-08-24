@@ -2,7 +2,7 @@
 
 @section('signup-content')
 <div class="container-fluid">
-    <div class="row">   
+    <div class="row">
         {{-- Form Container --}}
         <div class="col-md-5 col-sm-12 form">
             {{-- Back to home icon --}}
@@ -19,17 +19,22 @@
             <div class="container text-center p-5">
                 <h1 class="pt-2 fw-bold">Link Sent</h1>
                 <p>We sent a reset link to the email:</p>
-                <a href="{{route('resetpass.email')}}">abc@gmail.com</a>
+                <a href="">{{$userEmail}}</a>
                 <div class="pt-4">
-                    <button type="submit" class="btn-pink">Resend Link</button>
+                    <form action="{{ route('resendpass.email') }}" method="get">
+                        <input type="hidden" name="userEmail" value="{{ $userEmail }}">
+                        <button type="submit" class="btn-pink">Resend Link</button>
+                    </form>
                 </div>
+
+
                 <div class="signin-link pt-3">
                     <p>If you do not see the email in your inbox then check your spam folder.</p>
                 </div>
             </div>
-           
+
         </div>
-        
+
         {{-- backgroud image --}}
         <div class="col-md-7 signup-img content-center">
             {{-- Back to home link --}}
@@ -40,7 +45,7 @@
                 </svg>
                 Back to Sign Up</a>
             </div>
-            <div class="center-text">       
+            <div class="center-text">
                 <img src="{{ asset('Images/disabled student-cuate 1.png') }}"  class="img-fluid" alt="">
                 <h1 class="pt-2">We are waiting for you! </h1>
             </div>
@@ -50,5 +55,4 @@
 @endsection
 
 
-        
-    
+

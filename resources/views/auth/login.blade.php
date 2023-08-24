@@ -13,24 +13,42 @@
                 </svg></a>
             </div>
             {{-- Sign Up form --}}
+            @if(session('success'))
+                    {{-- <div id="success-message" class="alert alert-success alert-dismissible fade show" role="alert"> --}}
+                        <p class="text-green">{{ session('success') }}</p>
+                        {{-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> --}}
+                    {{-- </div> --}}
+            @endif
+            <script>
+                    setTimeout(function() {
+                        $('#success-message').fadeOut('slow');
+                    }, 5000); // 5000 milliseconds (5 seconds)
+            </script>
+            @if(session('error'))
+                <p class="text-red"> {{ session('error') }}</p>
+
+
+            @endif
+
             <div class="content-center">
+
                 <div class="center-text">
                     <img src="{{ asset('Images/thistles_logo.png') }}" class="img-fluid pt-3" alt="">
                     <h1 class="pt-2">Sign In</h1>
                     <p>Welcome Back to Thistles!</p>
                 </div>
                 <div class="form-container col-lg-8">
-                    <form action="{{route('homeAth')}}" method="post">
+                    <form action="{{route('homeAth1')}}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="Email">Email Address</label>
-                            <input type="email" class="form-fields" placeholder="Enter email">
+                            <input type="email" class="form-fields" name="email" placeholder="Enter email" required>
                         </div>
 
                         <div class="form-group">
                             <label for="Password">Password</label>
                             <div class="password-input">
-                                <input type="password" id="passwordField" class="form-fields" placeholder="Enter Password">
+                                <input type="password" id="passwordField" name="password" class="form-fields" placeholder="Enter Password" required>
                                 <img id="togglePassword" src="{{ asset('svg/fi-rr-eye-crossed.svg')}}" alt="Toggle Password">
                             </div>
                         </div>

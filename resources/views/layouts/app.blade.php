@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -23,8 +24,8 @@
     <div id="app">
         @yield('background')
 
-        @unless(in_array(Route::currentRouteName(), ['signin', 'register', 'signup', 'reset', 'resetSent',
-        'resetpass.email', 'resend.email', 'new.password', 'email']))
+        @unless(in_array(Route::currentRouteName(), ['signin', 'register', 'signup', 'reset', 'password.email',
+        'resendpass.email', 'resend.email', 'pass.reset', 'email', 'login']))
             @include('layouts.navbar')
         @endunless
 

@@ -2,30 +2,53 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\{Auth , Hash , Crypt};
+use App\Notifications\CustomVerifyEmail;
+use App\Notifications\CustomChangePasswordEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Carbon\Carbon;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
 
     use Notifiable;
     use HasApiTokens, HasFactory, Notifiable;
+
     public $timestamps = false;
 
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'verification_token',
+
+    ];
+
+    public function sendEmailVerificationNotification()
+
+    {
+        // dd($this->name ,);
+        $mytime = Carbon::now()->format('YmdHis');
+        $verification_token =  Crypt::encryptString($mytime );
+        $this->fill(['verification_token' => $verification_token ])->save();
+
+        $this->notify(new CustomVerifyEmail($this->id, $this->name, $this->email, $verification_token ));
+    }
+
+    public function sendResetLinkEmail(){
+        $this->notify(new CustomChangePasswordEmail($this->id, $this->name, $this->email , $this->verification_token));
+    }
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'verification_token'
-    ];
+
+
 
     /**
      * The attributes that should be hidden for serialization.

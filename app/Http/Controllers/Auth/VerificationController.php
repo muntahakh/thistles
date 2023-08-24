@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
@@ -35,8 +40,25 @@ class VerificationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('signed')->only('verify');
+        // $this->middleware('auth');
+        // $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
+
+    public function verifyEmail(Request $request, $id, $token){
+        $user  = User::findOrFail($id);
+        if($user->verification_token  == $token){
+
+            $user->email_verified_at  = now();
+            $user->save();
+            // $user->verification_token  = null ;
+
+           return redirect()->route('signin')->with('success', 'Email verified successfully.');
+        }
+        else {
+            return redirect()->route('signup')->with('error', 'Email verification failed.');
+        }
+    }
+
+
 }

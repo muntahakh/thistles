@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-       // $this->middleware('auth');
+    //    $this->middleware('auth');
     }
 
     /**
@@ -29,10 +29,6 @@ class HomeController extends Controller
     public function eula()
     {
         return view('eula');
-    }
-
-    public function index() {
-        return view('homeAth');
     }
 
     public function compiled() {

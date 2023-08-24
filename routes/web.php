@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{HomeController,AccountsController,QuestionsController};
-
+use App\Http\Controllers\Auth\{ForgotPasswordController,ResetPasswordController,VerificationController};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +14,7 @@ use App\Http\Controllers\{HomeController,AccountsController,QuestionsController}
 |
 */
 
-Route::get('/',[HomeController::class,'home'])->name('home');
+Route::get('/',[HomeController::class,'home'])->name('home')->middleware('guest.access');
 
 Auth::routes(['verify' => true]);
 
@@ -24,35 +24,39 @@ Route::get('/signUp/confirm',[AccountsController::class,'signUp'])->name('signup
 
 Route::post('/signUp/confirm',[AccountsController::class,'signUp'])->name('signup');
 
-Route::get('/email', [AccountsController::class,'confirmEmail'])->name('email');
-
 Route::get('verification/resend', [AccountsController::class,'resendVerificationEmail'])
-    ->middleware(['auth', 'throttle:6,1'])
     ->name('resend.email');
 
-Route::get('/email/verify/{id}/{hash}', [AccountsController::class,'emailVerification'])
+Route::get('/email/verify/{id}/{hash}', [VerificationController::class,'verifyEmail'])
+    ->name('verification.verify');
 
-    ->middleware(['auth', 'signed'])->name('verification.verify');
+Route::get('/signin',[AccountsController::class,'signin'] )->name('signin');
 
-Route::get('/signin',[AccountsController::class,'login'] )->name('signin');
+Route::get('/reset', [ForgotPasswordController::class,'resetPass'])->name('reset');
 
-Route::post('/signin',[AccountsController::class,'login'] )->name('signin');
+Route::get('/pass/reset/{id}/{hash}', [AccountsController::class,'pass_reset'])
+    ->name('pass.reset');
 
-Route::get('/reset', [AccountsController::class,'resetPass'])->name('reset');
+Route::post('/pass/reset/newpassword', [AccountsController::class,'post_pass_reset'])
+    ->name('post.pass.reset');
 
-Route::post('/resetSent', [AccountsController::class,'resetSent'])->name('resetSent');
+Route::get('/pass/reset/newpassword', [AccountsController::class,'post_pass_reset'])
+    ->name('post.pass.reset');
 
-Route::get('/resetSent', [AccountsController::class,'resetSent'])->name('resetSent');
+Route::post('/password/email', [ForgotPasswordController::class, 'sendResetLink'])->name('password.email');
 
-Route::get('/resetEmail', [AccountsController::class,'resetEmail'])->name('resetpass.email');
+Route::get('/password/email', [ForgotPasswordController::class, 'sendResetLink'])->name('password.email');
 
-Route::get('/newPassword', [AccountsController::class,'newpass'])->name('new.password');
+Route::get('/password/email/resend', [AccountsController::class,'resendPassEmail'])->name('resendpass.email');
 
-Route::post('/newPassword', [AccountsController::class,'newpass'])->name('new.password');
+Route::post('/index', [AccountsController::class,'login'])->name('homeAth1');
 
-Route::post('/index', [HomeController::class,'index']);
+Route::get('/index', [AccountsController::class,'login'])->name('homeAth');
 
-Route::get('/index', [HomeController::class,'index'])->name('homeAth');
+Route::post('/update-profile-image', [UserController::class, 'updateProfileImage'])->name('updateProfileImage');
+
+
+Route::middleware(['auth'])->group(function () {
 
 Route::get('/q1', [QuestionsController::class,'q1'])->name('q1');
 
@@ -117,3 +121,4 @@ Route::post('/q15', [QuestionsController::class,'q15'])->name('q15');
 Route::get('/compiled', [HomeController::class,'compiled'])->name('compiled');
 
 Route::post('/compiled', [HomeController::class,'compiled'])->name('compiled');
+});

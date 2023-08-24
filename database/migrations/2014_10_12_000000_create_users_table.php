@@ -18,7 +18,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('accept_agreement')->default(false);
+            $table->string('verification_token')->default('null');
+            $table->string('image',600)->default('public/Images/user-profile.jpg');
             $table->rememberToken();
+            $table->timestamps();
 
         });
     }

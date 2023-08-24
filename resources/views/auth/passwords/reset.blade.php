@@ -2,7 +2,7 @@
 
 @section('signup-content')
 <div class="container-fluid">
-    <div class="row">   
+    <div class="row">
         {{-- Form Container --}}
         <div class="col-md-5 col-sm-12 form">
             {{-- Back to home icon --}}
@@ -21,21 +21,26 @@
                 <p>Enter your email to get a reset link</p>
 
                 <div class="container">
-                    <form action="/resetSent" method="post">
+                    <form action="{{route('password.email')}}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="Email">Email Address</label>
-                            <input type="email" class="form-fields" placeholder="Enter email">
+                            <input type="email" class="form-fields" name="email" placeholder="Enter email">
+                            @if ($errors->has('email'))
+                                <div class="alert alert-danger pt-3">
+                                    {{ $errors->first('email') }}
+                                </div>
+                            @endif
                         </div>
-                        
+
                         <button type="submit" class="btn-pink">Send Reset Link</button>
                     </form>
                 </div>
-             
+
             </div>
-           
+
         </div>
-        
+
         {{-- backgroud image --}}
         <div class="col-md-7 signup-img content-center">
             {{-- Back to home link --}}
@@ -46,7 +51,7 @@
                 </svg>
                 Back to Sign Up</a>
             </div>
-            <div class="center-text">       
+            <div class="center-text">
                 <img src="{{ asset('Images/disabled musician-pana 1.png') }}"  class="img-fluid" alt="">
                 <h1 class="pt-2">Let’s Get You Back!</h1>
             </div>
@@ -56,5 +61,4 @@
 @endsection
 
 
-        
-    
+

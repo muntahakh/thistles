@@ -20,12 +20,15 @@
                 <h1 class="pt-2 fw-bold">New Password</h1>
                 <p>Enter your new password below!</p>
                 <div class="container">
-                    <form action="{{route('signin')}}" method="post">
+                    <form action="{{route('post.pass.reset')}}" method="post">
                         @csrf
                         <div class="form-group">
+                            <input type="hidden" name="userId" value="{{ $user->id }}">
+                            <input type="hidden" name="token" value="{{ $user->verification_token }}">
+
                             <label for="Password">Enter New Password</label>
                             <div class="password-input">
-                                <input type="password" id="passwordField" class="form-fields" placeholder="Enter Password">
+                                <input type="password" id="passwordField" name="password" class="form-fields" placeholder="Enter Password">
                                 <img id="togglePassword" src="{{ asset('svg/fi-rr-eye-crossed.svg')}}" alt="Toggle Password">
                             </div>
                         </div>
@@ -48,7 +51,7 @@
                         <div class="form-group">
                             <label for="Password">Enter Confirm Password</label>
                             <div class="password-input">
-                                <input type="password" id="cnpasswordField" class="form-fields" placeholder="Enter Password">
+                                <input type="password" id="cnpasswordField" name="cnpassword" class="form-fields" placeholder="Enter Password">
                                 <img id="cntogglePassword" src="{{ asset('svg/fi-rr-eye-crossed.svg')}}" alt="Toggle Password">
                             </div>
                         </div>
@@ -58,11 +61,11 @@
                         const cntogglePassword = document.getElementById('cntogglePassword');
 
                         cntogglePassword.addEventListener('click', function () {
-                            if (passwordField.type === 'password') {
-                                passwordField.type = 'text';
+                            if (cnpasswordField.type === 'password') {
+                                cnpasswordField.type = 'text';
                                 cntogglePassword.src = "{{ asset('svg/fi-rr-eye.svg')}}";
                             } else {
-                                passwordField.type = 'password';
+                                cnpasswordField.type = 'password';
                                 cntogglePassword.src = "{{ asset('svg/fi-rr-eye-crossed.svg')}}";
                             }
                         });
