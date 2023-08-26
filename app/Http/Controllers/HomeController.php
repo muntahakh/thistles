@@ -34,4 +34,9 @@ class HomeController extends Controller
     public function compiled() {
         return view('documentCompiled');
     }
+
+    public function index(){
+
+        return view('homeAth');
+    }
 }

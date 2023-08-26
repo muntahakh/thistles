@@ -127,5 +127,28 @@ class AccountsController extends Controller
         }
      }
 
+     public function updateProfileImage(Request $request, $id){
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5000',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('\Images'), $imageName);
+
+            $user = User::where('id', $id)->update(['image' => $imageName]);
+
+
+        }
+         return redirect()->route('index');
+        //  return redirect('/index');
+
+     }
+
+     public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect()->route('login');
+    }
 
 }

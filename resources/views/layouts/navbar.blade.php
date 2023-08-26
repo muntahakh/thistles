@@ -35,7 +35,7 @@
                         @endunless
 
                         @if (in_array(Route::currentRouteName(), ['homeAth1','q1','q2','q3','q4','q5','q6','q7','q8','q9','q10',
-                        'q11','q12','q13','q13','q15', 'compiled' ]))
+                        'q11','q12','q13','q13','q15', 'compiled', 'index' ]))
 
                         @auth()
 
@@ -46,7 +46,7 @@
                             </li>
 
                             <li class="nav-item">
-                                    <img src="{{ asset(Auth::user()->image)}}" id="image" class="img-fluid avatar-img" alt="avatar">
+                                    <img src="{{ asset('Images/' . Auth::user()->image)}}" id="image" class="img-fluid avatar-img" alt="avatar">
                             </li>
 
                         </ul>
@@ -66,23 +66,24 @@
     <div class="profile-card">
         <div class="row">
             <div class="col-3">
-                <form method="POST" action="{{ route('updateProfileImage') }}" enctype="multipart/form-data" id="imageform">
-                <img src="{{ asset(Auth::user()->image)}}" class="custom-select img-fluid" alt="avatar">
+                <form method="POST" action="{{ route('updateProfileImage', ['id' => Auth::user()->id]) }}" enctype="multipart/form-data" id="imageform">
+                <img src="{{ asset('Images/' . Auth::user()->image)}}" class="custom-select img-fluid" alt="avatar">
                     @csrf
+
                     <input type="file" name="image" id="file-input-image">
-                    {{-- <button type="submit">Upload</button> --}}
+
 
                         <script>
                             const fileInput = document.getElementById('file-input-image');
                             const customButton = document.querySelector('.custom-select');
                             fileInput.style.display= 'none';
                             customButton.addEventListener('click', () => {
-                              fileInput.click();
+                                fileInput.click();
                             });
 
-                            $('input[type="file"]').change(function() {
+                            fileInput.addEventListener('change', () => {
                                 alert("A file has been selected.");
-                                $("#imageform").submit();
+                                document.getElementById('imageform').submit();
                             });
                         </script>
                 </form>
@@ -106,7 +107,7 @@
                 <img src="{{asset('svg/Group.svg')}}" alt="">
             </div>
             <div class="col-9">
-                <h6 class="text-danger">Sign Out</h6>
+                <a href="{{ route('logout') }}" class="text-danger text-decoration-none">Sign Out</a>
             </div>
         </div>
     </div>
@@ -124,10 +125,12 @@ image.addEventListener('click', () => {
         cardContainer.style.display = 'none';
     }
 });
-
-closeBtn.addEventListener('click', () => {
-    cardContainer.style.display = 'none';
+document.addEventListener('click', (event) => {
+    if (!cardContainer.contains(event.target) && event.target !== image) {
+        cardContainer.style.display = 'none';
+    }
 });
+
 
 </script>
 @endauth

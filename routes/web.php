@@ -51,10 +51,13 @@ Route::get('/password/email/resend', [AccountsController::class,'resendPassEmail
 
 Route::post('/index', [AccountsController::class,'login'])->name('homeAth1');
 
-Route::get('/index', [AccountsController::class,'login'])->name('homeAth');
+ Route::get('/index', [HomeController::class,'index'])->name('index');
 
-Route::post('/update-profile-image', [UserController::class, 'updateProfileImage'])->name('updateProfileImage');
+// Route::middleware(['auth'])->name('homeAth1')->get('/homeAth', [HomeController::class, 'index']);
 
+Route::post('/update-profile-image{id}', [AccountsController::class, 'updateProfileImage'])->name('updateProfileImage');
+
+Route::get('/logout', [AccountsController::class,'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
 
