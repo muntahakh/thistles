@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -37,6 +38,10 @@ class HomeController extends Controller
 
     public function index(){
 
-        return view('homeAth');
+        if (auth()->check()) {
+            return view('homeAth');
+        } else {
+            return redirect()->route('signin');
+        }
     }
 }

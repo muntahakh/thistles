@@ -7,7 +7,7 @@
           <h1 class="overlay-h1 text-center">Welcome to our NDIS submission tool for school leavers!</h1>
           <h5 class="text-pink fw-bold text-center">Scroll Down to Learn More</h5>
         <div class="scroll-down pt-4">
-          <a href="/" class="arrow-icon"><img src="{{ asset('svg/arrow.svg') }}" alt="arrow"></a>
+          <a href="/home" class="arrow-icon"><img src="{{ asset('svg/arrow.svg') }}" alt="arrow"></a>
         </div>
       </div>
         <img src="{{ asset('Images/background.png') }}" alt="bg-img">

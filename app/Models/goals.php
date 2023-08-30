@@ -5,15 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class background_info extends Model
+class goals extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'child_name',
-        'participant_num',
-        'gender',
-        'child_condition',
-        'user_id',
+        'social_participation',
+        'health_welfare',
+        'living_arrangements',
+        'skill_development',
+        'type',
+        'user_id', // Add 'user_id' to the fillable array
     ];
 
     public function user()

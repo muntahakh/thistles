@@ -8,18 +8,15 @@
                        <a class="brand-name" href="{{ url('/') }}">Thistles</a>
 
                        @unless(in_array(Route::currentRouteName(), ['homeAth1','q1','q2','q3','q4','q5','q6','q7','q8','q9','q10',
-                       'q11','q12','q13','q13','q15' ,'compiled']))
+                       'q11','q12','q13','q13','q15' ,'compiled', 'index']))
 
                        <!-- Left Side Of Navbar -->
                            <ul class="navbar-nav me-auto">
                                <a href="{{route('home')}}" class="nav-item-link">Home</a>
                            </ul>
 
-
                            <!-- Right Side Of Navbar -->
                            <ul class="navbar-nav ms-auto">
-                               <!-- Authentication Links -->
-                                @guest
 
                                        <li class="nav-item" id="siginin">
                                            <a class="button-nav-signin" href="/register">Sign Up</a>
@@ -28,21 +25,19 @@
                                        <li class="nav-item">
                                            <a class="button-nav-signup" href="{{ route('signin') }}">Sign In</a>
                                        </li>
-
-                               @endguest
                            </ul>
-
                         @endunless
 
-                        @if (in_array(Route::currentRouteName(), ['homeAth1','q1','q2','q3','q4','q5','q6','q7','q8','q9','q10',
-                        'q11','q12','q13','q13','q15', 'compiled', 'index' ]))
+                        @if (in_array(Route::currentRouteName(), ['homeAth1','q1','q2','q3','q4','q5','q6','q7','q8',
+                        'q9','q10','q11','q12','q13','q13','q15', 'compiled', 'index', 'backgroundinfo', 'short_term_goals',
+                        'long_term_goals', 'communication' ]))
 
                         @auth()
 
                         <ul class="navbar-nav ms-auto">
 
                             <li class="nav-item">
-                                <h3>Hello,</h3> <h3 class="text-lpink">{{ ucfirst(Auth::user()->name) }}</h3>
+                                 <h3>Hello,</h3> <h3 class="text-lpink">{{ ucfirst(Auth::user()->name) }}</h3>
                             </li>
 
                             <li class="nav-item">

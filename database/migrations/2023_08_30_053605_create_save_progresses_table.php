@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('background__infos', function (Blueprint $table) {
+        Schema::create('save_progresses', function (Blueprint $table) {
             $table->id();
+            $table->string('current_route');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('background__infos');
+        Schema::dropIfExists('save_progresses');
     }
 };

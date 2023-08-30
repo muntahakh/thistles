@@ -1,8 +1,21 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="eula-background">
+@section('drop_zone')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js"></script>
+@endsection
 
+
+@section('content')
+
+
+
+<div class="eula-background">
+    <div class="back-icon">
+        <a href="{{route('q1')}}"><img src="{{asset('svg/back.svg')}}" alt="return_back"> Back</a>
+    </div>
     <div class="container-fluid main-home-content pt-5">
 
 
@@ -12,8 +25,8 @@
                     <p class="text-green">7% Complete</p>
                 </div>
                 <div class="reports-container">
-                    <form action="{{route('q3')}}" method="post">
-                        @csrf
+                    {{-- <form action="{{route('q3')}}" method="post">
+                        @csrf --}}
 
                         <div class="fileupload-card">
                             <div class="row">
@@ -68,62 +81,67 @@
                         </div>
 
 
-                        <div class="drop-zone pt-4" id="dropZone">
+                        {{-- <div class="drop-zone pt-4" id="dropZone">
                             <p>Drag and drop your documents here.</p>
+                        </div> --}}
+                        <div class="container">
+
+                            <form method="post" action="{{url('image/upload/store')}}" enctype="multipart/form-data"
+                                          class="dropzone reports-container" id="dropzone">
+                                @csrf
+                            </form>
                         </div>
+                        <script type="text/javascript">
+                                Dropzone.options.dropzone =
+                                 {
+                                    maxFilesize: 12,
+                                    renameFile: function(file) {
+                                        var dt = new Date();
+                                        var time = dt.getTime();
+                                       return time+file.name;
+                                    },
+                                    acceptedFiles: ".jpeg,.jpg,.png,.gif,.pdf   ",
+                                    addRemoveLinks: true,
+                                    timeout: 50000,
+                                    removedfile: function(file)
+                                    {
+                                        var name = file.upload.filename;
+                                        $.ajax({
+                                            headers: {
+                                                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                                                    },
+                                            type: 'POST',
+                                            url: '{{ url("image/delete") }}',
+                                            data: {filename: name},
+                                            success: function (data){
+                                                console.log("File has been successfully removed!!");
+                                            },
+                                            error: function(e) {
+                                                console.log(e);
+                                            }});
+                                            var fileRef;
+                                            return (fileRef = file.previewElement) != null ?
+                                            fileRef.parentNode.removeChild(file.previewElement) : void 0;
+                                    },
 
-                        <script>
-                            const dropZone = document.getElementById('dropZone');
-
-                            dropZone.addEventListener('dragover', (e) => {
-                              e.preventDefault();
-                              dropZone.classList.add('highlight');
-                            });
-
-                            dropZone.addEventListener('dragleave', () => {
-                              dropZone.classList.remove('highlight');
-                            });
-
-                            dropZone.addEventListener('drop', (e) => {
-                              e.preventDefault();
-                              dropZone.classList.remove('highlight');
-
-                              const files = e.dataTransfer.files;
-                              handleFiles(files);
-                            });
-
-                            function handleFiles(files) {
-                              for (const file of files) {
-                                console.log('File:', file.name);
-                                // Here, you can perform actions with the dropped files
-                              }
-                            }
+                                    success: function(file, response)
+                                    {
+                                        console.log(response);
+                                    },
+                                    error: function(file, response)
+                                    {
+                                       return false;
+                                    }
+                        };
                         </script>
 
-                        <div class="container p-3 text-center">
-                            <label for="file" class="custom-input fw-bold text-lpink">Select a file from the device</label>
-                            <input type="file" class="card-file" id="file-input1">
-
-                            <script>
-                                const fileInput = document.getElementById('file-input1');
-                                const customButton = document.querySelector('.custom-input');
-
-                                customButton.addEventListener('click', () => {
-                                  fileInput.click();
-                                });
-                            </script>
-                        </div>
 
 
-
-
-
-
-                        <button type="submit" class="btn-pink">Next Question</button>
-                    </form>
+                        <a href="{{route('q3')}}"><button type="submit" class="btn-pink">Next Question</button></a>
+                    {{-- </form> --}}
 
                     <div class="signin-link pt-3">
-                        <p>Need a break and continue later? <a href="/" >Save progress</a></p>
+                        <p>Need a break and continue later? <a href="{{route('save_progress' , ['qno'=> 'documents'])}}" >Save progress</a></p>
                     </div>
                 </div>
             </div>

@@ -42,6 +42,42 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendResetLinkEmail(){
         $this->notify(new CustomChangePasswordEmail($this->id, $this->name, $this->email , $this->verification_token));
     }
+
+    // public function backgroundInfo()
+    // {
+    //     return $this->hasMany(background_info::class);
+    // }
+
+    public function backgroundInfo()
+    {
+        return $this->hasOne(background_info::class);
+    }
+
+    public function documents()
+    {
+        return $this->hasMany(documents::class);
+    }
+
+    public function goals()
+    {
+        return $this->hasOne(goals::class);
+    }
+
+    public function metadata()
+    {
+        return $this->hasMany(metadata::class);
+    }
+
+    public function reports()
+    {
+        return $this->hasMany(reports::class);
+    }
+
+    public function save_progress()
+    {
+        return $this->hasMany(save_progress::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *

@@ -3,18 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\save_progress;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Hash;
+use Flash;
 
 class AccountsController extends Controller
 {
     use RegistersUsers;
-
+    public function register(){
+        return view('auth.register');
+    }
     public function confirmEmail()
     {
         return view('emails/custom_verify_email');
@@ -44,9 +49,11 @@ class AccountsController extends Controller
     public function resendVerificationEmail(Request $request){
 
         $user = User::whereNull('email_verified_at')->first();
+
         if($user){
             $user->sendEmailVerificationNotification();
-            return back()->with('success' , " We sent your confirmation email again! ");
+
+            return redirect()->route('confirm', ['userEmail' => $user->email])->with('success' , " We sent your confirmation email again! ");
         }
         else{
             return redirect()->route('signin');
@@ -57,8 +64,8 @@ class AccountsController extends Controller
 
         $userEmail = $request->userEmail;
         $user = User::where('email', $userEmail)->first();
-        $user->sendResetLinkEmail();
-        return back()->with('success' , " We sent your confirmation email again! ");
+        return redirect()->route('password.email.get', ['email' =>  $request->userEmail ])->with('success' , 'We sent you password reset email again.');
+
     }
 
     public function resetSent(){
@@ -88,15 +95,19 @@ class AccountsController extends Controller
         $user  = User::findOrFail($request->userId);
 
         if($user->verification_token  == $request->token){
+            if (strlen($request->password) >= 8) {
+                if($request->password == $request->cnpassword){
+                    $user->password  = Hash::make($request->password);
+                    $user->save();
 
-            if($request->password == $request->cnpassword){
-                $user->password  = Hash::make($request->password);
-                $user->save();
-
-                return redirect()->route('signin');
+                    return redirect()->route('signin')->with('success', 'Your password has changed.');
+                }
+                else{
+                    return back()->with('error' , 'Passwords did not matched')->withInput();
+                }
             }
             else{
-                return back()->with('error' , 'Passwords did not matched');
+                return back()->with('error' , 'Passwords must be atleast 8 characters')->withInput();
             }
         }
         else {
@@ -111,7 +122,6 @@ class AccountsController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        // dd(Auth::attempt($credentials));
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
 
@@ -119,7 +129,7 @@ class AccountsController extends Controller
                 return view('homeAth');
             }
             else {
-                return redirect()->route('signin')->with('error', 'Email not verified');
+                return redirect()->route('signin')->with('error', 'Please verify your email address.');
             }
         }
         else {
@@ -149,6 +159,30 @@ class AccountsController extends Controller
     {
         Auth::logout();
         return redirect()->route('login');
+    }
+
+    public function saveProgress($qno){
+        $user = Auth::user();
+        $save_progress = save_progress::updateOrCreate(
+            ['user_id' => $user->id ],
+            [
+                'current_route' => $qno,
+            ]);
+
+        return redirect()->route('index')->with('success', 'Progress saved successfully');
+
+    }
+
+    public function start_documentation(){
+        $user = Auth::user();
+        $checkUserSaveProgressRoute = save_progress::where('user_id' , $user->id)->first();
+        if($checkUserSaveProgressRoute){
+
+            return redirect()->route($checkUserSaveProgressRoute->current_route)->with('success', 'Saved progress loaded.');
+        }
+        else{
+            return redirect()->route('q1');
+        }
     }
 
 }

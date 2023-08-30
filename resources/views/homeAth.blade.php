@@ -11,7 +11,7 @@
                     <img src="{{ asset('Images/disabled student-rafiki 1.png') }}"  class="img-fluid home-img" alt="">
                     <h1 class="pt-2">Let’s Get Started</h1>
                     <div class="pt-4">
-                        <a href="q1"><button type="submit" class="btn-pink">Start Documentation</button></a>
+                        <a href="{{route('start_documentation')}}"><button type="submit" class="btn-pink">Start Documentation</button></a>
                     </div>
                 </div>
             </div>

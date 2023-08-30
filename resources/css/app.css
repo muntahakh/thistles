@@ -962,6 +962,59 @@ hr{
     margin-top: 10px;
 }
 .custom-select{
+    width: 50px;
+    height: 50px;
     cursor: pointer;
-    border-radius: 50px;
+    border-radius: 80px;
+}
+.error-fs{
+    font-size: 14px;
+}
+.back-icon{
+    position: absolute;
+    top:100px;
+    left: 100px;
+    z-index: 1000;
+}
+.back-icon a{
+    color:#141414;
+    text-decoration: none;
+}
+@media (max-width: 870px) {
+    .back-icon{
+        left: 30px;
+    }
+}
+@media (max-width:550px) {
+    .back-icon a{
+        font-size: 0;
+        left: 10px;
+    }
+}
+.success {
+    display: flex;
+    width: 100%;
+    height: 10vh;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    background-color:#d4edda;
+    border: 1px #c3e6cb solid;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.error {
+    display: flex;
+    position: fixed;
+    top: 10px;
+    width: 30%;
+    height: 10vh;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    background-color:#f8d7da;
+    border: 1px #f5c6cb solid;
+    padding: 20px;
+    border-radius: 5px;
 }

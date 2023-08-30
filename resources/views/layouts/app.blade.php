@@ -17,7 +17,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
+@yield('drop_zone')
 
 </head>
 <body>
@@ -25,7 +25,7 @@
         @yield('background')
 
         @unless(in_array(Route::currentRouteName(), ['signin', 'register', 'signup', 'reset', 'password.email',
-        'resendpass.email', 'resend.email', 'pass.reset', 'email', 'login']))
+        'resendpass.email', 'resend.email', 'pass.reset', 'email', 'login', 'password.email.get', 'confirm']))
             @include('layouts.navbar')
         @endunless
 
@@ -38,6 +38,19 @@
 
 
     </div>
+    <script>
+        // Set a timeout to hide the success message after 5 seconds (adjust the time as needed)
+        setTimeout(function() {
+            var successMessage = document.getElementById('alert-message');
+            if (successMessage) {
+                successMessage.style.opacity = '0'; // Fade out
+                setTimeout(function() {
+                    successMessage.style.display = 'none';
+                }, 500); // Wait for the transition to complete before hiding
+            }
+        }, 3000); // 5000 milliseconds = 5 seconds
+    </script>
+
 
 </body>
 </html>
