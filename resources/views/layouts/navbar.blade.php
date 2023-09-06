@@ -4,11 +4,11 @@
     <div class="row">
         <div class="col-sm-12">
                 <nav class="navbar navbar-expand fixed-top">
-                       <a href="{{ url('/') }}"><img src="{{ asset('Images/thistles_logo.png') }}" class="navbar-logo" alt="thistles"></a>
-                       <a class="brand-name" href="{{ url('/') }}">Thistles</a>
+                       <a href="{{ url('/home') }}"><img src="{{ asset('Images/thistles_logo.png') }}" class="navbar-logo" alt="thistles"></a>
+                       <a class="brand-name" href="{{ url('/home') }}">Thistles</a>
 
                        @unless(in_array(Route::currentRouteName(), ['homeAth1','q1','q2','q3','q4','q5','q6','q7','q8','q9','q10',
-                       'q11','q12','q13','q13','q15' ,'compiled', 'index']))
+                       'q11','q12','q13','q13','q15' ,'compiled', 'index', 'documents']))
 
                        <!-- Left Side Of Navbar -->
                            <ul class="navbar-nav me-auto">
@@ -30,18 +30,18 @@
 
                         @if (in_array(Route::currentRouteName(), ['homeAth1','q1','q2','q3','q4','q5','q6','q7','q8',
                         'q9','q10','q11','q12','q13','q13','q15', 'compiled', 'index', 'backgroundinfo', 'short_term_goals',
-                        'long_term_goals', 'communication' ]))
+                        'long_term_goals', 'communication', 'documents' ]))
 
                         @auth()
 
                         <ul class="navbar-nav ms-auto">
 
                             <li class="nav-item">
-                                 <h3>Hello,</h3> <h3 class="text-lpink">{{ ucfirst(Auth::user()->name) }}</h3>
+                                 <h3>Hello,</h3> <h3 class="text-lpink">{{ ucfirst(explode(' ', Auth::user()->name)[0]) }}</h3>
                             </li>
 
                             <li class="nav-item">
-                                    <img src="{{ asset('Images/' . Auth::user()->image)}}" id="image" class="img-fluid avatar-img" alt="avatar">
+                                <img src="{{ asset('Images/' . Auth::user()->image)}}" id="imageIcon" class="img-fluid avatar-img" alt="avatar">
                             </li>
 
                         </ul>
@@ -69,14 +69,14 @@
 
 
                         <script>
-                            const fileInput = document.getElementById('file-input-image');
+                            const iconInput = document.getElementById('file-input-image');
                             const customButton = document.querySelector('.custom-select');
-                            fileInput.style.display= 'none';
+                            iconInput.style.display= 'none';
                             customButton.addEventListener('click', () => {
-                                fileInput.click();
+                                iconInput.click();
                             });
 
-                            fileInput.addEventListener('change', () => {
+                            iconInput.addEventListener('change', () => {
                                 alert("A file has been selected.");
                                 document.getElementById('imageform').submit();
                             });
@@ -99,17 +99,17 @@
         </div>
         <div class="row p-2">
             <div class="col-3">
-                <img src="{{asset('svg/Group.svg')}}" alt="">
+                <a href="{{route('logout')}}"><img class="cursor-pointer" src="{{asset('svg/Group.svg')}}" alt=""></a>
             </div>
             <div class="col-9">
-                <a href="{{ route('logout') }}" class="text-danger text-decoration-none">Sign Out</a>
+                <a href="{{route('logout')}}" class="text-danger text-decoration-none cursor-pointer">Sign Out</a>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-const image = document.getElementById('image');
+const image = document.getElementById('imageIcon');
 const cardContainer = document.getElementById('card-container');
 const closeBtn = document.getElementById('close-btn');
 
@@ -120,11 +120,11 @@ image.addEventListener('click', () => {
         cardContainer.style.display = 'none';
     }
 });
-document.addEventListener('click', (event) => {
-    if (!cardContainer.contains(event.target) && event.target !== image) {
-        cardContainer.style.display = 'none';
-    }
-});
+// document.addEventListener('click', (event) => {
+//     if (!cardContainer.contains(event.target) && event.target !== image) {
+//         cardContainer.style.display = 'none';
+//     }
+// });
 
 
 </script>

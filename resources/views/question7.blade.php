@@ -18,13 +18,18 @@
                         <div class="form-group">
                         <label for="name">Describe all your personal care challenges</label>
                             <textarea class="text-area big pt-3" placeholder="e.g. Lorem ipsum" name="metadata" cols="50" rows="20" required>{{ $metadata ? $metadata->value : '' }}</textarea>
+                            @if(session('error'))
+                                <div class="text-red error-fs" id="alert-message">
+                                    *{{ session('error') }}
+                                </div>
+                            @endif
                         </div>
                         <input type="hidden" name="next_route" value="q8">
                         <input type="hidden" name="current_route" value="q7">
                         <button type="submit" class="btn-pink">Next Question</button>
                     </form>
 
-                    <div class="signin-link pt-5">
+                    <div class="signin-link pt-3">
                         <p>Need a break and continue later? <a href="{{route('save_progress' , ['qno'=> 'q7'])}}" >Save progress</a></p>
                     </div>
                 </div>

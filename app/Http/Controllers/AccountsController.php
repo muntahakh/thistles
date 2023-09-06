@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Hash;
-use Flash;
+use Laravel\Socialite\Facades\Socialite;
 
 class AccountsController extends Controller
 {
@@ -20,6 +20,24 @@ class AccountsController extends Controller
     public function register(){
         return view('auth.register');
     }
+
+    public function signinWithGoogle(){
+        $user = Socialite::driver('google')->user();
+
+        // $user = User::updateOrCreate([
+        //     'id' => $user->id,
+        // ], [
+        //     'name' => $user->name,
+        //     'email' => $user->email,
+        //     'password' => '',
+        //     'image' => $user->avatar,
+        // ]);
+
+        // Auth::login($user);
+
+        return redirect('/index');
+    }
+
     public function confirmEmail()
     {
         return view('emails/custom_verify_email');

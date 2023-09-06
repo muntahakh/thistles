@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="eula-background">
-    <div class="back-icon">
-        <a href="{{route('documents')}}"><img src="{{asset('svg/back.svg')}}" alt="return_back"> Back</a>
-    </div>
-    <div class="container-fluid main-home-content">
 
+    <div class="container-fluid main-home-content">
+        <div class="back-icon">
+            <a href="{{route('documents')}}"><img src="{{asset('svg/back.svg')}}" alt="return_back"> Back</a>
+        </div>
             <div class="content-center top-heading">
                 <div class="center-text">
                     <h1 class="pt-2">3. Short term goals</h1>

@@ -6,6 +6,8 @@ use App\Models\Background_Info;
 use App\Models\User;
 use App\Models\goals;
 use App\Models\metadata;
+use App\Models\documents;
+use App\Models\reports;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -17,6 +19,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 
 class QuestionsController extends Controller
@@ -27,13 +30,12 @@ class QuestionsController extends Controller
         return view('backgroundInfo',compact('user', 'backgroundInfo'));
     }
 
-    public function bgInfo(Request $request, $id){
+    public function bgInfo(Request $request){
 
-        $user = User::where('id' , $id)->first();
-        if($user){
+        $user = Auth::user();
 
             $bgInfo = Background_Info::updateOrCreate(
-                ['user_id' => $id],
+                ['user_id' => $user->id],
                 [
                     'child_name' => $request->child_name,
                     'participant_num' => $request->participant_num,
@@ -41,28 +43,9 @@ class QuestionsController extends Controller
                     'child_condition' => $request->details,
                 ]
             );
-        }
-        else{
-            $bgInfo = new Background_Info();
-            $bgInfo->child_name = $request->child_name;
-            $bgInfo->participant_num = $request->participant_num;
-            $bgInfo->gender = $request->gender;
-            $bgInfo->child_condition = $request->details;
-            $bgInfo->user_id = $id;
-            // Save the data to the database
-            $bgInfo->save();
-        }
 
-        return redirect()->route('documents', ['id' => $user->id]); // Redirect to a success page or any other page
+        return redirect()->route('documents'); // Redirect to a success page or any other page
     }
-
-    public function q2() {
-        return view('reports');
-    }
-
-    // public function documents(Request $request){
-
-    // }
 
     public function q3() {
         $user = Auth::user();
@@ -130,24 +113,33 @@ class QuestionsController extends Controller
 
     public function metadata(Request $request) {
         $user = Auth::user();
-        $communication = $request->metadata;
+        // $communication = $request->metadata;
         $current = session('metadata_current');
 
         if($current != "" && $current != null ){
-            $metadata = metadata::updateOrCreate(
-                ['user_id' => $user->id , 'name' => $current ],
-                [
-                    'value' => $request->metadata,
-                ]);
 
-                session(['metadata_current' => null]);
-                $currentRoute = URL::current();
+            $wordCount = str_word_count($request->metadata);
+            if ($wordCount >= 20) {
+                $metadata = metadata::updateOrCreate(
+                    ['user_id' => $user->id , 'name' => $current ],
+                    [
+                        'value' => $request->metadata,
+                    ]);
 
-                return redirect()->route($request->next_route)->with('success', $current.' value updated successfully');
+                    session(['metadata_current' => null]);
+                    $currentRoute = URL::current();
+
+                    return redirect()->route($request->next_route);
+            }
+            else{
+                return redirect()->route($request->current_route)->with('error', 'Answer should be atleast 3 lines');
+
+            }
+
         }
         else{
 
-            return redirect()->route($request->current_route)->with('success', $current.' value updated successfully');
+            return redirect()->route($request->current_route)->with('error', 'Error updating value');
 
         }
 
@@ -228,4 +220,76 @@ class QuestionsController extends Controller
         $metadata = $user->metadata()->where('name', 'parental_statement')->first();
         return view('question15', compact('user', 'metadata'));
     }
+
+    public function q2(){
+
+        $documents = documents::where(['user_id' => auth()->id(), 'entity_type' => 'App\Models\reports'])->get();
+            $entityIds = $documents->pluck('entity_id');
+
+            $reports = reports::where('user_id', auth()->id())
+                ->whereIn('id', $entityIds)
+                ->get();
+
+        return view('reports', compact('documents','reports'));
+    }
+
+    public function upload(Request $request)
+    {
+        $user = Auth::user();
+        $file = $request->file('file');
+        $path = $file->store('public/documents');
+
+        // $reports = reports::where('user_id', $user->id)->where('type' , 'upload')->get();
+        $document = Documents::create([
+            'user_id' => $user->id,
+            'entity_id' => null,
+            'entity_type' => 'App\Models\reports',
+            'file_name' => $file->getClientOriginalName(),
+            'file_path' => $path,
+            'file_size' => Storage::size($path),
+            'file_category' => $request->file_category,
+        ]);
+
+        $uploadReports = reports::Create([
+                'user_id' => $user->id,
+                'file_name' => $document->file_name,
+                'type' => 'upload',
+            ]);
+
+        $document->update(['entity_id' => $uploadReports->id]);
+
+        $uniqueFileName = $document->file_name . '-' . $document->id;
+        $document->update(['file_name' => $uniqueFileName]);
+
+        return redirect()->route('documents');
+    }
+
+    public function delete($id){
+        $document = documents::find($id);
+        if (!$document || $document->user_id !== Auth::user()->id) {
+            return redirect()->route('documents')->with('error', 'Document not found or unauthorized to delete.');
+        }
+        $reports = reports::find($document->entity_id);
+
+        $reports->delete();
+        Storage::delete('public/documents/' . $document->file_name);
+        $document->delete();
+
+        return redirect()->route('documents')->with('success', 'Document deleted successfully.');
+
+    }
+
+    // public function uploadReports(){
+    //     $user = Auth::user();
+    //     $documents = documents::where('user_id' , $user->id)->get();
+
+    //     $uploadReports = reports::updateOrCreate(
+    //         ['user_id' => $user->id, 'file_name' => $documents->file_name],
+    //         [
+    //             'file_name' => $documents->file_name,
+    //             'type' => 'upload',
+    //         ]);
+    //     return redirect()->route('documents');
+    // }
 }
+

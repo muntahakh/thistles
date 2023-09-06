@@ -11,15 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reports', function (Blueprint $table) {
-            $table->id();
-            $table->string('file_name');
-            $table->unsignedBigInteger('user_id');
-
-            $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
+        Schema::table('documents', function (Blueprint $table) {
+            $table->string('file_category')->nullable();
         });
     }
 
@@ -28,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reports');
+        Schema::table('documents', function (Blueprint $table) {
+            $table->dropColumn('file_category');
+        });
     }
 };

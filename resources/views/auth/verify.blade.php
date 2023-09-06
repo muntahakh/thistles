@@ -33,7 +33,7 @@
                     <a href="{{ route('verification.verify', ['id' => $user->id, 'hash' => $user->verification_token]) }}">
                         <button type="submit" class="btn-pink">Verify Email</button>
                     </a>
-                    <a href="/" class="forgot-password content-center">Need Support?</a>
+                    <a href=https://www.ndis.gov.au/understanding/supports-funded-ndis/reasonable-and-necessary-supports" class="forgot-password content-center">Need Support?</a>
                 </div>
             </div>
 

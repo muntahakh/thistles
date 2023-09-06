@@ -169,6 +169,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -185,6 +186,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
         'Flash' => Laracasts\Flash\Flash::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ])->toArray(),
 
 ];

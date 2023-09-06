@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{HomeController,AccountsController,QuestionsController};
 use App\Http\Controllers\Auth\{ForgotPasswordController,ResetPasswordController,VerificationController};
+use Laravel\Socialite\Facades\Socialite;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +17,13 @@ use App\Http\Controllers\Auth\{ForgotPasswordController,ResetPasswordController,
 */
 
 Route::get('/home',[HomeController::class,'home'])->name('home'); #->middleware('guest.access');
+
+Route::get('/test',[HomeController::class,'test']);
+
+Route::get('/auth/redirect', function () {
+    return Socialite::driver('google')->redirect();
+});
+Route::get('/auth/callback', [AccountsController::class,'signinWithGoogle']);
 
 Auth::routes(['verify' => true]);
 
@@ -57,7 +66,7 @@ Route::get('/password/email/resend', [AccountsController::class,'resendPassEmail
 
 Route::post('/index', [AccountsController::class,'login'])->name('homeAth1');
 
- Route::get('/index', [HomeController::class,'index'])->name('index');
+Route::get('/index', [HomeController::class,'index'])->name('index');
 
 Route::post('/update-profile-image{id}', [AccountsController::class, 'updateProfileImage'])->name('updateProfileImage');
 
@@ -67,11 +76,13 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/q1', [QuestionsController::class,'q1'])->name('q1');
 
-Route::post('/q1/{id}', [QuestionsController::class,'bgInfo'])->name('backgroundinfo');
-
-Route::post('/q2', [QuestionsController::class,'documents']);
+Route::post('/q1', [QuestionsController::class,'bgInfo'])->name('backgroundinfo');
 
 Route::get('/q2', [QuestionsController::class,'q2'])->name('documents');
+
+Route::post('document/upload', [QuestionsController::class,'upload'])->name('document.upload');
+
+Route::get('document/delete/{id}', [QuestionsController::class,'delete'])->name('document.delete');
 
 Route::get('/q3', [QuestionsController::class,'q3'])->name('q3');
 
@@ -114,7 +125,3 @@ Route::get('/compiled', [HomeController::class,'compiled'])->name('compiled');
 Route::post('/compiled', [HomeController::class,'compiled'])->name('compiled');
 });
 
-
-Route::get('/upload-filee', function(){
-    return view('upload-file');
-});

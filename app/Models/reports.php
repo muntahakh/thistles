@@ -13,4 +13,10 @@ class reports extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    protected $fillable = [
+        'user_id',
+        'file_name',
+        'type',
+    ];
 }

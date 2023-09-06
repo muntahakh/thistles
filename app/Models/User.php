@@ -31,7 +31,6 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendEmailVerificationNotification()
 
     {
-        // dd($this->name ,);
         $mytime = Carbon::now()->format('YmdHis');
         $verification_token =  Crypt::encryptString($mytime );
         $this->fill(['verification_token' => $verification_token ])->save();
@@ -58,16 +57,60 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(documents::class);
     }
 
-    public function goals()
+    public function uploadedDocuments()
     {
-        return $this->hasOne(goals::class);
+        return $this->morphMany(documents::class, 'entity');
     }
 
+    public function goals()
+    {
+        return $this->hasMany(goals::class);
+    }
+    public function getShortTermGoals()
+    {
+        return $this->goals()->where('type', 'short_term')->get();
+    }
+    public function getLongTermGoals()
+    {
+        return $this->goals()->where('type', 'long_term')->get();
+    }
     public function metadata()
     {
         return $this->hasMany(metadata::class);
     }
-
+    public function getCommunication(){
+        return $this->metadata()->where('name', 'communication')->get();
+    }
+    public function getBehaviouralVulnerabilities(){
+        return $this->metadata()->where('name', 'behavioural_vulnerabilities')->get();
+    }
+    public function getPerosnalCare(){
+        return $this->metadata()->where('name', 'perosnalcare_livingskills')->get();
+    }
+    public function getMealsEating(){
+        return $this->metadata()->where('name', 'meals_eating')->get();
+    }
+    public function getDuringNights(){
+        return $this->metadata()->where('name', 'during_nights')->get();
+    }
+    public function getPropertyDamage(){
+        return $this->metadata()->where('name', 'property_damage')->get();
+    }
+    public function getSupportRegular(){
+        return $this->metadata()->where('name', 'support_regular')->get();
+    }
+    public function getSupportOccasional(){
+        return $this->metadata()->where('name', 'support_occasional')->get();
+    }
+    public function getOngoingTherapySupport(){
+        return $this->metadata()->where('name', 'ongoing_therapy_support')->get();
+    }
+    public function getAidsAssistiveTechnology(){
+        return $this->metadata()->where('name', 'aids_assistive_technology')->get();
+    }
+    public function getParentalStatement(){
+        return $this->metadata()->where('name', 'parental_statement')->get();
+    }
     public function reports()
     {
         return $this->hasMany(reports::class);
@@ -78,6 +121,184 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(save_progress::class);
     }
 
+    public function GetAllDetails(){
+        $detail   = [];
+
+        if($this->backgroundInfo != null)
+        {
+            $detail["data"]["backgroundInfo"] = $this->backgroundInfo;
+        }
+        else
+        {
+            return [
+                "status" => false,
+                "data" => null,
+                "message" => "Background information is not complete"
+            ];
+        }
+
+        if($this->getShortTermGoals() != null)
+        {
+            $detail["data"]["getShortTermGoals"] = $this->getShortTermGoals();
+
+        }
+        else{
+            return [
+                "status" => false,
+                "data" => null,
+                "message" => "Short term goals are incomplete."
+            ];
+        }
+
+        if($this->getLongTermGoals() != null)
+        {
+            $detail["data"]["getLongTermGoals"] = $this->getLongTermGoals();
+        }
+        else
+        {
+            return [
+                "status" => false,
+                "data" => null,
+                "message" => "Long term goals are incomplete."
+            ];
+        }
+
+        if($this->getCommunication() != null)
+        {
+        $detail["data"]["getCommunication"] = $this->getCommunication();
+        }
+        else{
+            return [
+                "status" => false,
+                "data" => null,
+                "message" => "Communication is incomplete."
+            ];
+        }
+
+        if($this->getBehaviouralVulnerabilities() != null)
+        {
+            $detail["data"]["getBehaviouralVulnerabilities"] = $this->getBehaviouralVulnerabilities();
+        }
+        else{
+            return [
+                "status" => false,
+                "data" => null,
+                "message" => "Behavioural Vulnerabilities is incomplete."
+            ];
+        }
+
+        if($this->getPerosnalCare() != null)
+        {
+            $detail["data"]["getPerosnalCare"] = $this->getPerosnalCare();
+        }
+        else{
+            return [
+                "status" => false,
+                "data" => null,
+                "message" => "Personal care/ Living skills is incomplete."
+            ];
+        }
+
+        if($this->getMealsEating() != null)
+        {
+            $detail["data"]["getMealsEating"] = $this->getMealsEating();
+        }
+        else{
+            return [
+                "status" => false,
+                "data" => null,
+                "message" => "Meals /eating is incomplete."
+            ];
+        }
+
+        if($this->getDuringNights() != null)
+        {
+            $detail["data"]["getDuringNights"] = $this->getDuringNights();
+        }
+        else{
+            return [
+                "status" => false,
+                "data" => null,
+                "message" => "During night details are incomplete."
+            ];
+        }
+
+        if($this->getPropertyDamage() != null)
+        {
+            $detail["data"]["getPropertyDamage"] = $this->getPropertyDamage();
+        }
+        else{
+            return [
+                "status" => false,
+                "data" => null,
+                "message" => "Property damage details are incomplete."
+            ];
+        }
+
+        if($this->getSupportRegular() != null)
+        {
+            $detail["data"]["getSupportRegular"] = $this->getSupportRegular();
+        }
+        else{
+            return [
+                "status" => false,
+                "data" => null,
+                "message" => "Regular support details are incomplete."
+            ];
+        }
+
+        if($this->getSupportOccasional() != null)
+        {
+            $detail["data"]["getSupportOccasional"] = $this->getSupportOccasional();
+        }
+        else{
+            return [
+                "status" => false,
+                "data" => null,
+                "message" => "Occasional support details are incomplete."
+            ];
+        }
+
+        if($this->getOngoingTherapySupport() != null)
+        {
+            $detail["data"]["getOngoingTherapySupport"] = $this->getOngoingTherapySupport();
+        }
+        else{
+            return [
+                "status" => false,
+                "data" => null,
+                "message" => "Ongoing therapy support details are incomplete."
+            ];
+        }
+
+        if($this->getAidsAssistiveTechnology() != null)
+        {
+            $detail["data"]["getAidsAssistiveTechnology"] = $this->getAidsAssistiveTechnology();
+        }
+        else{
+            return [
+                "status" => false,
+                "data" => null,
+                "message" => "Aids assistive technology details are incomplete."
+            ];
+        }
+
+        if($this->getParentalStatement() != null)
+        {
+            $detail["data"]["getParentalStatement"] = $this->getParentalStatement();
+        }
+        else{
+            return [
+                "status" => true,
+                "data" => null,
+                "message" => ""
+            ];
+        }
+        $detail['status'] = true;
+        $detail['message'] = '';
+        return $detail;
+
+        }
     /**
      * The attributes that are mass assignable.
      *
@@ -106,3 +327,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'password' => 'hashed',
     ];
 }
+
+
+
+
+
+

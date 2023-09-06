@@ -79,7 +79,7 @@
                     </div>
                     <div class="buttons-container">
                         <a href="/" class="btn-img"> <img src="{{asset('svg/Apple-icon.png')}}" alt=""> Apple</a>
-                        <a href="/" class="btn-img"> <img src="{{asset('svg/Google-icon.png')}}" alt=""> Google</a>
+                        <a href="/auth/redirect" class="btn-img"> <img src="{{asset('svg/Google-icon.png')}}" alt=""> Google</a>
                     </div>
                     <div class="signin-link pt-3">
                         <p>Don't you have an account? <a href="/register" >Sign Up</a></p>

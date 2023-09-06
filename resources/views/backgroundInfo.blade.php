@@ -3,10 +3,11 @@
 @section('content')
 {{-- @dd($backgroundInfo) --}}
 <div class="eula-background">
-    <div class="back-icon">
-        <a href="{{route('index')}}"><img src="{{asset('svg/back.svg')}}" alt="return_back"> Back</a>
-    </div>
+
     <div class="container-fluid main-home-content">
+        <div class="back-icon">
+            <a href="{{route('index')}}"><img src="{{asset('svg/back.svg')}}" alt="return_back"> Back</a>
+        </div>  
         <div class="pt-5">
 
             <div class="content-center">
@@ -15,7 +16,7 @@
                     <p class="text-green">0% Complete</p>
                 </div>
                 <div class="questions-container">
-                    <form action="{{route('backgroundinfo', ['id' => $user->id])}}" method="post">
+                    <form action="{{route('backgroundinfo')}}" method="post">
                         @csrf
 
                         <div class="form-group">
