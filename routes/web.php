@@ -23,6 +23,7 @@ Route::get('/test',[HomeController::class,'test']);
 Route::get('/auth/redirect', function () {
     return Socialite::driver('google')->redirect();
 });
+
 Route::get('/auth/callback', [AccountsController::class,'signinWithGoogle']);
 
 Auth::routes(['verify' => true]);

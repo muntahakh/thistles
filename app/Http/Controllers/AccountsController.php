@@ -23,17 +23,30 @@ class AccountsController extends Controller
 
     public function signinWithGoogle(){
         $user = Socialite::driver('google')->user();
+        $existingUser = User::where('email', $user->email)->first();
+        if ($existingUser) {
+            $existingUser->update([
+                'name' => $user->name,
+                'password' => null,
+                'accept_agreement' => true,
+                'image' => null,
+                'url_image' => $user->avatar,
+            ]);
 
-        // $user = User::updateOrCreate([
-        //     'id' => $user->id,
-        // ], [
-        //     'name' => $user->name,
-        //     'email' => $user->email,
-        //     'password' => '',
-        //     'image' => $user->avatar,
-        // ]);
+        $user = $existingUser;
+    } else {
 
-        // Auth::login($user);
+        $user = User::create([
+            'name' => $user->name,
+            'email' => $user->email,
+            'password' => null,
+            'accept_agreement' => true,
+            'image' => null,
+            'url_image' => $user->avatar,
+        ]);
+    }
+
+        Auth::login($user);
 
         return redirect('/index');
     }
@@ -45,6 +58,10 @@ class AccountsController extends Controller
 
     public function signUp(Request $request)
     {
+        if (User::where('email', $request->email)->exists()) {
+            return redirect()->back()->with('error', 'Email already exists.');
+        }
+
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;

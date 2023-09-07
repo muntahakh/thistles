@@ -13,7 +13,7 @@
                 </svg></a>
             </div>
             {{-- Sign Up form --}}
-            <div class="content-center">
+            <div class="content-center pt-5">
                 <div class="center-text">
                     <img src="{{ asset('Images/thistles_logo.png') }}" class="img-fluid pt-3" alt="">
                     <h1 class="pt-2">Sign Up</h1>
@@ -79,7 +79,7 @@
                     </div>
                     <div class="buttons-container">
                         <a href="/" class="btn-img"> <img src="{{asset('svg/Apple-icon.png')}}" alt=""> Apple</a>
-                        <a href="/" class="btn-img"> <img src="{{asset('svg/Google-icon.png')}}" alt=""> Google</a>
+                        <a href="/auth/redirect" class="btn-img"> <img src="{{asset('svg/Google-icon.png')}}" alt=""> Google</a>
                     </div>
                     <div class="signin-link pt-3">
                         <p>Do you have an account? <a href="{{ route('signin')}}" >Sign In</a></p>

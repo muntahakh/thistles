@@ -10,6 +10,8 @@
 
     <title>{{ config('app.name', 'Thistles') }}</title>
 
+    <link rel="icon" type="image/x-icon" href="{{asset("Images/thistles_logo.ico")}}">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <!-- Scripts -->

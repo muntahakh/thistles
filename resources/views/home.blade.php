@@ -7,7 +7,7 @@
           <h1 class="overlay-h1 text-center">Welcome to our NDIS submission tool for school leavers!</h1>
           <h5 class="text-pink fw-bold text-center">Scroll Down to Learn More</h5>
         <div class="scroll-down pt-4">
-          <a href="/home" class="arrow-icon"><img src="{{ asset('svg/arrow.svg') }}" alt="arrow"></a>
+          <a href="#text-section" class="arrow-icon"><img src="{{ asset('svg/arrow.svg') }}" alt="arrow"></a>
         </div>
       </div>
         <img src="{{ asset('Images/background.png') }}" alt="bg-img">
@@ -31,7 +31,7 @@
 
   {{-- Text --}}
   <div class="col-sm-12 col-md-6 col-lg-6 p-5">
-    <div class="text-section ">
+    <div class="text-section" id="text-section">
       <h2 class="h2 fw-bold pb-5">Answer Our Questions</h2>
       <p>Simply follow the prompts and answer our questions, providing as much information as possible,
       and our tool will use generative artificial intelligence to write a detailed NDIS submission to assist with

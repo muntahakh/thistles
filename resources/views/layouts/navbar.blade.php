@@ -41,7 +41,11 @@
                             </li>
 
                             <li class="nav-item">
+                            @if (Auth::user()->url_image == null)
                                 <img src="{{ asset('Images/' . Auth::user()->image)}}" id="imageIcon" class="img-fluid avatar-img" alt="avatar">
+                            @else
+                                <img src="{{Auth::user()->url_image}}" id="imageIcon" class="img-fluid avatar-img" alt="avatar">
+                            @endif
                             </li>
 
                         </ul>
@@ -62,7 +66,12 @@
         <div class="row">
             <div class="col-3">
                 <form method="POST" action="{{ route('updateProfileImage', ['id' => Auth::user()->id]) }}" enctype="multipart/form-data" id="imageform">
-                <img src="{{ asset('Images/' . Auth::user()->image)}}" class="custom-select img-fluid" alt="avatar">
+
+                @if (Auth::user()->url_image == null)
+                    <img src="{{ asset('Images/' . Auth::user()->image)}}" class="custom-select img-fluid" alt="avatar">
+                @else
+                    <img src="{{Auth::user()->url_image}}" class="custom-select img-fluid" alt="avatar">
+                @endif
                     @csrf
 
                     <input type="file" name="image" id="file-input-image">
@@ -120,11 +129,11 @@ image.addEventListener('click', () => {
         cardContainer.style.display = 'none';
     }
 });
-// document.addEventListener('click', (event) => {
-//     if (!cardContainer.contains(event.target) && event.target !== image) {
-//         cardContainer.style.display = 'none';
-//     }
-// });
+document.addEventListener('click', (event) => {
+    if (!cardContainer.contains(event.target) && event.target !== image) {
+        cardContainer.style.display = 'none';
+    }
+});
 
 
 </script>
