@@ -44,7 +44,7 @@ class QuestionsController extends Controller
                 ]
             );
 
-        return redirect()->route('documents'); // Redirect to a success page or any other page
+        return redirect()->route('documents');
     }
 
     public function q3() {
@@ -113,7 +113,7 @@ class QuestionsController extends Controller
 
     public function metadata(Request $request) {
         $user = Auth::user();
-        // $communication = $request->metadata;
+
         $current = session('metadata_current');
 
         if($current != "" && $current != null ){
@@ -239,7 +239,6 @@ class QuestionsController extends Controller
         $file = $request->file('file');
         $path = $file->store('public/documents');
 
-        // $reports = reports::where('user_id', $user->id)->where('type' , 'upload')->get();
         $document = Documents::create([
             'user_id' => $user->id,
             'entity_id' => null,
@@ -279,17 +278,5 @@ class QuestionsController extends Controller
 
     }
 
-    // public function uploadReports(){
-    //     $user = Auth::user();
-    //     $documents = documents::where('user_id' , $user->id)->get();
-
-    //     $uploadReports = reports::updateOrCreate(
-    //         ['user_id' => $user->id, 'file_name' => $documents->file_name],
-    //         [
-    //             'file_name' => $documents->file_name,
-    //             'type' => 'upload',
-    //         ]);
-    //     return redirect()->route('documents');
-    // }
 }
 

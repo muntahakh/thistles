@@ -12,7 +12,7 @@
             <div class="container text-center p-3">
                 <h1 class="pt-2 fw-bold">Verify This Email Address</h1>
                 <p>We sent a confirmation email for:</p>
-                <a href="/home">abc@gmail.com</a>
+                <a href="/">abc@gmail.com</a>
             </div>
             <div class="email-container">
 

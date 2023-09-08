@@ -16,7 +16,7 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 
-Route::get('/home',[HomeController::class,'home'])->name('home'); #->middleware('guest.access');
+Route::get('/',[HomeController::class,'home'])->name('home'); #->middleware('guest.access');
 
 Route::get('/test',[HomeController::class,'test']);
 

@@ -4,8 +4,8 @@
     <div class="row">
         <div class="col-sm-12">
                 <nav class="navbar navbar-expand fixed-top">
-                       <a href="{{ url('/home') }}"><img src="{{ asset('Images/thistles_logo.png') }}" class="navbar-logo" alt="thistles"></a>
-                       <a class="brand-name" href="{{ url('/home') }}">Thistles</a>
+                       <a href="{{ url('/') }}"><img src="{{ asset('Images/thistles_logo.png') }}" class="navbar-logo" alt="thistles"></a>
+                       <a class="brand-name" href="{{ url('/') }}">Thistles</a>
 
                        @unless(in_array(Route::currentRouteName(), ['homeAth1','q1','q2','q3','q4','q5','q6','q7','q8','q9','q10',
                        'q11','q12','q13','q13','q15' ,'compiled', 'index', 'documents']))
