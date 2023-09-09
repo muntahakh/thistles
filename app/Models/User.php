@@ -12,6 +12,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Carbon\Carbon;
 
+use App\Models\reports;
+
 class User extends Authenticatable implements MustVerifyEmail
 {
 
@@ -27,6 +29,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'url_image',
         'password',
         'verification_token',
+        'authentication_type',
 
     ];
 
@@ -43,75 +46,66 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendResetLinkEmail(){
         $this->notify(new CustomChangePasswordEmail($this->id, $this->name, $this->email , $this->verification_token));
     }
-
-    // public function backgroundInfo()
-    // {
-    //     return $this->hasMany(background_info::class);
-    // }
-
     public function backgroundInfo()
     {
         return $this->hasOne(background_info::class);
     }
-
     public function documents()
     {
         return $this->hasMany(documents::class);
     }
-
     public function uploadedDocuments()
     {
-        return $this->morphMany(documents::class, 'entity');
+        return $this->documents()->first()->toArray();
     }
-
     public function goals()
     {
         return $this->hasMany(goals::class);
     }
     public function getShortTermGoals()
     {
-        return $this->goals()->where('type', 'short_term')->get();
+        return $this->goals()->where('type', 'short_term')->first()->toArray();
     }
     public function getLongTermGoals()
     {
-        return $this->goals()->where('type', 'long_term')->get();
+        return $this->goals()->where('type', 'long_term')->first()->toArray();
     }
     public function metadata()
     {
         return $this->hasMany(metadata::class);
     }
     public function getCommunication(){
-        return $this->metadata()->where('name', 'communication')->get();
+        return $this->metadata()->where('name', 'communication')->first()->toArray();
     }
     public function getBehaviouralVulnerabilities(){
-        return $this->metadata()->where('name', 'behavioural_vulnerabilities')->get();
+        return $this->metadata()->where('name', 'behavioural_vulnerabilities')->first()->toArray();
     }
     public function getPerosnalCare(){
-        return $this->metadata()->where('name', 'perosnalcare_livingskills')->get();
+        return $this->metadata()->where('name', 'perosnalcare_livingskills')->first()->toArray();
     }
     public function getMealsEating(){
-        return $this->metadata()->where('name', 'meals_eating')->get();
+        return $this->metadata()->where('name', 'meals_eating')->first()->toArray();
     }
     public function getDuringNights(){
-        return $this->metadata()->where('name', 'during_nights')->get();
+        return $this->metadata()->where('name', 'during_nights')->first()->toArray();
     }
     public function getPropertyDamage(){
-        return $this->metadata()->where('name', 'property_damage')->get();
+        return $this->metadata()->where('name', 'property_damage')->first()->toArray();
     }
     public function getSupportRegular(){
-        return $this->metadata()->where('name', 'support_regular')->get();
+        return $this->metadata()->where('name', 'support_regular')->first()->toArray();
     }
     public function getSupportOccasional(){
-        return $this->metadata()->where('name', 'support_occasional')->get();
+        return $this->metadata()->where('name', 'support_occasional')->first()->toArray();
     }
     public function getOngoingTherapySupport(){
-        return $this->metadata()->where('name', 'ongoing_therapy_support')->get();
+        return $this->metadata()->where('name', 'ongoing_therapy_support')->first()->toArray();
     }
     public function getAidsAssistiveTechnology(){
-        return $this->metadata()->where('name', 'aids_assistive_technology')->get();
+        return $this->metadata()->where('name', 'aids_assistive_technology')->first()->toArray();
     }
     public function getParentalStatement(){
-        return $this->metadata()->where('name', 'parental_statement')->get();
+        return $this->metadata()->where('name', 'parental_statement')->first()->toArray();
     }
     public function reports()
     {
@@ -126,6 +120,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function GetAllDetails(){
         $detail   = [];
 
+
         if($this->backgroundInfo != null)
         {
             $detail["data"]["backgroundInfo"] = $this->backgroundInfo;
@@ -138,7 +133,17 @@ class User extends Authenticatable implements MustVerifyEmail
                 "message" => "Background information is not complete"
             ];
         }
-
+        if($this->uploadedDocuments() !=  null)
+        {
+            $detail["data"]["uploadedDocuments"] = $this->uploadedDocuments();
+        }
+        else{
+            return [
+                "status" => false,
+                "data" => null,
+                "message" => "Documents are not uploaded"
+            ];
+        }
         if($this->getShortTermGoals() != null)
         {
             $detail["data"]["getShortTermGoals"] = $this->getShortTermGoals();
@@ -291,7 +296,7 @@ class User extends Authenticatable implements MustVerifyEmail
         }
         else{
             return [
-                "status" => true,
+                "status" => false,
                 "data" => null,
                 "message" => ""
             ];

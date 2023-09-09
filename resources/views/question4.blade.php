@@ -23,20 +23,17 @@
 
                             <div class="form-group">
                                 <label for="name">Health and welfare</label>
-                                <textarea class="text-area pt-3" placeholder="e.g. Lorem ipsum" name="health_welfare" cols="50" rows="20" required>{{ $goals ? $goals->health_welfare : '' }}
-                                </textarea>
+                                <textarea class="text-area pt-3" placeholder="e.g. Lorem ipsum" name="health_welfare" cols="50" rows="20" required>{{ $goals ? $goals->health_welfare : '' }}</textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="name">Living arrangements</label>
-                                <textarea class="text-area pt-3" placeholder="e.g. Lorem ipsum" name="living_arrangements" cols="50" rows="20" required>{{ $goals ? $goals->living_arrangements : '' }}
-                                </textarea>
+                                <textarea class="text-area pt-3" placeholder="e.g. Lorem ipsum" name="living_arrangements" cols="50" rows="20" required>{{ $goals ? $goals->living_arrangements : '' }}</textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="name">Education and ongoing learning / skill development</label>
-                                <textarea class="text-area pt-3" placeholder="e.g. Lorem ipsum" name="skill_development" cols="50" rows="20" required>{{ $goals ? $goals->skill_development : '' }}
-                                </textarea>
+                                <textarea class="text-area pt-3" placeholder="e.g. Lorem ipsum" name="skill_development" cols="50" rows="20" required>{{ $goals ? $goals->skill_development : '' }}</textarea>
                             </div>
 
 

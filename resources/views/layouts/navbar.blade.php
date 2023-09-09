@@ -42,10 +42,10 @@
                             </li>
 
                             <li class="nav-item">
-                            @if (Auth::user()->url_image == null)
-                                <img src="{{ asset('Images/' . Auth::user()->image)}}" id="imageIcon" class="img-fluid avatar-img" alt="avatar">
+                            @if (Auth::user()->authentication_type == 'form')
+                                <img src="{{ Auth::user()->image != null ? asset('Images/' . Auth::user()->image) : asset('Images/user-profile.jpg') }}" id="imageIcon" class="img-fluid avatar-img" alt="avatar">
                             @else
-                                <img src="{{Auth::user()->url_image}}" id="imageIcon" class="img-fluid avatar-img" alt="avatar">
+                                <img src="{{Auth::user()->url_image  ?? asset('Images/user-profile.jpg')}}" id="imageIcon" class="img-fluid avatar-img" alt="avatar">
                             @endif
                             </li>
 
@@ -68,7 +68,7 @@
             <div class="col-3">
                 <form method="POST" action="{{ route('updateProfileImage', ['id' => Auth::user()->id]) }}" enctype="multipart/form-data" id="imageform">
 
-                @if (Auth::user()->url_image == null)
+                @if (Auth::user()->authentication_type == 'form')
                     <img src="{{ asset('Images/' . Auth::user()->image)}}" class="custom-select img-fluid" alt="avatar">
                 @else
                     <img src="{{Auth::user()->url_image}}" class="custom-select img-fluid" alt="avatar">
@@ -125,7 +125,7 @@ const closeBtn = document.getElementById('close-btn');
 
 image.addEventListener('click', () => {
     if (cardContainer.style.display === 'none') {
-        cardContainer.style.display = 'flex';
+        cardContainer.style.display = 'block';
     } else {
         cardContainer.style.display = 'none';
     }

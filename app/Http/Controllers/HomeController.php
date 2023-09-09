@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models;
 use App\Models\User;
 use Illuminate\Support\Facades\Http;
-
+use Illuminate\Support\Facades\Auth;
 
 
 use Illuminate\Http\Request;
@@ -32,11 +32,58 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function test()
-    {
-        $user  = User::find(9);
-        dd($user->GetAllDetails() );
-        return view('home');
+    public function userDetails(){
+        $user = Auth::user();
+        $details = $user->GetAllDetails()['data'];
+
+        $backgroundInfo = $details['backgroundInfo']->toArray();
+         $documents = $details['uploadedDocuments'];
+        $shortTermGoals = $details['getShortTermGoals'];
+        $longTermGoals = $details['getLongTermGoals'];
+        $communication = $details['getCommunication'];
+        $behaviouralVulnerabilities = $details['getBehaviouralVulnerabilities'];
+        $perosnalCare = $details['getPerosnalCare'];
+        $mealsEating = $details['getMealsEating'];
+        $duringNights = $details['getDuringNights'];
+        $propertyDamage = $details['getPropertyDamage'];
+        $supportRegular = $details['getSupportRegular'];
+        $supportOccasional = $details['getSupportOccasional'];
+        $ongoingTherapySupport = $details['getOngoingTherapySupport'];
+        $aidsAssistiveTechnology = $details['getAidsAssistiveTechnology'];
+        $parentalStatement = $details['getParentalStatement'];
+
+// dd($backgroundInfo ,$documents, $shortTermGoals, $longTermGoals, $communication, $behaviouralVulnerabilities,
+// $perosnalCare, $mealsEating, $duringNights, $propertyDamage, $supportRegular, $supportOccasional,
+// $ongoingTherapySupport, $aidsAssistiveTechnology, $parentalStatement);
+
+        $string = "I want to write a sample report of a child. Who's name is " . $backgroundInfo['child_name']. ". \n \n".
+        " Some basic details are that his/her gender is ".$backgroundInfo['gender'] .
+        ", condition is ". $backgroundInfo['child_condition'] . "\n \n" .
+        "Short Term Goals he/she wants to achieve in social participation are " . $shortTermGoals['social_participation'] .
+        ", relating to health and physical capacity are ". $shortTermGoals['health_welfare'] . ", relating to education
+        and ongoing learning are " . $shortTermGoals['skill_development'] . ", relating to living arrangements are " .
+        $shortTermGoals['living_arrangements'] . ". \n \n" .
+        " Long Term goals he/she wants to achieve in same categories as short term respectively are " . $longTermGoals['social_participation'] .
+        ", " . $shortTermGoals['health_welfare'] . ", " . $shortTermGoals['skill_development'] . ", " .  $shortTermGoals['living_arrangements'] .
+        " . \n \n" .
+        " Communication challenges he/she faces : " . $communication['value'] . ". \n \n" .
+        " His/her behavioural vulnerabilities are : " . $behaviouralVulnerabilities['value'] . ". \n \n" .
+        " Personal care challenges he/she faces : " . $perosnalCare['value'] . ". \n" .
+        " The Meals " . $backgroundInfo['child_name'] . " takes throughout the day are : " . $mealsEating['value'] . ". \n \n" .
+        " Challenges he/she faces at night are : " . $duringNights['value'] . ". \n \n" .
+        " Property damage he/she caused : " . $propertyDamage['value'] . ". \n \n" .
+        " Support he/she required regularly are : " . $supportRegular['value'] . ". \n \n" .
+        " Support he/she required occasionally are : " . $supportOccasional['value'] . ". \n \n" .
+        " Ongoing therapies and capacity building supports of " . $backgroundInfo['child_name'] . " are : " . $duringNights['value'] . ". \n \n" .
+        " Support he/she required occasionally are : " . $supportOccasional['value'] . ". \n \n" .
+        " The aids and equivalent resources required for the assistive technology he/she uses are : " . $aidsAssistiveTechnology['value'] . ". \n \n" .
+        " Statement by " . $backgroundInfo['child_name'] . " parents : " . $aidsAssistiveTechnology['value'] . "."
+        ;
+        $string = nl2br($string);
+        echo $string;
+
+        // dd($string);
+
     }
 
     public function eula()

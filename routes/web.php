@@ -16,9 +16,9 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 
-Route::get('/',[HomeController::class,'home'])->name('home'); #->middleware('guest.access');
+Route::get('/',[HomeController::class,'home'])->name('home');
 
-Route::get('/test',[HomeController::class,'test']);
+Route::get('/userDetails',[HomeController::class,'userDetails']);
 
 Route::get('/auth/redirect', function () {
     return Socialite::driver('google')->redirect();

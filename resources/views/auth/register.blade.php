@@ -60,6 +60,7 @@
                             <input type="checkbox" id="acceptEULA" name="accept_agreement" class="form-check">
                             <label for="acceptEULA" class="pt-1">I accept the <span class="fw-bold text-lpink">EULA</span> compiled by Thistles</label>
                         </div>
+                        <input type="hidden" name="authentication_type" value="form">
 
                         @error('accept_agreement')
                             <span class="text-red fw-400 error-fs text-center">*{{ $message }}</span>

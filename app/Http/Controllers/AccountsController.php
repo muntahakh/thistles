@@ -18,12 +18,18 @@ class AccountsController extends Controller
 {
     use RegistersUsers;
     public function register(){
-        return view('auth.register');
+        if (auth()->check()) {
+            return redirect('/index');
+        }
+        else{
+            return view('auth.register');
+        }
     }
 
     public function signinWithGoogle(){
         $user = Socialite::driver('google')->user();
         $existingUser = User::where('email', $user->email)->first();
+
         if ($existingUser) {
             $existingUser->update([
                 'name' => $user->name,
@@ -31,6 +37,7 @@ class AccountsController extends Controller
                 'accept_agreement' => true,
                 'image' => null,
                 'url_image' => $user->avatar,
+                'authentication_type' => 'google',
             ]);
 
         $user = $existingUser;
@@ -43,6 +50,7 @@ class AccountsController extends Controller
             'accept_agreement' => true,
             'image' => null,
             'url_image' => $user->avatar,
+            'authentication_type' => 'google',
         ]);
     }
 
@@ -72,6 +80,7 @@ class AccountsController extends Controller
             'accept_agreement' =>  'required|accepted',
         ]);
         $accept_agreement = $request->has('accept_agreement');
+        $user->authentication_type = $request->authentication_type;
         $user->accept_agreement = $accept_agreement;
 
         $user->save();
@@ -151,7 +160,12 @@ class AccountsController extends Controller
     }
 
     public function signin(){
-        return view('auth.login');
+        if (auth()->check()) {
+            return redirect('/index');
+        }
+        else{
+            return view('auth.login');
+        }
     }
 
     public function login(Request $request)

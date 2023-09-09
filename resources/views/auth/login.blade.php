@@ -62,7 +62,7 @@
                         });
                         </script>
                         @if(session('error'))
-                            <span class="text-red fw-600 error-fs">
+                            <span class="fw-600 error-fs text-danger">
                                  *{{ session('error') }}
                             </span>
                         @endif
