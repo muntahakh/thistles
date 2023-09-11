@@ -7,7 +7,7 @@
     <div class="container-fluid main-home-content">
         <div class="back-icon">
             <a href="{{route('index')}}"><img src="{{asset('svg/back.svg')}}" alt="return_back"> Back</a>
-        </div>  
+        </div>
         <div class="pt-5">
 
             <div class="content-center">

@@ -1008,7 +1008,7 @@ hr{
     z-index: 1000;
 }
 .back-icon a{
-    color:#141414;
+    color:#141414; 
     text-decoration: none;
 }
 @media (max-width: 870px) {

@@ -18,7 +18,9 @@ use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/',[HomeController::class,'home'])->name('home');
 
-Route::get('/userDetails',[HomeController::class,'userDetails']);
+Route::get('/userDetails',[HomeController::class,'userDetails'])->name('userDetails');
+
+Route::get('/askToChatGPT',[HomeController::class,'ask'])->name('ask');
 
 Route::get('/auth/redirect', function () {
     return Socialite::driver('google')->redirect();

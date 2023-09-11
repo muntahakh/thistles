@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('reports', function (Blueprint $table) {
-            $table->enum('type',['upload','download'])->nullable();
+            $table->enum('type',['upload','download','generated'])->nullable();
         });
     }
 

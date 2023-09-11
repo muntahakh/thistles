@@ -24,13 +24,13 @@ b     @extends('layouts.app')
                                 </div>
                             @endif
                         </div>
-                        <input type="hidden" name="next_route" value="compiled">
-                        <input type="hidden" name="current_route" value="q25">
+                        <input type="hidden" name="next_route" value="userDetails">
+                        <input type="hidden" name="current_route" value="q15">
                         <button type="submit" class="btn-pink">Compile My Document</button>
                     </form>
 
                     <div class="signin-link pt-3">
-                        <p>Need a break and continue later? <a href="{{route('save_progress' , ['qno'=> 'q5'])}}" >Save progress</a></p>
+                        <p>Need a break and continue later? <a href="{{route('save_progress' , ['qno'=> 'q15'])}}" >Save progress</a></p>
                     </div>
                 </div>
             </div>

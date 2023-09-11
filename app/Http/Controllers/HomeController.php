@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models;
 use App\Models\User;
+use App\Models\reports;
+use App\Models\GeneratedReports;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
-
-
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -67,7 +67,7 @@ class HomeController extends Controller
         ", " . $shortTermGoals['health_welfare'] . ", " . $shortTermGoals['skill_development'] . ", " .  $shortTermGoals['living_arrangements'] .
         " . \n \n" .
         " Communication challenges he/she faces : " . $communication['value'] . ". \n \n" .
-        " His/her behavioural vulnerabilities are : " . $behaviouralVulnerabilities['value'] . ". \n \n" .
+        " His/her behavioural vulnerabilities are : " . $behaviouralVulnerabilities['value'] . ".\n \n," .
         " Personal care challenges he/she faces : " . $perosnalCare['value'] . ". \n" .
         " The Meals " . $backgroundInfo['child_name'] . " takes throughout the day are : " . $mealsEating['value'] . ". \n \n" .
         " Challenges he/she faces at night are : " . $duringNights['value'] . ". \n \n" .
@@ -79,11 +79,11 @@ class HomeController extends Controller
         " The aids and equivalent resources required for the assistive technology he/she uses are : " . $aidsAssistiveTechnology['value'] . ". \n \n" .
         " Statement by " . $backgroundInfo['child_name'] . " parents : " . $aidsAssistiveTechnology['value'] . "."
         ;
-        $string = nl2br($string);
-        echo $string;
+        // $string = nl2br($string);
+        // echo $string;
 
         // dd($string);
-
+        return redirect()->route('ask', ['prompt' => $string]);
     }
 
     public function eula()
@@ -112,28 +112,76 @@ class HomeController extends Controller
         } finally {
         }
         $response = $this->askToChatGPT($prompt);
-        return view('response', ['response' => $response]);
+        // return view('response', ['response' => $response]);
     }
+
     private function askToChatGPT($prompt)
     {
+        // echo $prompt;
+        // die();
         // dd(env('CHATGPT_API_KEY'));
+        // dd( );
         $response = Http::withoutVerifying()
             ->withHeaders([
                 'Authorization' => 'Bearer ' . env('CHATGPT_API_KEY'),
                 'Content-Type' => 'application/json',
-            ])->post('https://api.openai.com/v1/engines/text-davinci-003/completions', [
-                "prompt" => $prompt,
+            ])->post('https://api.openai.com/v1/chat/completions', [
+                "model" => "gpt-3.5-turbo",
+                "messages" => [["role" => "user", "content"=> $prompt]],
                 "max_tokens" => 3000,
                 "temperature" => 0.5
             ]);
-        $rep = $response->json();
-        if (isset($rep['error'])) {
-            echo "<pre>";
-            print_r($response->json());
-            echo "<pre>";
-        }
-        if ($rep['choices']) {
-            return $response->json()['choices'][0]['text'];
-        }
+            // dd($response->json());
+            $user = Auth::user();
+            $reports = reports::updateOrCreate([
+                'user_id' => $user->id,  'type' => 'generated',
+            ],[
+                'file_name' => 'report-' . $user->id,
+                'user_id' => $user->id,
+                'type' => 'generated',
+            ]);
+
+            $getReportsId = reports::where('type', 'generated')
+            ->where('user_id', $user->id)
+            ->first();
+
+
+            if ($response->successful()) {
+                $responseData = $response->json();
+                dd($responseData);
+                $generatedText = json_encode($responseData['choices'][0]);
+                // return response()->json(['generated_text' => $generatedText]);
+                $json_decode = json_decode($generatedText);
+                echo $generatedText;
+                // $getReportsId = reports::where('type', 'generated')
+                // ->where('user_id', $user->id)
+                // ->first();
+
+                // if($getReportsId ){
+                // $generatedReport  = GeneratedReports::updateOrCreate([
+                //     'user_id' => $user->id, 'entity_id' => $getReportsId->id,
+                // ],[
+                //     'entity_id' => $getReportsId->id,
+                //     'user_id' => $user->id,
+                //     'report' => $generatedText,
+                // ]);
+                // return "updated";
+                // }else{
+                //     return "Reports not found";
+                // }
+
+            } else {
+                return response()->json(['error' => 'API request failed'], $response->status());
+            }
+
+        // $rep = $response->json();
+        // if (isset($rep['error'])) {
+        //     echo "<pre>";
+        //     print_r($response->json());
+        //     echo "<pre>";
+        // }
+        // if ($rep['choices']) {
+        //     return $response->json()['choices'][0]['text'];
+        // }
     }
 }
