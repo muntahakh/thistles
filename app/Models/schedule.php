@@ -5,19 +5,28 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class background_info extends Model
+class schedule extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'child_name',
-        'participant_num',
-        'gender',
-        'child_condition',
+        'heading_id',
         'user_id',
+        'day',
+        'time_period',
+        'support',
+        'ratio',
+        'explanation',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
+    public function QuestionHeading()
+    {
+        return $this->belongsTo(QuestionHeading::class);
+    }
+
 }
+

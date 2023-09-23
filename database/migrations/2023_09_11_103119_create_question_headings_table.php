@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('question_headings', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->bigInteger('sequence');
+            $table->string('sub_heading');
+            $table->bigInteger('sequence')->default(0);
             $table->timestamps();
 
         });

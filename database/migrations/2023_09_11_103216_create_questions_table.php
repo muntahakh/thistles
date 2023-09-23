@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('heading_id');
+            $table->text('guidance_notes');
             $table->text('questions');
             $table->text('instructions');
-            $table->enum('input_type', ['checkbox', 'text', 'file']);
+            $table->enum('input_type', ['checkbox', 'text', 'file', 'table']);
             $table->bigInteger('sequence');
             $table->timestamps();
 

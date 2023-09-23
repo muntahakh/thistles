@@ -14,8 +14,14 @@ class QuestionHeading extends Model
         'sequence',
     ];
 
-    public function Question()
+    public function questions()
     {
-        return $this->hasOne(Question::class);
+        return $this->hasMany(Questions::class,'heading_id','id');
     }
+    public function schedule()
+    {
+        return $this->hasMany(schedule::class);
+    }
+
+
 }

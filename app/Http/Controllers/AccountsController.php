@@ -210,16 +210,16 @@ class AccountsController extends Controller
         return redirect()->route('login');
     }
 
-    public function saveProgress($qno){
+    public function save_progress(Request $request){
+
         $user = Auth::user();
         $save_progress = save_progress::updateOrCreate(
             ['user_id' => $user->id ],
             [
-                'current_route' => $qno,
+                'current_route' => $request->currentUrl,
             ]);
 
         return redirect()->route('index')->with('success', 'Progress saved successfully');
-
     }
 
     public function start_documentation(){
@@ -227,10 +227,10 @@ class AccountsController extends Controller
         $checkUserSaveProgressRoute = save_progress::where('user_id' , $user->id)->first();
         if($checkUserSaveProgressRoute){
 
-            return redirect()->route($checkUserSaveProgressRoute->current_route)->with('success', 'Saved progress loaded.');
+            return redirect($checkUserSaveProgressRoute->current_route)->with('success', 'Saved progress loaded.');
         }
         else{
-            return redirect()->route('q1');
+            return redirect()->route('start_documentation');
         }
     }
 

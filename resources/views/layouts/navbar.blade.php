@@ -7,7 +7,8 @@
                        <a href="{{ url('/') }}"><img src="{{ asset('Images/thistles_logo.png') }}" class="navbar-logo" alt="thistles"></a>
                        <a class="brand-name" href="{{ url('/') }}">Thistles</a>
 
-                       @unless(in_array(Route::currentRouteName(), ['homeAth1','questions' ,'compiled', 'index', 'documents']))
+                       @unless(in_array(Route::currentRouteName(), ['homeAth1','questions' ,'compiled', 'index', 'documents', 'get.questions'
+                       , 'questions.submit', 'intro.page', 'questions_loop']))
 
                        <!-- Left Side Of Navbar -->
                            <ul class="navbar-nav me-auto">
@@ -27,7 +28,11 @@
                            </ul>
                         @endunless
 
-                        @if (in_array(Route::currentRouteName(), ['homeAth1','questions', 'documents' ]))
+                        @if (in_array(Route::currentRouteName(), ['homeAth1','questions', 'documents', 'get.questions' , 'questions.submit',
+                         'intro.page', 'index', 'questions_loop']))
+
+                        {{-- @if (request()->is('/heading/{head_sq}/question/{question_sq}')) --}}
+
 
                         @auth()
 
@@ -48,7 +53,7 @@
 
                         </ul>
                         @endauth
-
+                        {{-- @endif --}}
                         @endif
 
                </nav>
@@ -66,9 +71,9 @@
                 <form method="POST" action="{{ route('updateProfileImage', ['id' => Auth::user()->id]) }}" enctype="multipart/form-data" id="imageform">
 
                 @if (Auth::user()->authentication_type == 'form')
-                    <img src="{{ asset('Images/' . Auth::user()->image)}}" class="custom-select img-fluid" alt="avatar">
+                    <img src="{{ asset('Images/' . Auth::user()->image)}}" class="custom-select-avatar img-fluid" alt="avatar">
                 @else
-                    <img src="{{Auth::user()->url_image}}" class="custom-select img-fluid" alt="avatar">
+                    <img src="{{Auth::user()->url_image}}" class="custom-select-avatar img-fluid" alt="avatar">
                 @endif
                     @csrf
 
@@ -77,7 +82,7 @@
 
                         <script>
                             const iconInput = document.getElementById('file-input-image');
-                            const customButton = document.querySelector('.custom-select');
+                            const customButton = document.querySelector('.custom-select-avatar');
                             iconInput.style.display= 'none';
                             customButton.addEventListener('click', () => {
                                 iconInput.click();

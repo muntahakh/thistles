@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models;
-use App\Models\User;
+use App\Models\{ User , QuestionHeading };
 use App\Models\reports;
 use App\Models\GeneratedReports;
 use Illuminate\Support\Facades\Http;
@@ -27,6 +27,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+
     public function home()
     {
         return view('home');

@@ -52,6 +52,44 @@
                 }, 500); // Wait for the transition to complete before hiding
             }
         }, 3000); // 5000 milliseconds = 5 seconds
+
+        // Function to check if a cookie with a given name exists
+function checkCookie(cookieName) {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        if (cookie.indexOf(cookieName + '=') === 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Function to set a cookie
+function setCookie(cookieName, value, days) {
+    var date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + date.toUTCString();
+    document.cookie = cookieName + "=" + value + ";" + expires + ";path=/";
+}
+
+// Function to display the modal if it hasn't been shown before
+function displayModalOnce() {
+    var modal = document.getElementById("open-modal");
+
+    // Check if a cookie named "modalShown" exists
+    if (!checkCookie("modalShown")) {
+        // If the cookie doesn't exist, show the modal
+        modal.style.display = "block";
+
+        // Set a cookie to track that the modal has been shown
+        setCookie("modalShown", "true", 30); // "30" is the number of days the cookie will last
+    }
+}
+
+// Call the displayModalOnce function when the page loads
+window.onload = displayModalOnce;
+
     </script>
 
 

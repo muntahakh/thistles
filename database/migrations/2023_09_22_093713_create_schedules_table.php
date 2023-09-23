@@ -11,16 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('background_infos', function (Blueprint $table) {
+        Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->string('child_name');
-            $table->integer('participant_num');
-            $table->string('gender');
-            $table->text('child_condition');
+            $table->unsignedBigInteger('heading_id');
             $table->unsignedBigInteger('user_id');
+            $table->string('day');
+            $table->string('time_period')->nullable();
+            $table->text('support')->nullable();
+            $table->string('ratio')->nullable();
+            $table->text('explanation')->nullable();
             $table->timestamps();
 
+            $table->foreign('heading_id')->references('id')->on('question_headings')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 
@@ -29,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('background_infos');
+        Schema::dropIfExists('schedules');
     }
 };

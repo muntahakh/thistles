@@ -26,7 +26,6 @@ class Controller extends BaseController
        }])->orderBy('question_headings.sequence', 'ASC')->get();
 
        $headingwithQuestions = $headingwithQuestions->keyBy('sequence')->toArray();
-
        foreach ($headingwithQuestions as  $key => $headingwithQuestion){
            if($headingwithQuestion['questions'] != []){
                foreach ($headingwithQuestion['questions'] as $key1 => $question) {
@@ -42,81 +41,143 @@ class Controller extends BaseController
 
    public function GetCurrentAndNextQuestionDetails(int $current_head_sq , int $current_question_sq)
    {
-    // dd($current_head_sq , $current_question_sq);
 
        $list  = $this->QuestionList();
        $headIncrement = false;
+       $headDecrement = false;
        $url = null;
+       $preUrl = null;
        $message = "";
        $repStatus   = false;
        $data = [];
-       $temp_head_sq  = $current_head_sq;
-       $temp_question_sq  = $current_question_sq;
-
-       $returnData = [];
 
        if(isset($list[$current_head_sq]) ){
            if(isset( $list[$current_head_sq]['questions'][$current_question_sq] )){
+            // dd( $list[$current_head_sq]['questions'][$current_question_sq]);
                $qseq = $list[$current_head_sq]['questions'][$current_question_sq];
 
+               $firstkey = array_key_first($list[$current_head_sq]['questions']);
                $endkey =  array_key_last($list[$current_head_sq]['questions']);
                $status =  $current_question_sq <= $endkey ? true : false;
-                // dd($status);
+               $urlStatus = $current_question_sq >= $firstkey ? true : false;
+
+            //    dd($status , $urlStatus);
+
+
                while($status){
                    $current_question_sq++;
                    if($current_question_sq > $endkey){
                        $headIncrement = true;
                        $status = false;
                    }
-
-
                    if(isset($list[$current_head_sq]['questions'][$current_question_sq])){
                        $url = url('/heading/'.$current_head_sq.'/question/'.$current_question_sq);
                        $status = false;
-                    }
-                       $returnData = [
-                           "data" =>[ 'question' => $list[$current_head_sq]['questions'][$temp_question_sq],
+
+                    //    while($urlStatus){
+                        // $current_question_sq--;
+                    //         if($current_question_sq < $firstkey){
+                    //             $headDecrement = true;
+                    //             $urlStatus = false;
+                    //         }
+                    //        if(isset($list[$current_head_sq]['questions'][$current_question_sq])){
+                    //         $preUrl = url('/heading/'.$current_head_sq.'/question/'.$current_question_sq);
+                    //         $urlStatus = false;
+
+                    //         return [
+                    //             "data" =>[ 'question' => $list[$current_head_sq]['questions'][$current_question_sq+1],
+                    //                        'heading'   => $list[$current_head_sq]
+                    //             ] ,
+                    //             "message" => $message,
+                    //             "status" => true,
+                    //             "url" => $url,
+                    //             "preUrl" => $preUrl,
+                    //         ];
+
+                    //    }
+                    // }
+
+                       return [
+                           "data" =>[ 'question' => $list[$current_head_sq]['questions'][$current_question_sq-1],
                                       'heading'   => $list[$current_head_sq]
                            ] ,
                            "message" => $message,
                            "status" => true,
                            "url" => $url,
+                           "preUrl" => $preUrl,
                        ];
 
+                   }
 
                }
 
            }else{
-               $returnData = [
+               return [
                    "data" => $data,
                    "message" => "Current Question Squence is not correct",
                    "status" => $repStatus,
                    "url" => $url,
+                   "preUrl" => $preUrl,
                ];
            }
 
+        //    if($headDecrement){
+        //     $current_head_sq--;
+        //     if(isset($list[$current_head_sq]) && $list[$current_head_sq]['questions'] != []){
+        //         $lastquestion = array_key_last($list[$current_head_sq]['questions']);
+        //         $preUrl = url('/heading/'.$current_head_sq.'/question/'.$lastQuestion);
+        //     }
+        //     return [
+        //         "data" => [
+        //              'question' => $list[$current_head_sq-1]['questions'][$lastQuestion],
+        //              'heading'   => $list[$current_head_sq-1],
+        //         ],
+        //         "message" => $message,
+        //         "status" => true,
+        //         "url" => $url,
+        //         "preUrl" => $preUrl,
+        //     ];
+
+        //    }else{
+        //     $current_head_sq = isset($list[$current_head_sq]) ? $current_head_sq : $current_head_sq +1;
+        //     $current_question_sq = isset($list[$current_head_sq]['questions'][$current_question_sq]) ? $current_question_sq : $current_question_sq +1;
+
+        //     return [
+        //         "data" =>  [
+        //          'question' => $list[$current_head_sq]['questions'][$current_question_sq],
+        //          'heading' => $list[$current_head_sq],
+        //         ],
+        //         "message" => "Previous question not found",
+        //         "status" => false,
+        //         "url" => $url,
+        //         "preUrl" => $preUrl,
+        //     ];
+
+        // }
+
+
            if($headIncrement){
-            // dd('---');
                $current_head_sq++;
                if(isset($list[$current_head_sq]) && $list[$current_head_sq]['questions'] != []){
                    $firstQuestion = array_key_first($list[$current_head_sq]['questions']);
                    $url = url('/heading/'.$current_head_sq.'/question/'.$firstQuestion);
                     // dd('check');
-                    $returnData = [
+                   return [
                        "data" => [
-                            'question' => $list[$temp_head_sq]['questions'][$temp_question_sq],
-                            'heading'   => $list[$temp_head_sq],
+                            'question' => $list[$current_head_sq-1]['questions'][$firstQuestion],
+                            'heading'   => $list[$current_head_sq-1],
                        ],
                        "message" => $message,
                        "status" => true,
                        "url" => $url,
+                       "preUrl" => $preUrl,
                    ];
 
                }else{
                    $current_head_sq = isset($list[$current_head_sq]) ? $current_head_sq : $current_head_sq -1;
                    $current_question_sq = isset($list[$current_head_sq]['questions'][$current_question_sq]) ? $current_question_sq : $current_question_sq -1;
 
-                   $returnData = [
+                   return [
                        "data" =>  [
                         'question' => $list[$current_head_sq]['questions'][$current_question_sq],
                         'heading' => $list[$current_head_sq],
@@ -124,79 +185,28 @@ class Controller extends BaseController
                        "message" => "Next question not found",
                        "status" => false,
                        "url" => $url,
+                       "preUrl" => $preUrl,
                    ];
 
                }
+
+
            }
-           return $returnData;
-        }else{
+
+
+
+
+
+
+       }else{
            return [
                "data" => $data,
                "message" => "Current Heading Squence is not correct",
                "status" => $repStatus,
                "url" => $url,
+               "preUrl" => $preUrl,
            ];
        }
-   }
-
-   public function getPreviousUrl(int $current_head_sq , int $current_question_sq){
-
-        $list = $this->QuestionList();
-        $url = null;
-        $headDecrement = false;
-        $temp_head_sq  = $current_head_sq;
-       $temp_question_sq  = $current_question_sq;
-        $message = "";
-
-        if($list[$current_head_sq]){
-            if($list[$current_head_sq]['questions'][$current_question_sq]){
-
-                $firstkey = array_key_first($list[$current_head_sq]['questions'][$current_question_sq]);
-                $status = $current_head_sq <= $firstkey ? true:false;
-
-                while($status){
-                    $current_question_sq--;
-
-                    if($current_question_sq < $firstkey){
-                        $headDecrement = true;
-                        $status = false;
-                    }
-
-
-                    if(isset($list[$current_head_sq]['questions'][$current_question_sq])){
-                       $url = url('/heading/'.$current_head_sq.'/question/'.$current_question_sq);
-                       $status = false;
-
-                    return [
-                        "url" => $url,
-                    ];
-                }
-                }
-                if($headDecrement){
-                    $current_head_sq--;
-                    if(isset($list[$current_head_sq]) && $list[$current_head_sq]['questions'] != []){
-
-                        $lastquestion = array_key_last($list[$current_head_sq]['questions']);
-                        $url = url('/heading/'.$current_head_sq.'/question/'.$lastquestion);
-
-                        return [
-                            "url" => $url,
-                        ];
-                    }else{
-                        return [
-                            "message" => 'heading decrement last question',
-                        ];
-                    }
-                }else{
-                    return back()->with('error', 'Heading not found');
-                }
-            }else{
-                return back()->with('error', 'questions not found');
-            }
-        }else{
-            return back()->with('error' , 'Heading not found');
-        }
-
    }
 
 }

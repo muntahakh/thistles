@@ -47,19 +47,9 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notify(new CustomChangePasswordEmail($this->id, $this->name, $this->email , $this->verification_token));
     }
 
-    public function QuestionHeading()
+    public function schedule()
     {
-        return $this->hasOne(QuestionHeading::class);
-    }
-
-    public function QuestionOptions()
-    {
-        return $this->hasOne(QuestionOptions::class);
-    }
-
-    public function Question()
-    {
-        return $this->hasOne(Question::class);
+        return $this->hasMany(schedule::class);
     }
 
     public function Answers()

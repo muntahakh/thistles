@@ -10,6 +10,7 @@ class Questions extends Model
     use HasFactory;
     protected $fillable = [
         'heading_id',
+        'guidance_notes',
         'questions',
         'instructions',
         'input_type',
