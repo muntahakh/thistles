@@ -139,7 +139,7 @@
         <p>If you did not sign up for Thistles, please disregard this email. Your account will remain inactive.</p>
 
         <p>If you experience any issues during the verification process or have any questions,
-            feel free to contact our support team at [Support Email/Phone Number].
+            feel free to contact our support team at <a href="mailto:info@thistles.com.au">info@thistles.com.au</a>.
         </p>
 
     </div>

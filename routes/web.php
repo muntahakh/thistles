@@ -18,10 +18,6 @@ use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/',[HomeController::class,'home'])->name('home');
 
-Route::get('/userDetails',[HomeController::class,'userDetails'])->name('userDetails');
-
-Route::get('/askToChatGPT',[HomeController::class,'ask'])->name('ask');
-
 Route::get('/auth/redirect', function () {
     return Socialite::driver('google')->redirect();
 });
@@ -77,51 +73,63 @@ Route::get('/logout', [AccountsController::class,'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
 
-Route::get('/q1', [QuestionsController::class,'q1'])->name('q1');
+Route::get('/introPages', function(){
+    return view('introPage');
+});
 
-Route::post('/q1', [QuestionsController::class,'bgInfo'])->name('backgroundinfo');
+Route::get('/questions', function(){
+    return view('questions');
+})->name('questions');
 
-Route::get('/q2', [QuestionsController::class,'q2'])->name('documents');
+// Route::get('/q1', [QuestionsController::class,'q1'])->name('q1');
 
-Route::post('document/upload', [QuestionsController::class,'upload'])->name('document.upload');
+// Route::post('/q1', [QuestionsController::class,'bgInfo'])->name('backgroundinfo');
 
-Route::get('document/delete/{id}', [QuestionsController::class,'delete'])->name('document.delete');
+// Route::get('/q2', [QuestionsController::class,'q2'])->name('documents');
 
-Route::get('/q3', [QuestionsController::class,'q3'])->name('q3');
+// Route::post('document/upload', [QuestionsController::class,'upload'])->name('document.upload');
 
-Route::post('/q3', [QuestionsController::class,'short_term_goals'])->name('short_term_goals');
+// Route::get('document/delete/{id}', [QuestionsController::class,'delete'])->name('document.delete');
 
-Route::get('/q4', [QuestionsController::class,'q4'])->name('q4');
+// Route::get('/q3', [QuestionsController::class,'q3'])->name('q3');
 
-Route::post('/q4', [QuestionsController::class,'long_term_goals'])->name('long_term_goals');
+// Route::post('/q3', [QuestionsController::class,'short_term_goals'])->name('short_term_goals');
 
-Route::get('/q5', [QuestionsController::class,'q5'])->name('q5');
+// Route::get('/q4', [QuestionsController::class,'q4'])->name('q4');
 
-Route::post('/q5', [QuestionsController::class,'metadata'])->name('metadata');
+// Route::post('/q4', [QuestionsController::class,'long_term_goals'])->name('long_term_goals');
 
-Route::get('/q6', [QuestionsController::class,'q6'])->name('q6');
+// Route::get('/q5', [QuestionsController::class,'q5'])->name('q5');
 
-Route::get('/q7', [QuestionsController::class,'q7'])->name('q7');
+// Route::post('/q5', [QuestionsController::class,'metadata'])->name('metadata');
 
-Route::get('/q8', [QuestionsController::class,'q8'])->name('q8');
+// Route::get('/q6', [QuestionsController::class,'q6'])->name('q6');
 
-Route::get('/q9', [QuestionsController::class,'q9'])->name('q9');
+// Route::get('/q7', [QuestionsController::class,'q7'])->name('q7');
 
-Route::get('/q10', [QuestionsController::class,'q10'])->name('q10');
+// Route::get('/q8', [QuestionsController::class,'q8'])->name('q8');
 
-Route::get('/q11', [QuestionsController::class,'q11'])->name('q11');
+// Route::get('/q9', [QuestionsController::class,'q9'])->name('q9');
 
-Route::get('/q12', [QuestionsController::class,'q12'])->name('q12');
+// Route::get('/q10', [QuestionsController::class,'q10'])->name('q10');
 
-Route::get('/q13', [QuestionsController::class,'q13'])->name('q13');
+// Route::get('/q11', [QuestionsController::class,'q11'])->name('q11');
 
-Route::get('/q14', [QuestionsController::class,'q14'])->name('q14');
+// Route::get('/q12', [QuestionsController::class,'q12'])->name('q12');
 
-Route::get('/q15', [QuestionsController::class,'q15'])->name('q15');
+// Route::get('/q13', [QuestionsController::class,'q13'])->name('q13');
+
+// Route::get('/q14', [QuestionsController::class,'q14'])->name('q14');
+
+// Route::get('/q15', [QuestionsController::class,'q15'])->name('q15');
 
 Route::get('/save_progress/{qno}', [AccountsController::class,'saveProgress'])->name('save_progress');
 
 Route::get('/start_documentation', [AccountsController::class,'start_documentation'])->name('start_documentation');
+
+Route::get('/userDetails',[HomeController::class,'userDetails'])->name('userDetails');
+
+Route::get('/askToChatGPT',[HomeController::class,'ask'])->name('ask');
 
 Route::get('/compiled', [HomeController::class,'compiled'])->name('compiled');
 
