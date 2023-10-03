@@ -26,5 +26,8 @@ class Questions extends Model
         return $this->belongsTo(QuestionHeading::class);
     }
 
-
+    public function QuestionOptions()
+    {
+        return $this->HasMany(QuestionOptions::class);
+    }
 }

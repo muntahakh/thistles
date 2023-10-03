@@ -66,4 +66,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'guest.access' => \App\Http\Middleware\AllowGuestAccess::class,
     ];
+    protected $routeMiddleware = [
+        // ...
+        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+    ];
 }

@@ -11,18 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('answers', function (Blueprint $table) {
+        Schema::create('save_progresses', function (Blueprint $table) {
             $table->id();
-            $table->text('answer')->default(null)->nullable();
-            $table->string('file_name')->default(null)->nullable();
-            $table->unsignedBigInteger('questions_id');
+            $table->string('current_route');
             $table->unsignedBigInteger('user_id');
-            $table->boolean('is_skipped')->default(false);
             $table->timestamps();
 
-            $table->foreign('questions_id')->references('id')->on('questions')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
         });
     }
 
@@ -31,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('answers');
+        Schema::dropIfExists('save_progresses');
     }
 };

@@ -6,6 +6,7 @@ use App\Models\Questions;
 use App\Models\QuestionHeading;
 use App\Models\QuestionOptions;
 use App\Models\Answers;
+use App\Models\BackUrl;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
@@ -13,8 +14,6 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
-
-
 
     public function QuestionList()
     {
@@ -42,7 +41,6 @@ class Controller extends BaseController
 
    public function GetCurrentAndNextQuestionDetails(int $current_head_sq , int $current_question_sq)
    {
-    // dd($current_head_sq , $current_question_sq);
 
        $list  = $this->QuestionList();
        $headIncrement = false;
@@ -82,8 +80,6 @@ class Controller extends BaseController
                            "status" => true,
                            "url" => $url,
                        ];
-
-
                }
 
            }else{
@@ -199,4 +195,56 @@ class Controller extends BaseController
 
    }
 
+   public function show_schedule(){
+        $show_schedule = false;
+
+        return $show_schedule;
+   }
+
+   public function modifiedUrl($headsq , $questionsq){
+        $headsq++;
+        $getQuestions = $this->GetCurrentAndNextQuestionDetails($headsq, 1);
+        $url = $getQuestions['url'];
+        $parsedUrl = parse_url($url);
+        $path = $parsedUrl['path'];
+
+        $segments = explode('/', trim($path, '/'));
+        $segments[3] = (int)$segments[3] -1 ;
+
+        if($segments[3] == 0){
+            $headsq-1;
+            $ques_sq = (int)$segments[3] +1;
+            $modifiedUrl = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . ':' . $parsedUrl['port'] . '/heading/' . $headsq . '/question/' . $ques_sq;
+            }
+        else{
+            $modifiedUrl = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . ':' . $parsedUrl['port'] . '/' . implode('/', $segments);
+        }
+
+        return [
+            'modifiedUrl' => $modifiedUrl,
+        ];
+   }
+
+   public function getNextUrl($headsq, $questionsq){
+
+        $getQuestions = $this->GetCurrentAndNextQuestionDetails($headsq, $questionsq);
+        $url = $getQuestions['url'];
+        $parsedUrl = parse_url($url);
+        $path = $parsedUrl['path'];
+
+        $segments = explode('/', trim($path, '/'));
+        $segments[3] = (int)$segments[3] -1 ;
+
+        $modifiedUrl = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . ':' . $parsedUrl['port'] . '/' . implode('/', $segments);
+
+        return [
+            'modifiedUrl' => $modifiedUrl,
+        ];
+   }
+
+   public function backUrl(){
+
+    $currentUrl  = url()->current();
+    dd($currentUrl);
+   }
 }

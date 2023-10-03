@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->enum('authentication_type',['form','google','apple'])->nullable();
+        Schema::create('back_urls', function (Blueprint $table) {
+            $table->id();
+            $table->string('back_url');
+            $table->unsignedBigInteger('user_id');
+            $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -21,8 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('back_urls');
     }
 };

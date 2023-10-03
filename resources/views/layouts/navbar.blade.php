@@ -8,7 +8,8 @@
                        <a class="brand-name" href="{{ url('/') }}">Thistles</a>
 
                        @unless(in_array(Route::currentRouteName(), ['homeAth1','questions' ,'compiled', 'index', 'documents', 'get.questions'
-                       , 'questions.submit', 'intro.page', 'questions_loop']))
+                       , 'questions.submit', 'intro.page', 'questions_loop', 'questions.submit', 'get.schedule', 'add.schedule',
+                        'add.support', 'get.support', 'delete.schedule', 'show.schedule']))
 
                        <!-- Left Side Of Navbar -->
                            <ul class="navbar-nav me-auto">
@@ -29,10 +30,8 @@
                         @endunless
 
                         @if (in_array(Route::currentRouteName(), ['homeAth1','questions', 'documents', 'get.questions' , 'questions.submit',
-                         'intro.page', 'index', 'questions_loop']))
-
-                        {{-- @if (request()->is('/heading/{head_sq}/question/{question_sq}')) --}}
-
+                         'intro.page', 'index', 'questions_loop', 'questions.submit', 'get.schedule', 'add.schedule',
+                        'add.support', 'get.support', 'delete.schedule', 'show.schedule']))
 
                         @auth()
 

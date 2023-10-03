@@ -2,7 +2,12 @@
 @extends('layouts.app')
 @section('content')
 
+@php
+$list = session('list');
+$backlist = session('backlist');
+@endphp
 
+{{-- @dd($list , $backlist) --}}
 <div class="eula-background">
 
     <div class="container-fluid main-home-content">
@@ -10,17 +15,22 @@
             <a href="{{$backlist['url'] ?? '/index'}}"><img src="{{asset('svg/back.svg')}}" alt="return_back"> Back</a>
         </div>
             <div class="content-center questions-section ">
-
                 <div class="center-text">
-                    <div class="main-heading">
-                        <h1 class="pt-2 red-text">{{strtoupper($list['data']['heading']['name'])}}</h1>
-                        <h4 class="red-text pt-2">{{$list['data']['heading']['sub_heading']}}</h4>
-                    </div>
 
                     @if ($list['data']['question']['guidance_notes'] !== null && trim($list['data']['question']['guidance_notes']) !== '')
-                    <div class="guidance-container">
-                        <p class="guidance-notes"><b class="fw-bold">Guidance notes: </b>{{$list['data']['question']['guidance_notes']}}</p>
-                    </div>
+                        <div class="main-heading-gd">
+                            <h1 class="pt-2 red-text">{{strtoupper($list['data']['heading']['name'])}}</h1>
+                            <h4 class="red-text pt-2">{{$list['data']['heading']['sub_heading']}}</h4>
+                        </div>
+
+                        <div class="guidance-container">
+                            <p class="guidance-notes"><b class="fw-bold">Guidance notes: </b>{!! $list['data']['question']['guidance_notes']!!}</p>
+                        </div>
+                    @else
+                        <div class="main-heading">
+                            <h1 class="pt-2 red-text">{{strtoupper($list['data']['heading']['name'])}}</h1>
+                            <h4 class="red-text pt-2">{{$list['data']['heading']['sub_heading']}}</h4>
+                        </div>
                     @endif
                 </div>  <!-- center text -->
 
@@ -30,6 +40,21 @@
                     @if ($list['data']['question']['input_type'] == 'text')
 
                     @include('textInput')
+
+                    <!-- text with cost input -->
+                    @elseif ($list['data']['question']['input_type'] == 'cost')
+
+                    @include('textWIthCost')
+
+                    <!-- text with cost input -->
+                    @elseif ($list['data']['question']['input_type'] == 'radio')
+
+                    @include('replacementCheck')
+
+                    <!-- text with skipable input -->
+                    @elseif ($list['data']['question']['input_type'] == 'skipable')
+
+                    @include('skipableInput')
 
                     <!-- Checkbox input -->
                     @elseif ($list['data']['question']['input_type'] == 'checkbox')
@@ -44,8 +69,12 @@
                     <!-- table input -->
                     @elseif ($list['data']['question']['input_type'] == 'table')
 
-                    @include('schedule')
+                        @if ($show_schedule)
+                        @include('schedule')
+                        @else
+                        @yield('support')
 
+                        @endif
                     @endif
 
                 </div> <!-- questions container -->

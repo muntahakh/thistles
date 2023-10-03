@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('verification_token')->default('null');
             $table->string('image',600)->default('user-profile.jpg')->nullable();
             $table->string('url_image',1000)->default('null');
+            $table->enum('authentication_type',['form','google','apple'])->nullable();
             $table->rememberToken();
             $table->timestamps();
 

@@ -551,6 +551,7 @@ hr{
     margin-bottom: 20px;
     width: 100%;
 }
+
 .form-group label{
     color: #6D6D6D;
     align-self: stretch;
@@ -573,6 +574,23 @@ hr{
     align-items: flex-start;
 }
 .form-fields:focus{
+    outline:#D0358C 1px solid;
+    border: none;
+}
+.form-field{
+    width: 95%;
+    height: 60px;
+    font-size: 16px;
+    background: #FFFFFF;
+    border: 1px #AAA9A9 solid;
+    border-radius: 8px;
+    padding-left: 15px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.form-field:focus{
     outline:#D0358C 1px solid;
     border: none;
 }
@@ -610,7 +628,6 @@ hr{
     display: flex;
     align-items: center;
 }
-
 .form-check {
     margin-right: 8px;
     appearance: none;
@@ -620,6 +637,7 @@ hr{
     background-color: white;
     border-radius: 4px;
     position: relative;
+    bottom: 5px;
 }
 
 .form-check:checked {
@@ -1233,11 +1251,28 @@ hr{
 }
 
 .guidance-container{
-    display: flex;
+    display:inline-flex;
     align-items: center;
     justify-content: center;
 }
-
+.guidance-container li{
+    color: #03C03C;
+    width: 80%;
+    text-align: justify;
+    line-height: 150%;
+    font-family: Inter;
+    font-weight: 300;
+    font-size: 13px;
+}
+.guidance-container p{
+    color: #03C03C;
+    width: 80%;
+    text-align: justify;
+    line-height: 150%;
+    font-family: Inter;
+    font-weight: 300;
+    font-size: 13px;
+}
 .red-text{
     color: red;
 }
@@ -1321,10 +1356,16 @@ hr{
     align-items: center;
 }
 .main-heading{
+    width: 100%;
+    margin: 0 auto ;
+    margin-top: 10%;
+    align-items: center;
+    justify-content: center;
+}
+.main-heading-gd{
     width: 75%;
-    display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto ;
+    margin-top: 10%;
 }
-

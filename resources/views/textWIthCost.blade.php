@@ -18,7 +18,13 @@
         </div>
 
     </div> <!-- form group -->
+
+    <div class="form-group">
+        <input type="text" class="form-field" name="cost" placeholder="Please enter cost" value="{{$answer->cost ?? ''}}">
+    </div>
+
     <input type="hidden" name="quesId" value="{{$list['data']['question']['id']}}">
+    <input type="hidden" name="headId" value="{{$list['data']['heading']['id']}}">
     <input type="hidden" value="{{ url($list['url'] ?? '/compiled')}}" name="url">
 
         @if(session('error'))

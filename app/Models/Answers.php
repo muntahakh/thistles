@@ -11,8 +11,10 @@ class Answers extends Model
     protected $fillable = [
         'answer',
         'file_name',
+        'cost',
         'questions_id',
         'user_id',
+        'is_skipped',
     ];
     public function user()
     {

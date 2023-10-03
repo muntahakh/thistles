@@ -11,7 +11,9 @@ class QuestionOptions extends Model
 
     protected $fillable = [
         'options',
-        'question_id',
+        'questions_id',
+        'questions_sequence',
+        'after_replacement_ques',
     ];
 
     public function Questions()

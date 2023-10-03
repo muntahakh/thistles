@@ -1,10 +1,10 @@
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <form action="{{ route('questions.submit')}}" method="post" id="file__form" enctype="multipart/form-data">
     @csrf
 
     <div class="form-group">
         @if ($list['data']['question']['questions'] !== null && trim($list['data']['question']['questions']) !== '')
-        <p class="text-blue">Question: {{$list['data']['question']['questions']}}</p>
+        <p class="text-blue">Question: {!! $list['data']['question']['questions'] !!}</p>
         @endif
     </div> <!-- form group -->
 
