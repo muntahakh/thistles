@@ -14,7 +14,7 @@ $backlist = session('backlist');
             @if (isset($back_url))
                 <a href="{{ $back_url }}"><img src="{{ asset('svg/back.svg') }}" alt="return_back">Back</a>
             @else
-                <a href="/index"><img src="{{ asset('svg/back.svg') }}" alt="return_back">Back</a>
+
             @endif
 
         </div>

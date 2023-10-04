@@ -29,9 +29,9 @@ $daykey = session('daykey');
                     <input type="hidden" name="daykey" value="{{$daykey}}">
                     <td>
                         <div class="">
-                            <input type="time" name="start_time" style="border: none" required> -
-                            <input type="time" name="end_time" style="border: none" required>
-                            <textarea placeholder="Support you require" name="support" cols="30" required></textarea>
+                            <input type="time" name="start_time" style="border: none"> -
+                            <input type="time" name="end_time" style="border: none">
+                            <textarea placeholder="Support you require" name="support" cols="30"></textarea>
                         </div>
                     </td>
                     <td>
@@ -44,7 +44,7 @@ $daykey = session('daykey');
                     </div>
                     </td>
                     <td>
-                        <textarea placeholder="I need [one-on-one] support because" name="explanation" cols="30" required></textarea>
+                        <textarea placeholder="I need [one-on-one] support because" name="explanation" cols="30"></textarea>
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn">Add more</button>
                         </div>
@@ -82,9 +82,9 @@ $daykey = session('daykey');
             <input type="hidden" name="headingId" value="{{$list['data']['heading']['id']}}">
             </tbody>
         </table>
-    <button type="submit" class="btn-pink form-button-pink">Compile my document</button>
 
     </div>
 </form>
+<a href="{{ route('get.schedule')}}"><button class="btn-pink form-button-pink">Other Days</button></a>
 
 @endsection

@@ -28,8 +28,8 @@ $backlist = session('backlist');
 
             </tbody>
         </table>
-    <button type="submit" class="btn-pink form-button-pink">View</button>
 
     </div>
+    <a href="{{route('view.support')}}"><button type="submit" class="btn-pink form-button-pink">View</button></a>
 
 @endsection

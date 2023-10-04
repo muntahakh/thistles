@@ -658,4 +658,13 @@ class QuestionsController extends Controller
 
         return back();
     }
+
+    public function viewSupport(){
+        $user = Auth::user();
+        $getSchedule = schedule::where('user_id' , $user->id)
+        ->whereNotNull('time_period')->get()->toArray();
+        $show_schedule = $this->show_schedule();
+        return view('ViewAllSupports', compact('getSchedule','show_schedule'));
+
+    }
 }

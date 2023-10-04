@@ -101,6 +101,8 @@ Route::get('/showSchedule/{dayKey}', [QuestionsController::class,'showSchedule']
 
 Route::get('/deleteSchedule/{id}', [QuestionsController::class,'deleteSchedule'])->name('delete.schedule');
 
+Route::get('/viewSchedule', [QuestionsController::class,'viewSupport'])->name('view.support');
+
 Route::get('skipSection/', [QuestionsController::class,'skipSection'])->name('skip.section');
 
 Route::get('optionsModification/{questionId}/{head_sq}/{question_sq}', [QuestionsController::class,'optionsModification'])->name('options.modification');
