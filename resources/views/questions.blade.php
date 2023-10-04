@@ -63,7 +63,7 @@ $backlist = session('backlist');
                     <!-- text with skipable input -->
                     @elseif ($list['data']['question']['input_type'] == 'swap')
 
-                    @include('swapCheckBoxText')
+                    @include('swapCheckboxText')
 
                     <!-- Checkbox input -->
                     @elseif ($list['data']['question']['input_type'] == 'checkbox')
