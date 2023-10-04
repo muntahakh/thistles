@@ -235,16 +235,19 @@ class Controller extends BaseController
         $segments = explode('/', trim($path, '/'));
         $segments[3] = (int)$segments[3] -1 ;
 
-        $modifiedUrl = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . ':' . $parsedUrl['port'] . '/' . implode('/', $segments);
+        if($segments[3] == 0){
+            $headsq-1;
+            $ques_sq = (int)$segments[3] +1;
+            $modifiedUrl = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . ':' . $parsedUrl['port'] . '/heading/' . $headsq . '/question/' . $ques_sq;
+            }
+        else{
+            $modifiedUrl = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . ':' . $parsedUrl['port'] . '/' . implode('/', $segments);
+        }
 
         return [
             'modifiedUrl' => $modifiedUrl,
         ];
+
    }
 
-   public function backUrl(){
-
-    $currentUrl  = url()->current();
-    dd($currentUrl);
-   }
 }

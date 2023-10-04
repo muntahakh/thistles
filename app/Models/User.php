@@ -52,6 +52,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(schedule::class);
     }
 
+    public function backUrl()
+    {
+        return $this->hasMany(BackUrl::class);
+    }
+
     public function Answers()
     {
         return $this->hasOne(Answers::class);

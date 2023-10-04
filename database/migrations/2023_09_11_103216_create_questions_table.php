@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('guidance_notes');
             $table->text('questions');
             $table->text('instructions');
-            $table->enum('input_type', ['checkbox', 'text', 'file', 'cost','table','radio','skipable']);
+            $table->enum('input_type', ['checkbox', 'text', 'file', 'cost','table','radio','skipable','swap']);
             $table->bigInteger('sequence');
             $table->timestamps();
 

@@ -9,6 +9,7 @@ use App\Models\QuestionHeading;
 use App\Models\Questions;
 use App\Models\Answers;
 use App\Models\schedule;
+use App\Models\BackUrl;
 use App\Models\QuestionOptions;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -162,6 +163,32 @@ class QuestionsController extends Controller
 
         }
 
+        if ($request->has('swapcheckbox')){
+
+            $parsedUrl = parse_url($url);
+            $path = $parsedUrl['path'];
+            $segments = explode('/', trim($path, '/'));
+            $head_sq = (int)$segments[1];
+            $question_sq = (int)$segments[3];
+            $answer = Answers::updateOrCreate(
+                ['user_id' => $user->id, 'questions_id' => $quesId],
+                [
+                    'answer' => $request->swapcheckbox,
+                    'file_name' => null,
+                    'cost' => null,
+                    'questions_id' => $quesId,
+                    'user_id' => $user->id,
+                    'is_skipped' => 0,
+                ]);
+
+            return redirect()->route('swap.questions', [
+                'questionId' => $quesId,
+                'head_sq' => $head_sq,
+                'question_sq' => $question_sq,
+            ]);
+
+        }
+
         if ($request->hasFile('file')) {
             $file = $request->file('file');
 
@@ -198,8 +225,7 @@ class QuestionsController extends Controller
                     'questions_id' => $quesId,
                     'user_id' => $user->id,
                     'is_skipped' => 0,
-                ]
-            );
+                ]);
 
             return redirect()->route('questions.modifications', [
                 'questionId' => $quesId,
@@ -224,8 +250,7 @@ class QuestionsController extends Controller
                     'questions_id' => $quesId,
                     'user_id' => $user->id,
                     'is_skipped' => 0,
-                ]
-            );
+                ]);
 
             return redirect()->route('replacement.modifications', [
                 'questionId' => $quesId,
@@ -251,8 +276,8 @@ class QuestionsController extends Controller
                     'questions_id' => $quesId,
                     'user_id' => $user->id,
                     'is_skipped' => 0,
-                ]
-            );
+                ]);
+
 
             return redirect()->route('cost.sequence', [
                 'questionId' => $quesId,
@@ -262,6 +287,7 @@ class QuestionsController extends Controller
             ]);
         }
         if(!$request->has('cost') && $request->has('answer')){
+
             $answer = Answers::updateOrCreate(
                 ['user_id' => $user->id, 'questions_id' => $quesId],
                 [
@@ -271,8 +297,8 @@ class QuestionsController extends Controller
                     'questions_id' => $quesId,
                     'user_id' => $user->id,
                     'is_skipped' => 0,
-                ]
-            );
+                ]);
+
             return redirect($url);
         }
         else{
@@ -291,7 +317,7 @@ class QuestionsController extends Controller
         $path = $parsedUrl['path'];
 
         $segments = explode('/', trim($path, '/'));
-        $segments[1] = (int)$segments[1] + 1 ;
+        $segments[1] = (int)$segments[1] + 1;
 
         $modifiedUrl = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . ':' . $parsedUrl['port'] . '/' . implode('/', $segments);
 
@@ -331,16 +357,14 @@ class QuestionsController extends Controller
         $checkQuestionOptions = QuestionOptions::where('questions_id', $questionId)->first();
 
         if($answer->answer == 'Yes' && $checkQuestionOptions == null){
-            $getQuestions = $this->GetCurrentAndNextQuestionDetails($head_sq, $question_sq);
-            $url = $getQuestions['url'];
-            $parsedUrl = parse_url($url);
-            $path = $parsedUrl['path'];
-
-            $segments = explode('/', trim($path, '/'));
-            $segments[3] = (int)$segments[3] -1 ;
-            $modifiedUrl = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . ':' . $parsedUrl['port'] . '/' . implode('/', $segments);
-            return redirect($modifiedUrl);
+            $getModifiedUrl = $this->getNextUrl($head_sq, $question_sq);
+            return redirect($getModifiedUrl['modifiedUrl']);
         }
+        if($answer->answer == 'No' && $checkQuestionOptions == null){
+            $getModifiedUrl = $this->getNextUrl($head_sq, $question_sq);
+            return redirect($getModifiedUrl['modifiedUrl']);
+        }
+
         $questionSequenceAfterSelectingYes = explode(',', $checkQuestionOptions->questions_sequence) ;
         if($answer->answer == 'Yes' && $questionSequenceAfterSelectingYes != null){
 
@@ -493,6 +517,21 @@ class QuestionsController extends Controller
 
     }
 
+    public function swapQuestions($questionId, $head_sq, $question_sq){
+
+        $user = auth()->user();
+        $answer = Answers::where('questions_id', $questionId)->where('user_id', $user->id)->first();
+
+        if($answer->answer == 'Yes'){
+            $getModifiedUrl = $this->getNextUrl($head_sq, $question_sq);
+            $finalUrl = $getModifiedUrl['modifiedUrl'];
+        }
+        if($answer->answer == 'No'){
+            $getModifiedUrl = $this->GetCurrentAndNextQuestionDetails($head_sq, $question_sq);
+            $finalUrl = $getModifiedUrl['url'];
+        }
+        return redirect($finalUrl);
+    }
 
     public function getSchedule(){
 

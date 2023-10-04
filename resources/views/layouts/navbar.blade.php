@@ -16,6 +16,7 @@
                                <a href="{{route('home')}}" class="nav-item-link">Home</a>
                            </ul>
 
+                           @guest
                            <!-- Right Side Of Navbar -->
                            <ul class="navbar-nav ms-auto">
 
@@ -27,11 +28,12 @@
                                            <a class="button-nav-signup" href="{{ route('signin') }}">Sign In</a>
                                        </li>
                            </ul>
+                           @endguest
                         @endunless
 
                         @if (in_array(Route::currentRouteName(), ['homeAth1','questions', 'documents', 'get.questions' , 'questions.submit',
                          'intro.page', 'index', 'questions_loop', 'questions.submit', 'get.schedule', 'add.schedule',
-                        'add.support', 'get.support', 'delete.schedule', 'show.schedule']))
+                        'add.support', 'get.support', 'delete.schedule', 'show.schedule','home']))
 
                         @auth()
 

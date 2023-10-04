@@ -25,7 +25,7 @@ $backlist = session('backlist');
                     </td>
                 </tr>
             @endforeach
-            <input type="hidden" name="headingId" value="{{$list['data']['heading']['id']}}">
+
             </tbody>
         </table>
     <button type="submit" class="btn-pink form-button-pink">View</button>

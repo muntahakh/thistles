@@ -22,9 +22,6 @@ Route::get('test',[Controller::class,'backUrl']);
 
 Route::get('/next/{head_sq}/question/{question_sq}',[QuestionsController::class,'getQuestions']);
 
-
-
-
 Route::get('/auth/redirect', function () {
     return Socialite::driver('google')->redirect();
 });
@@ -88,7 +85,7 @@ Route::get('/getQuestions',[QuestionsController::class,'getQuestions'])->name('s
 
 Route::get('/next/{head_sq}/question/{question_sq}',[QuestionsController::class,'Questions'])->name('questions');
 
-Route::get('/heading/{head_sq}/question/{question_sq}',[QuestionsController::class,'QuestionsLoop'])->name('questions_loop');
+Route::get('/heading/{head_sq}/question/{question_sq}',[QuestionsController::class,'QuestionsLoop'])->name('questions_loop')->middleware('controlurls');
 
 Route::post('/questions/submit/', [QuestionsController::class,'submitAnswers'])->name('questions.submit');
 
@@ -114,7 +111,11 @@ Route::get('replacementModifications/{questionId}/{headingId}/{head_sq}/{questio
 
 Route::get('costSequence/{questionId}/{headingId}/{head_sq}/{question_sq}', [QuestionsController::class,'questionsAccToCost'])->name('cost.sequence');
 
+Route::get('swapQuestions/{questionId}/{head_sq}/{question_sq}', [QuestionsController::class,'swapQuestions'])->name('swap.questions');
+
 Route::post('/saveprogress', [AccountsController::class,'save_progress'])->name('save_progress');
+
+Route::get('backUrl', [QuestionsController::class,'backUrl'])->name('back.url');
 
 Route::get('/start_documentation', [AccountsController::class,'start_documentation'])->name('save_progress_start');
 

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('file_name')->default(null)->nullable();
             $table->unsignedBigInteger('questions_id');
             $table->unsignedBigInteger('user_id');
-            $table->boolean('is_skipped')->default(false);
+            $table->boolean('is_skipped')->default(true);
             $table->timestamps();
 
             $table->foreign('questions_id')->references('id')->on('questions')->onDelete('cascade');

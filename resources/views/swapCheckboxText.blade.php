@@ -1,4 +1,4 @@
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <form action="{{ route('questions.submit')}}" method="post" id="file__form" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
@@ -7,20 +7,27 @@
         @endif
     </div> <!-- form group -->
 
-    <div class="form-group ">
-       <div class="radio-button form-checkbox justify-content-center">
-            <input type="radio" name="radiobutton" value="Yes">
-            <p class="text-blue">Yes</p>
-       </div>
-       <div class="radio-button form-checkbox justify-content-center">
-            <input type="radio" name="radiobutton" value="No">
-            <p class="text-blue">No</p>
-       </div>
+    <div class="form-group form-checkbox justify-content-center">
+        <p class="text-blue p-3">Yes</p>
+        <input type="checkbox" name="swapcheckbox" class="form-check p-3" id="form-check-yes" value="Yes" onclick="handleCheckboxClick(this)">
+
+        <p class="text-blue p-3">No</p>
+        <input type="checkbox" name="swapcheckbox" class="form-check p-3" id="form-check-no" value="No" onclick="handleCheckboxClick(this)">
     </div>
+
+    <script>
+        function handleCheckboxClick(checkbox) {
+            // Uncheck all checkboxes
+            $('input[type="checkbox"]').prop('checked', false);
+
+            // Check the clicked checkbox
+            $(checkbox).prop('checked', true);
+        }
+    </script>
+
 
 
     <input type="hidden" name="quesId" value="{{$list['data']['question']['id']}}">
-    <input type="hidden" name="headId" value="{{$list['data']['heading']['id']}}">
     <input type="hidden" value="{{ url($list['url'] ?? '/compiled')}}" name="url">
 
         @if(session('error'))

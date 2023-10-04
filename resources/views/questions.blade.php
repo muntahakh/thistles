@@ -7,12 +7,16 @@ $list = session('list');
 $backlist = session('backlist');
 @endphp
 
-{{-- @dd($list , $backlist) --}}
 <div class="eula-background">
 
     <div class="container-fluid main-home-content">
         <div class="back-icon">
-            <a href="{{$backlist['url'] ?? '/index'}}"><img src="{{asset('svg/back.svg')}}" alt="return_back"> Back</a>
+            @if (isset($back_url))
+                <a href="{{ $back_url }}"><img src="{{ asset('svg/back.svg') }}" alt="return_back">Back</a>
+            @else
+                <a href="/index"><img src="{{ asset('svg/back.svg') }}" alt="return_back">Back</a>
+            @endif
+
         </div>
             <div class="content-center questions-section ">
                 <div class="center-text">
@@ -55,6 +59,11 @@ $backlist = session('backlist');
                     @elseif ($list['data']['question']['input_type'] == 'skipable')
 
                     @include('skipableInput')
+
+                    <!-- text with skipable input -->
+                    @elseif ($list['data']['question']['input_type'] == 'swap')
+
+                    @include('swapCheckBoxText')
 
                     <!-- Checkbox input -->
                     @elseif ($list['data']['question']['input_type'] == 'checkbox')
