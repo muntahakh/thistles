@@ -1,6 +1,5 @@
 
 <p class="text-blue pt-2">Choose days on which support is required</p>
-
 <form action="{{route('add.schedule')}}" method="post" class="table-form">
 @csrf
 <div class="container">

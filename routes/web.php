@@ -18,9 +18,7 @@ use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/',[HomeController::class,'home'])->name('home');
 
-Route::get('test',[Controller::class,'backUrl']);
-
-Route::get('/next/{head_sq}/question/{question_sq}',[QuestionsController::class,'getQuestions']);
+Route::get('test',[HomeController::class,'compiledData']);
 
 Route::get('/auth/redirect', function () {
     return Socialite::driver('google')->redirect();
@@ -89,7 +87,7 @@ Route::get('/heading/{head_sq}/question/{question_sq}',[QuestionsController::cla
 
 Route::post('/questions/submit/', [QuestionsController::class,'submitAnswers'])->name('questions.submit');
 
-Route::get('/getschedule', [QuestionsController::class,'getSchedule'])->name('get.schedule');
+Route::get('/getschedule', [QuestionsController::class,'getSchedule'])->name('get.schedule')->middleware('controlurls');
 
 Route::post('/addschedule/', [QuestionsController::class,'addSchedule'])->name('add.schedule');
 
@@ -101,7 +99,7 @@ Route::get('/showSchedule/{dayKey}', [QuestionsController::class,'showSchedule']
 
 Route::get('/deleteSchedule/{id}', [QuestionsController::class,'deleteSchedule'])->name('delete.schedule');
 
-Route::get('/viewSchedule', [QuestionsController::class,'viewSupport'])->name('view.support');
+Route::get('/viewSchedule', [QuestionsController::class,'viewSupport'])->name('view.support')->middleware('controlurls');
 
 Route::get('skipSection/', [QuestionsController::class,'skipSection'])->name('skip.section');
 

@@ -16,10 +16,6 @@ class Questions extends Model
         'input_type',
         'sequence',
     ];
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
     public function QuestionHeading()
     {
@@ -29,5 +25,10 @@ class Questions extends Model
     public function QuestionOptions()
     {
         return $this->HasMany(QuestionOptions::class);
+    }
+
+    public function Answers()
+    {
+        return $this->HasMany(Answers::class);
     }
 }

@@ -7,15 +7,12 @@
         @endif
     </div> <!-- form group -->
 
-    <div class="form-group ">
-       <div class="radio-button form-checkbox justify-content-center">
-            <input type="radio" name="radiobutton" value="Yes">
-            <p class="text-blue">Yes</p>
-       </div>
-       <div class="radio-button form-checkbox justify-content-center">
-            <input type="radio" name="radiobutton" value="No">
-            <p class="text-blue">No</p>
-       </div>
+    <div class="form-group form-checkbox justify-content-center">
+        <input type="radio" name="radiobutton" value="Yes" <?php if (!empty($answer) && !empty($answer->answer) && $answer->answer === 'Yes') echo 'checked'; ?>>
+        <p class="text-blue p-3">Yes</p>
+
+        <input type="radio" name="radiobutton" value="No" <?php if (!empty($answer) && !empty($answer->answer) && $answer->answer === 'No') echo 'checked'; ?>>
+        <p class="text-blue p-3">No</p>
     </div>
 
 

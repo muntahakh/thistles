@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models;
-use App\Models\{ User , QuestionHeading };
+use App\Models\{ User , QuestionHeading, Questions, QuestionOptions, Answers};
 use App\Models\reports;
 use App\Models\GeneratedReports;
 use Illuminate\Support\Facades\Http;
@@ -34,58 +34,38 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function userDetails(){
+    public function AllData(){
         $user = Auth::user();
-        $details = $user->GetAllDetails()['data'];
 
-        $backgroundInfo = $details['backgroundInfo']->toArray();
-         $documents = $details['uploadedDocuments'];
-        $shortTermGoals = $details['getShortTermGoals'];
-        $longTermGoals = $details['getLongTermGoals'];
-        $communication = $details['getCommunication'];
-        $behaviouralVulnerabilities = $details['getBehaviouralVulnerabilities'];
-        $perosnalCare = $details['getPerosnalCare'];
-        $mealsEating = $details['getMealsEating'];
-        $duringNights = $details['getDuringNights'];
-        $propertyDamage = $details['getPropertyDamage'];
-        $supportRegular = $details['getSupportRegular'];
-        $supportOccasional = $details['getSupportOccasional'];
-        $ongoingTherapySupport = $details['getOngoingTherapySupport'];
-        $aidsAssistiveTechnology = $details['getAidsAssistiveTechnology'];
-        $parentalStatement = $details['getParentalStatement'];
+        $questionsWithHeadingAndAnswers= Answers::select(
+            'answers.*' , 'questions.*' , 'question_headings.name as question_headings_name' ,
+            'question_headings.sub_heading as question_headings_sub_heading',)
+            ->join('questions', 'questions.id', 'answers.questions_id')
+            ->join('question_headings', 'question_headings.id', 'questions.heading_id')
+            ->where('answers.user_id', $user->id)->get()->toArray();
+        return $questionsWithHeadingAndAnswers;
 
-// dd($backgroundInfo ,$documents, $shortTermGoals, $longTermGoals, $communication, $behaviouralVulnerabilities,
-// $perosnalCare, $mealsEating, $duringNights, $propertyDamage, $supportRegular, $supportOccasional,
-// $ongoingTherapySupport, $aidsAssistiveTechnology, $parentalStatement);
+    }
 
-        $string = "I want to write a sample report of a child. Who's name is " . $backgroundInfo['child_name']. ". \n \n".
-        " Some basic details are that his/her gender is ".$backgroundInfo['gender'] .
-        ", condition is ". $backgroundInfo['child_condition'] . "\n \n" .
-        "Short Term Goals he/she wants to achieve in social participation are " . $shortTermGoals['social_participation'] .
-        ", relating to health and physical capacity are ". $shortTermGoals['health_welfare'] . ", relating to education
-        and ongoing learning are " . $shortTermGoals['skill_development'] . ", relating to living arrangements are " .
-        $shortTermGoals['living_arrangements'] . ". \n \n" .
-        " Long Term goals he/she wants to achieve in same categories as short term respectively are " . $longTermGoals['social_participation'] .
-        ", " . $shortTermGoals['health_welfare'] . ", " . $shortTermGoals['skill_development'] . ", " .  $shortTermGoals['living_arrangements'] .
-        " . \n \n" .
-        " Communication challenges he/she faces : " . $communication['value'] . ". \n \n" .
-        " His/her behavioural vulnerabilities are : " . $behaviouralVulnerabilities['value'] . ".\n \n," .
-        " Personal care challenges he/she faces : " . $perosnalCare['value'] . ". \n" .
-        " The Meals " . $backgroundInfo['child_name'] . " takes throughout the day are : " . $mealsEating['value'] . ". \n \n" .
-        " Challenges he/she faces at night are : " . $duringNights['value'] . ". \n \n" .
-        " Property damage he/she caused : " . $propertyDamage['value'] . ". \n \n" .
-        " Support he/she required regularly are : " . $supportRegular['value'] . ". \n \n" .
-        " Support he/she required occasionally are : " . $supportOccasional['value'] . ". \n \n" .
-        " Ongoing therapies and capacity building supports of " . $backgroundInfo['child_name'] . " are : " . $duringNights['value'] . ". \n \n" .
-        " Support he/she required occasionally are : " . $supportOccasional['value'] . ". \n \n" .
-        " The aids and equivalent resources required for the assistive technology he/she uses are : " . $aidsAssistiveTechnology['value'] . ". \n \n" .
-        " Statement by " . $backgroundInfo['child_name'] . " parents : " . $aidsAssistiveTechnology['value'] . "."
-        ;
-        // $string = nl2br($string);
-        // echo $string;
+    public function compiledData(){
 
-        // dd($string);
-        return redirect()->route('ask', ['prompt' => $string]);
+        $data = $this->AllData();
+        // dd($data);
+        $finalData = [];
+        foreach($data as $key => $detail){
+            $finalData = [
+                'data' => [
+                'question_headings_name' => $detail['question_headings_name'],
+                'question_headings_sub_heading' => $detail['question_headings_sub_heading'],
+                'questions' => $detail['questions'],
+                'answer' => $detail['answer'],
+                'cost' => $detail['cost'],
+                ]
+            ];
+
+        }
+
+        dd($finalData);
     }
 
     public function eula()

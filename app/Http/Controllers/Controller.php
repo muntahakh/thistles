@@ -17,7 +17,6 @@ class Controller extends BaseController
 
     public function QuestionList()
     {
-       $secSeq =  [];
        $headingwithQuestions =  QuestionHeading::with('questions')
        ->with(['questions' => function ($q) {
            $q->orderBy('questions.sequence');
@@ -92,12 +91,10 @@ class Controller extends BaseController
            }
 
            if($headIncrement){
-            // dd('---');
                $current_head_sq++;
                if(isset($list[$current_head_sq]) && $list[$current_head_sq]['questions'] != []){
                    $firstQuestion = array_key_first($list[$current_head_sq]['questions']);
                    $url = url('/heading/'.$current_head_sq.'/question/'.$firstQuestion);
-                    // dd('check');
                     $returnData = [
                        "data" => [
                             'question' => $list[$temp_head_sq]['questions'][$temp_question_sq],

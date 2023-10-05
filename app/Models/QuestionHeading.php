@@ -18,10 +18,13 @@ class QuestionHeading extends Model
     {
         return $this->hasMany(Questions::class,'heading_id','id');
     }
+    public function questionOptions()
+    {
+        return $this->hasMany(QuestionOptions::class,'heading_id','id');
+    }
     public function schedule()
     {
         return $this->hasMany(schedule::class);
     }
-
 
 }

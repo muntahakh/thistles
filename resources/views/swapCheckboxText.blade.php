@@ -9,10 +9,10 @@
 
     <div class="form-group form-checkbox justify-content-center">
         <p class="text-blue p-3">Yes</p>
-        <input type="checkbox" name="swapcheckbox" class="form-check p-3" id="form-check-yes" value="Yes" onclick="handleCheckboxClick(this)">
+        <input type="checkbox" name="swapcheckbox" class="form-check p-3" id="form-check-yes" value="Yes" <?php if (!empty($answer) && !empty($answer->answer) && $answer->answer === 'Yes') echo 'checked'; ?> onclick="handleCheckboxClick(this)">
 
         <p class="text-blue p-3">No</p>
-        <input type="checkbox" name="swapcheckbox" class="form-check p-3" id="form-check-no" value="No" onclick="handleCheckboxClick(this)">
+        <input type="checkbox" name="swapcheckbox" class="form-check p-3" id="form-check-no" value="No" <?php if (!empty($answer) && !empty($answer->answer) && $answer->answer === 'No') echo 'checked'; ?> onclick="handleCheckboxClick(this)">
     </div>
 
     <script>
@@ -24,8 +24,6 @@
             $(checkbox).prop('checked', true);
         }
     </script>
-
-
 
     <input type="hidden" name="quesId" value="{{$list['data']['question']['id']}}">
     <input type="hidden" value="{{ url($list['url'] ?? '/compiled')}}" name="url">

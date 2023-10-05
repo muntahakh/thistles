@@ -97,10 +97,9 @@ $backlist = session('backlist');
                         <button type="submit" class="save_progress">Save progress</button></p>
                     </form>
                 </div> <!-- save progress link -->
+
             </div>  <!-- Questions section -->
-
         </div> <!-- container main home content -->
-
 </div> <!-- Eula background -->
 
 @endsection

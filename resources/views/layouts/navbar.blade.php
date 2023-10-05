@@ -1,5 +1,4 @@
 
-
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
@@ -80,7 +79,6 @@
 
                     <input type="file" name="image" id="file-input-image">
 
-
                         <script>
                             const iconInput = document.getElementById('file-input-image');
                             const customButton = document.querySelector('.custom-select-avatar');
@@ -94,6 +92,7 @@
                                 document.getElementById('imageform').submit();
                             });
                         </script>
+
                 </form>
             </div>
             <div class="col-9">
