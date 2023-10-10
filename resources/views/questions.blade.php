@@ -38,7 +38,6 @@ $backlist = session('backlist');
                     @endif
                 </div>  <!-- center text -->
 
-
                 <div class="questions-container">
                     <!-- text input -->
                     @if ($list['data']['question']['input_type'] == 'text')

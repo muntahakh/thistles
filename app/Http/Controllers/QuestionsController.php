@@ -23,13 +23,10 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
-
+use Spatie\PdfToText\Pdf;
 
 class QuestionsController extends Controller
 {
-
-
-
 
     public function q2(){
 
@@ -88,7 +85,6 @@ class QuestionsController extends Controller
 
     }
 
-
     public function addSection(Request $request){
             $sequence =  QuestionHeading::count() + 1;
             $section = QuestionHeading::Create(
@@ -103,12 +99,10 @@ class QuestionsController extends Controller
     public function getQuestions(){
 
         $getQuestionsData = $this->QuestionList();
-        // dd($getQuestionsData);
         $list = $this->GetCurrentAndNextQuestionDetails(1,1);
 
         return redirect::route('questions_loop' , [1,1]);
     }
-
 
     public function QuestionsLoop($head_sq, $question_sq){
 
@@ -155,7 +149,7 @@ class QuestionsController extends Controller
                     'is_skipped' => 0,
                 ]);
 
-            return redirect()->route('options.modification', [
+                return redirect()->route('options.modification', [
                 'questionId' => $quesId,
                 'head_sq' => $head_sq,
                 'question_sq' => $question_sq,
@@ -190,15 +184,17 @@ class QuestionsController extends Controller
         }
 
         if ($request->hasFile('file')) {
-            $file = $request->file('file');
 
+            $file = $request->file('file');
             $fileName = $file->getClientOriginalName();
+
+            $path = $file->storeAs('documents' , $user->id . '_' . $fileName  , 'public');
 
             $answer = Answers::updateOrCreate(
                 ['user_id' => $user->id, 'questions_id' => $quesId],
                 [
                     'answer' => null,
-                    'file_name' => $fileName,
+                    'file_name' => $user->id . '_' .$fileName,
                     'cost' => null,
                     'questions_id' => $quesId,
                     'user_id' => $user->id,
@@ -278,7 +274,6 @@ class QuestionsController extends Controller
                     'is_skipped' => 0,
                 ]);
 
-
             return redirect()->route('cost.sequence', [
                 'questionId' => $quesId,
                 'headingId' => $headingId,
@@ -355,18 +350,19 @@ class QuestionsController extends Controller
         $user = auth()->user();
         $answer = Answers::where('questions_id', $questionId)->where('user_id', $user->id)->first();
         $checkQuestionOptions = QuestionOptions::where('questions_id', $questionId)->first();
+        $questionSequenceAfterSelectingYes = explode(',', $checkQuestionOptions->questions_sequence) ;
 
         if($answer->answer == 'Yes' && $checkQuestionOptions == null){
             $getModifiedUrl = $this->getNextUrl($head_sq, $question_sq);
             return redirect($getModifiedUrl['modifiedUrl']);
         }
+
         if($answer->answer == 'No' && $checkQuestionOptions == null){
             $getModifiedUrl = $this->getNextUrl($head_sq, $question_sq);
             return redirect($getModifiedUrl['modifiedUrl']);
         }
 
-        $questionSequenceAfterSelectingYes = explode(',', $checkQuestionOptions->questions_sequence) ;
-        if($answer->answer == 'Yes' && $questionSequenceAfterSelectingYes != null){
+        if($answer->answer == 'Yes' && $questionSequenceAfterSelectingYes != null && $checkQuestionOptions->options  == 'Yes'){
 
             foreach($questionSequenceAfterSelectingYes as $key => $value){
 
@@ -381,7 +377,7 @@ class QuestionsController extends Controller
                 return redirect($modifiedUrl);
             }
         }
-        else{
+        if($answer->answer == 'No' && $questionSequenceAfterSelectingYes != null && $checkQuestionOptions->options  == 'Yes'){
 
             foreach($questionSequenceAfterSelectingYes as $key => $value){
                 $getIdofSelectedQuestions = Questions::where('sequence' , $value)->first();
@@ -400,6 +396,11 @@ class QuestionsController extends Controller
             }
             $getModifiedUrl = $this->modifiedUrl($head_sq,$question_sq);
             return redirect($getModifiedUrl['modifiedUrl']);
+        }
+        else{
+            return[
+                'message' => 'error',
+            ];
         }
 
     }
@@ -456,6 +457,7 @@ class QuestionsController extends Controller
         }
 
     }
+
     public function ReplacementModifications($questionId, $headingId, $head_sq, $question_sq){
 
         $user = auth()->user();
@@ -526,10 +528,12 @@ class QuestionsController extends Controller
             $getModifiedUrl = $this->getNextUrl($head_sq, $question_sq);
             $finalUrl = $getModifiedUrl['modifiedUrl'];
         }
+
         if($answer->answer == 'No'){
             $getModifiedUrl = $this->GetCurrentAndNextQuestionDetails($head_sq, $question_sq);
             $finalUrl = $getModifiedUrl['url'];
         }
+
         return redirect($finalUrl);
     }
 
@@ -569,7 +573,6 @@ class QuestionsController extends Controller
         $headingId = $request->headingId;
         $user = Auth::user();
         $checkedDays = $request->input('days',[]);
-
 
         if($request->has('start_time') && $request->has('daykey')){
             $checkDayExistInDatabase = schedule::where('day' , $request->daykey)->where('time_period', null)->get();
@@ -650,6 +653,7 @@ class QuestionsController extends Controller
         return view('addSupport', compact('getSchedule','show_schedule'));
 
     }
+
     public function deleteSchedule($id){
         $user = Auth::user();
 
@@ -667,4 +671,5 @@ class QuestionsController extends Controller
         return view('ViewAllSupports', compact('getSchedule','show_schedule'));
 
     }
+
 }

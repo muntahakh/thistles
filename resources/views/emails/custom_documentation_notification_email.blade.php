@@ -113,20 +113,20 @@
         <img src="{{ asset('Images/thistles_logo.png') }}" alt="">
     </div>
     <div class="email-heading">
-        <h1 class="pt-2 fw-bold">Reset</h1>
-        <p>We sent a confirmation email for: </p>
+        <h1 class="pt-2 fw-bold">Completed Documentation</h1>
+        <p>We sent a email for: </p>
         <a href="">{{$userEmail}}</a>
     </div>
     <div class="email-container">
 
         <p>Dear User {{ucfirst($userName)}},</p>
-        <p>We have received a request to reset your password for your Thistles account.</p>
-        <p>To proceed with the password reset, please click the button below,</p>
+        <p>It is to notify you that documentation is completed.</p>
+        <p>To proceed , please click the button below,</p>
 
         <div class="buttons">
-            <a href="{{route('pass.reset' , ['id' => $userId , 'hash' => $userVerificationToken ])}}">
+            {{-- <a href="{{route('pass.reset' , ['id' => $userId , 'hash' => $userVerificationToken ])}}">
                 <button type="submit" class="button-pink">Reset Password</button>
-            </a>
+            </a> --}}
             <a href="" class="button-white">Need Support?</a>
         </div>
     </div>

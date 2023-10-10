@@ -1215,6 +1215,11 @@ hr{
     text-decoration: none;
   }
 
+  .modal-btn-width{
+    position: relative;
+    width: 60%;
+  }
+
   .modal-container {
     display: grid;
     justify-content: center;
@@ -1325,9 +1330,11 @@ hr{
     outline: none;
     border: none;
     font-weight: 600;
+    float: right;
+    background-color: transparent;
 }
 .modal-btn:hover{
-    color:#03C03C;
+    color:#0079cf;
 }
 .save_progress{
     color:#D0358C;

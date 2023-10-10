@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models;
-use App\Models\{ User , QuestionHeading, Questions, QuestionOptions, Answers};
+use App\Models\{ User , QuestionHeading, Questions, QuestionOptions, Answers, schedule};
 use App\Models\reports;
 use App\Models\GeneratedReports;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Config;
+use Spatie\PdfToText\Pdf;
 
 class HomeController extends Controller
 {
@@ -38,39 +41,57 @@ class HomeController extends Controller
         $user = Auth::user();
 
         $questionsWithHeadingAndAnswers= Answers::select(
-            'answers.*' , 'questions.*' , 'question_headings.name as question_headings_name' ,
+            'answers.*' , 'questions.questions' , 'question_headings.name as question_headings_name' ,
             'question_headings.sub_heading as question_headings_sub_heading',)
             ->join('questions', 'questions.id', 'answers.questions_id')
             ->join('question_headings', 'question_headings.id', 'questions.heading_id')
             ->where('answers.user_id', $user->id)->get()->toArray();
+
         return $questionsWithHeadingAndAnswers;
 
     }
-
     public function compiledData(){
 
+        $user = Auth::user();
         $data = $this->AllData();
-        // dd($data);
         $finalData = [];
-        foreach($data as $key => $detail){
-            $finalData = [
-                'data' => [
+
+
+
+        foreach ($data as $key => $detail) {
+
+            $finalData[$detail['questions_id']] = [
                 'question_headings_name' => $detail['question_headings_name'],
                 'question_headings_sub_heading' => $detail['question_headings_sub_heading'],
                 'questions' => $detail['questions'],
                 'answer' => $detail['answer'],
                 'cost' => $detail['cost'],
-                ]
             ];
-
         }
 
-        dd($finalData);
+        $pdftotextPath = Config::get('pdf.pdf_to_text.options.pdftotext_path');
+        $pdfPath = public_path('storage/documents/' . $detail['file_name']);
+        $fileText = (new Pdf($pdftotextPath))
+            ->setPdf($pdfPath)
+            ->text();
+
+        // dd($fileText);
+
+        $schedule = schedule::where('user_id' , $user->id)->get()->toArray();
+
+        $response = Http::post('http://167.99.36.48:7020/generate_report', ['responses' => $finalData]);
+
+        dd($response->json());
+        return response()->json($finalData);
     }
 
     public function eula()
     {
         return view('eula');
+    }
+
+    public function waiting() {
+        return view('waiting');
     }
 
     public function compiled() {
@@ -79,12 +100,26 @@ class HomeController extends Controller
 
     public function index(){
 
+        $answer = Answers::where('user_id', auth()->user()->id)->get()->toArray();
         if (auth()->check()) {
-            return view('homeAth');
+            return view('homeAth', compact('answer'));
         } else {
             return redirect()->route('signin');
         }
     }
+
+    public function sendDocumentationEmail(){
+
+        $user = Auth::user();
+
+        // Condition will be if document file is ready user will be notify
+        if($user){
+            $user->sendDocumentationNotification();
+            return view('documentCompiled');
+        } else {
+            return back()->withErrors(['email' => 'We couldn\'t find a user with that email address.']);
+        }
+}
 
     public function ask(Request $request)
     {

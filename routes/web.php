@@ -20,9 +20,12 @@ Route::get('/',[HomeController::class,'home'])->name('home');
 
 Route::get('test',[HomeController::class,'compiledData']);
 
+//  google login
 Route::get('/auth/redirect', function () {
     return Socialite::driver('google')->redirect();
 });
+// apple logim
+Route::post('apple/login','API\\Auth\\AppleLoginController@login');
 
 Route::get('/auth/callback', [AccountsController::class,'signinWithGoogle']);
 
@@ -64,6 +67,8 @@ Route::post('/password/email', [ForgotPasswordController::class, 'sendResetLink'
 Route::get('/password/email', [ForgotPasswordController::class, 'sendResetLink'])->name('password.email.get');
 
 Route::get('/password/email/resend', [AccountsController::class,'resendPassEmail'])->name('resendpass.email');
+
+Route::get('/documentation/email', [HomeController::class,'sendDocumentationEmail'])->name('documentation.email');
 
 Route::post('/index', [AccountsController::class,'login'])->name('homeAth1');
 
@@ -123,8 +128,11 @@ Route::get('/userDetails',[HomeController::class,'userDetails'])->name('userDeta
 
 Route::get('/askToChatGPT',[HomeController::class,'ask'])->name('ask');
 
+// Route::get('/compiled', [HomeController::class,'compiled'])->name('compiled');
+
+Route::get('/waiting', [HomeController::class,'waiting'])->name('waiting');
+
 Route::get('/compiled', [HomeController::class,'compiled'])->name('compiled');
 
-Route::post('/compiled', [HomeController::class,'compiled'])->name('compiled');
 });
 

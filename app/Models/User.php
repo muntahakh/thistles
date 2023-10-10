@@ -48,6 +48,10 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notify(new CustomChangePasswordEmail($this->id, $this->name, $this->email , $this->verification_token));
     }
 
+    public function sendDocumentationNotification(){
+        $this->notify(new DocumentationNotificationEmail($this->id, $this->name, $this->email));
+    }
+
     public function schedule()
     {
         return $this->hasMany(schedule::class);

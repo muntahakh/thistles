@@ -40,6 +40,6 @@ $backlist = session('backlist');
     </table>
 </div>
 </div>
-<a href="/compiled"><button class="btn-pink form-button-pink">Compile My document</button></a>
+<a href="/waiting"><button class="btn-pink form-button-pink">Compile My document</button></a>
 
 @endsection

@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\save_progress;
+use App\Models\{User,save_progress,Answers};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -116,10 +115,6 @@ class AccountsController extends Controller
         return view('auth/passwords/resetSent');
     }
 
-    public function resetEmail() {
-        return view('auth/passwords/resetEmail');
-    }
-
     public function newPass() {
         return view('auth/passwords/newpassword');
     }
@@ -222,15 +217,21 @@ class AccountsController extends Controller
     }
 
     public function start_documentation(){
-        $user = Auth::user();
-        $checkUserSaveProgressRoute = save_progress::where('user_id' , $user->id)->first();
-        if($checkUserSaveProgressRoute){
 
+        $user = Auth::user();
+        $answer = Answers::where('user_id' , $user->id)->get()->toArray();
+        $checkUserSaveProgressRoute = save_progress::where('user_id' , $user->id)->first();
+
+        if($checkUserSaveProgressRoute){
             return redirect($checkUserSaveProgressRoute->current_route)->with('success', 'Saved progress loaded.');
         }
         else{
             return redirect()->route('start_documentation');
         }
     }
+
+    // public function startQuestions(){
+
+    // }
 
 }
