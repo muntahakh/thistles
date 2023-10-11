@@ -350,18 +350,18 @@ class QuestionsController extends Controller
         $user = auth()->user();
         $answer = Answers::where('questions_id', $questionId)->where('user_id', $user->id)->first();
         $checkQuestionOptions = QuestionOptions::where('questions_id', $questionId)->first();
-        $questionSequenceAfterSelectingYes = explode(',', $checkQuestionOptions->questions_sequence) ;
-
+        
         if($answer->answer == 'Yes' && $checkQuestionOptions == null){
             $getModifiedUrl = $this->getNextUrl($head_sq, $question_sq);
             return redirect($getModifiedUrl['modifiedUrl']);
         }
-
+        
         if($answer->answer == 'No' && $checkQuestionOptions == null){
             $getModifiedUrl = $this->getNextUrl($head_sq, $question_sq);
             return redirect($getModifiedUrl['modifiedUrl']);
         }
-
+        
+        $questionSequenceAfterSelectingYes = explode(',', $checkQuestionOptions->questions_sequence) ;
         if($answer->answer == 'Yes' && $questionSequenceAfterSelectingYes != null && $checkQuestionOptions->options  == 'Yes'){
 
             foreach($questionSequenceAfterSelectingYes as $key => $value){
