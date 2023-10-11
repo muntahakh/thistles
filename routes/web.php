@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\{Controller,HomeController,AccountsController,QuestionsController};
 use App\Http\Controllers\Auth\{ForgotPasswordController,ResetPasswordController,VerificationController};
 use Laravel\Socialite\Facades\Socialite;
@@ -18,7 +19,7 @@ use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/',[HomeController::class,'home'])->name('home');
 
-Route::get('test',[HomeController::class,'compiledData']);
+// Route::get('test',[HomeController::class,'compiledData']);
 
 //  google login
 Route::get('/auth/redirect', function () {
@@ -128,7 +129,7 @@ Route::get('/userDetails',[HomeController::class,'userDetails'])->name('userDeta
 
 Route::get('/askToChatGPT',[HomeController::class,'ask'])->name('ask');
 
-// Route::get('/compiled', [HomeController::class,'compiled'])->name('compiled');
+Route::get('/getDocumentation', [HomeController::class,'compiledData'])->name('getDocumentation');
 
 Route::get('/waiting', [HomeController::class,'waiting'])->name('waiting');
 

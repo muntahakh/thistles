@@ -1217,7 +1217,7 @@ hr{
 
   .modal-btn-width{
     position: relative;
-    width: 60%;
+    width: 250px;
   }
 
   .modal-container {
@@ -1345,17 +1345,30 @@ hr{
     font-size: 15px;
 }
 .questions-table table{
-    margin: 20px;
-    width: 80%;
+    margin: 30px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
 }
 .questions-table thead{
     background-color:rgb(197, 197, 197) ;
     padding: 30px;
 
 }
-.questions-table thead, tr, td, th, tbody{
-    border: 1px black solid ;
+.questions-table thead, tbody{
+    border: 1px rgb(141, 140, 140) solid ;
 }
+.questions-table tr{
+    border: 1px rgb(141, 140, 140) solid;
+}
+.questions-table td{
+    border: 1px rgb(141, 140, 140) solid;
+}
+.questions-table th{
+    border: 1px rgb(141, 140, 140) solid;
+}
+
 .table-content-center {
     display: flex;
     flex-direction: column;

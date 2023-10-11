@@ -20,12 +20,11 @@
             </div>
 
             <div class="container text-center p-5">
-                <h1 class="pt-2 fw-bold">Wait while documentation is processing.</h1>
-                <p>We will sent link to the email:</p>
-                <a href="">{{auth()->user()->email}}</a>
+                <h1 class="pt-2 fw-bold">Thank You</h1>
+                <p>Please Wait while your documentation is under process, It will take 20 mins</p>
+                <p>You will be notified by email</p>
 
                 {{-- <button class="btn-pink">Resend Link</button> --}}
-
                 <div class="signin-link pt-3">
                     <p>If you do not see the email in your inbox then check your spam folder.</p>
                 </div>

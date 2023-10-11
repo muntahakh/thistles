@@ -40,6 +40,7 @@ class AccountsController extends Controller
             ]);
 
         $user = $existingUser;
+
     } else {
 
         $user = User::create([

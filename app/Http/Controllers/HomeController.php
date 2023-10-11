@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\GenerateReportEvent;
 use App\Models;
 use App\Models\{ User , QuestionHeading, Questions, QuestionOptions, Answers, schedule};
 use App\Models\reports;
@@ -22,7 +23,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-    //    $this->middleware('auth');
+        ini_set('max_execution_time', 1200);
     }
 
     /**
@@ -31,13 +32,13 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-
     public function home()
     {
         return view('home');
     }
 
     public function AllData(){
+
         $user = Auth::user();
 
         $questionsWithHeadingAndAnswers= Answers::select(
@@ -50,13 +51,11 @@ class HomeController extends Controller
         return $questionsWithHeadingAndAnswers;
 
     }
-    public function compiledData(){
 
+    public function compiledData(){
         $user = Auth::user();
         $data = $this->AllData();
         $finalData = [];
-
-
 
         foreach ($data as $key => $detail) {
 
@@ -75,14 +74,13 @@ class HomeController extends Controller
             ->setPdf($pdfPath)
             ->text();
 
-        // dd($fileText);
-
         $schedule = schedule::where('user_id' , $user->id)->get()->toArray();
 
-        $response = Http::post('http://167.99.36.48:7020/generate_report', ['responses' => $finalData]);
+        event(new GenerateReportEvent($user->id, $finalData));
 
-        dd($response->json());
-        return response()->json($finalData);
+        return redirect()->route('waiting');
+
+
     }
 
     public function eula()
@@ -108,9 +106,9 @@ class HomeController extends Controller
         }
     }
 
-    public function sendDocumentationEmail(){
+    public function sendDocumentationEmail(Request $req){
 
-        $user = Auth::user();
+        $user = $req->user();
 
         // Condition will be if document file is ready user will be notify
         if($user){

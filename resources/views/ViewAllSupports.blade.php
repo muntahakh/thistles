@@ -5,7 +5,7 @@
 $list = session('list');
 $backlist = session('backlist');
 @endphp
-<div class="table-container">
+<div class="main-home-content">
 <div class="questions-table table-content-center">
     <table class="table-sm" border="1">
         <thead>
@@ -40,6 +40,6 @@ $backlist = session('backlist');
     </table>
 </div>
 </div>
-<a href="/waiting"><button class="btn-pink form-button-pink">Compile My document</button></a>
+<a href="{{ route('getDocumentation')}} "><button class="btn-pink form-button-pink">Compile My document</button></a>
 
 @endsection

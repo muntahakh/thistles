@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\GenerateReportEvent;
+use App\Listeners\GenerateReportListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -16,10 +18,13 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         Registered::class => [
-            SendEmailVerificationNotification::class,
+        SendEmailVerificationNotification::class,
         ],
         SocialiteProviders\Manager\SocialiteWasCalled::class => [
             'SocialiteProviders\\Apple\\AppleExtendSocialite@handle',
+        ],
+        GenerateReportEvent::class => [
+            GenerateReportListener::class
         ],
     ];
 
