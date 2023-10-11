@@ -6,6 +6,7 @@ use App\Models\{QuestionHeading, Questions, QuestionOptions, Answers};
 use Illuminate\Support\Facades\{Auth , Hash , Crypt};
 use App\Notifications\CustomVerifyEmail;
 use App\Notifications\CustomChangePasswordEmail;
+use App\Notifications\DocumentationNotificationEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -13,7 +14,6 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Carbon\Carbon;
 
-use App\Models\reports;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
