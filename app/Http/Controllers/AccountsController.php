@@ -16,6 +16,7 @@ use Laravel\Socialite\Facades\Socialite;
 class AccountsController extends Controller
 {
     use RegistersUsers;
+
     public function register(){
         if (auth()->check()) {
             return redirect('/index');
@@ -87,7 +88,7 @@ class AccountsController extends Controller
 
         $user->sendEmailVerificationNotification();
 
-        return view('auth/passwords/confirm', ['userEmail' => $user -> email]);
+        return view('auth/passwords/confirm', ['userEmail' => $user->email]);
     }
 
     public function resendVerificationEmail(Request $request){
