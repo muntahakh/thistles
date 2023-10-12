@@ -17,8 +17,7 @@
                                 <img src="{{ asset('svg/fi-sr-document.svg')}}"  alt="">
                             </div>
                             <div class="col-10">
-                                <label for="file" class="fw-bold pt-2">Margie Thristle.pdf</label>
-                                <p>2MB</p>
+                                <label for="file" class="fw-bold pt-2">{{$report->file_name}}</label>
                             </div>
                         </div>
                     </div>

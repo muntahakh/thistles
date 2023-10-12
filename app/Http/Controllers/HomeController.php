@@ -80,12 +80,12 @@ class HomeController extends Controller
                 ->text();
         }
 
-            // dd($fileText);
+        // dd($fileText);
 
         $schedule = schedule::where('user_id' , $user->id)->whereNotNull('time_period')->get()->toArray();
         // dd($fileText,  $schedule);
         // event(new GenerateReportEvent($user->id, $finalData));
-        $response = Http::post('http://167.99.36.48:7020/generate_report', ['responses' => $finalData , 'user_id' => $user->id]);
+        $response = Http::post('http://167.99.36.48:7020/generate_report', ['responses' => $finalData , 'user_id' => $user->id, 'name' => $user->name . '_'. $user->id]);
         return redirect()->route('waiting');
 
     }
@@ -100,7 +100,11 @@ class HomeController extends Controller
     }
 
     public function compiled() {
-        return view('documentCompiled');
+
+        $user = Auth::user();
+        $report = reports::where('user_id' , $user->id);
+        return view('documentCompiled', compact(($report)));
+
     }
 
     public function index(){
