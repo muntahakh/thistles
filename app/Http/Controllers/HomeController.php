@@ -131,7 +131,7 @@ class HomeController extends Controller
         );
 
         $user = User::find($request->user_id);
-        // $user->sendDocumentationNotification();
+        $user->sendDocumentationNotification();
         return response('');
 
     }
