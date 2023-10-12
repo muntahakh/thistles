@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="pt-4 col-md-6 col-sm-8">
-                        <a href="{{ route('downloadReport')}}"><button class="btn-pink">Download My NDIS Document</button></a>
+                        <a href="http://167.99.36.48:7020/static/{{$report->file_name}}"><button class="btn-pink">Download My NDIS Document</button></a>
                     </div>
 
             </div>

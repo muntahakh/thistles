@@ -140,22 +140,6 @@ class HomeController extends Controller
 
     }
 
-    public function downloadReport(){
-
-        $user = Auth::user();
-        $generatedReport = reports::find($user->id);
-        if ($generatedReport) {
-            return response()->stream(function () use ($generatedReport) {
-                echo $generatedReport->file_data;
-            }, 200, [
-                'Content-Type' => 'application/octet-stream',
-                'Content-Disposition' => 'attachment; filename="' . $generatedReport->filename . '"',
-            ]);
-        } else {
-            return response()->json(['message' => 'File not found'], 404);
-        }
-    }
-
     public function ask(Request $request)
     {
         $prompt = $request->input('prompt');
