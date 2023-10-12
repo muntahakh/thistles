@@ -291,7 +291,9 @@ class QuestionsController extends Controller
             $getModifiedUrl = $this->getNextUrl($head_sq, $question_sq);
             return redirect($getModifiedUrl['modifiedUrl']);
         }
+
         $questionSequenceAfterSelectingYes = explode(',', $checkQuestionOptions->questions_sequence);
+
         if($answer->answer == 'Yes' && $questionSequenceAfterSelectingYes != null && $checkQuestionOptions->options  == 'Yes'){
 
             foreach($questionSequenceAfterSelectingYes as $key => $value){
