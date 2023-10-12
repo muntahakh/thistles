@@ -22,9 +22,8 @@
                         </div>
                     </div>
 
-
                     <div class="pt-4 col-md-6 col-sm-8">
-                        <button type="submit" class="btn-pink">Download My NDIS Document</button>
+                        <a href="{{ route('downloadReport')}}"><button class="btn-pink">Download My NDIS Document</button></a>
                     </div>
 
             </div>

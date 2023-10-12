@@ -133,6 +133,8 @@ Route::get('/getDocumentation', [HomeController::class,'compiledData'])->name('g
 
 Route::get('/waiting', [HomeController::class,'waiting'])->name('waiting');
 
+Route::get('/downloadReport', [HomeController::class,'downloadReport'])->name('downloadReport');
+
 Route::get('/compiled', [HomeController::class,'compiled'])->name('compiled');
 
 });
