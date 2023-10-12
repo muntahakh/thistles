@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\GenerateReportEvent;
 use App\Models;
-use App\Models\{ User , QuestionHeading, Questions, QuestionOptions, Answers, schedule};
-use App\Models\reports;
+use App\Models\{ User , QuestionHeading, Questions, QuestionOptions, Answers, schedule,reports};
 use App\Models\GeneratedReports;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
@@ -74,12 +73,11 @@ class HomeController extends Controller
             ->setPdf($pdfPath)
             ->text();
 
-        $schedule = schedule::where('user_id' , $user->id)->get()->toArray();
-
-        event(new GenerateReportEvent($user->id, $finalData));
-
+        $schedule = schedule::where('user_id' , $user->id)->whereNotNull('time_period')->get()->toArray();
+        // dd($fileText,  $schedule);
+        // event(new GenerateReportEvent($user->id, $finalData));
+        $response = Http::post('http://167.99.36.48:7020/generate_report', ['responses' => $finalData , 'user_id' => $user->id]);
         return redirect()->route('waiting');
-
 
     }
 
@@ -106,18 +104,28 @@ class HomeController extends Controller
         }
     }
 
-    public function sendDocumentationEmail(Request $req){
+    public function getGeneratedFile(Request $request){
 
-        $user = $req->user();
+        $request->validate(
+            [
+                'user_id' => "required|integer",
+                'file_name' => "required|string"
+            ],
+        );
 
-        // Condition will be if document file is ready user will be notify
-        if($user){
-            $user->sendDocumentationNotification();
-            return view('documentCompiled');
-        } else {
-            return back()->withErrors(['email' => 'We couldn\'t find a user with that email address.']);
-        }
-}
+         reports::UpdateOrCreate(
+            ['user_id' => $request->user_id],
+            [
+                'user_id' => $request->user_id,
+                'file_name' => $request->file_name,
+            ]
+        );
+
+        $user = User::find($request->user_id);
+        $user->sendDocumentationNotification();
+        return response('');
+
+    }
 
     public function ask(Request $request)
     {

@@ -23,78 +23,9 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
-use Spatie\PdfToText\Pdf;
 
 class QuestionsController extends Controller
 {
-
-    public function q2(){
-
-        $documents = documents::where(['user_id' => auth()->id(), 'entity_type' => 'App\Models\reports'])->get();
-            $entityIds = $documents->pluck('entity_id');
-
-            $reports = reports::where('user_id', auth()->id())
-                ->whereIn('id', $entityIds)
-                ->get();
-
-        return view('reports', compact('documents','reports'));
-    }
-
-    public function upload(Request $request)
-    {
-        $user = Auth::user();
-        $file = $request->file('file');
-        $path = $file->store('public/documents');
-
-        $document = Documents::create([
-            'user_id' => $user->id,
-            'entity_id' => null,
-            'entity_type' => 'App\Models\reports',
-            'file_name' => $file->getClientOriginalName(),
-            'file_path' => $path,
-            'file_size' => Storage::size($path),
-            'file_category' => $request->file_category,
-        ]);
-
-        $uploadReports = reports::Create([
-                'user_id' => $user->id,
-                'file_name' => $document->file_name,
-                'type' => 'upload',
-            ]);
-
-        $document->update(['entity_id' => $uploadReports->id]);
-
-        $uniqueFileName = $document->file_name . '-' . $document->id;
-        $document->update(['file_name' => $uniqueFileName]);
-
-        return redirect()->route('documents');
-    }
-
-    public function delete($id){
-        $document = documents::find($id);
-        if (!$document || $document->user_id !== Auth::user()->id) {
-            return redirect()->route('documents')->with('error', 'Document not found or unauthorized to delete.');
-        }
-        $reports = reports::find($document->entity_id);
-
-        $reports->delete();
-        Storage::delete('public/documents/' . $document->file_name);
-        $document->delete();
-
-        return redirect()->route('documents')->with('success', 'Document deleted successfully.');
-
-    }
-
-    public function addSection(Request $request){
-            $sequence =  QuestionHeading::count() + 1;
-            $section = QuestionHeading::Create(
-            [
-               'name' => $request->name,
-               'sequence' => $sequence,
-            ]);
-
-        return redirect()->route('add.question');
-    }
 
     public function getQuestions(){
 
@@ -350,7 +281,6 @@ class QuestionsController extends Controller
         $user = auth()->user();
         $answer = Answers::where('questions_id', $questionId)->where('user_id', $user->id)->first();
         $checkQuestionOptions = QuestionOptions::where('questions_id', $questionId)->first();
-        $questionSequenceAfterSelectingYes = explode(',', $checkQuestionOptions->questions_sequence) ;
 
         if($answer->answer == 'Yes' && $checkQuestionOptions == null){
             $getModifiedUrl = $this->getNextUrl($head_sq, $question_sq);
@@ -361,7 +291,7 @@ class QuestionsController extends Controller
             $getModifiedUrl = $this->getNextUrl($head_sq, $question_sq);
             return redirect($getModifiedUrl['modifiedUrl']);
         }
-
+        $questionSequenceAfterSelectingYes = explode(',', $checkQuestionOptions->questions_sequence);
         if($answer->answer == 'Yes' && $questionSequenceAfterSelectingYes != null && $checkQuestionOptions->options  == 'Yes'){
 
             foreach($questionSequenceAfterSelectingYes as $key => $value){

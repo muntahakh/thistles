@@ -124,9 +124,9 @@
         <p>To proceed , please click the button below,</p>
 
         <div class="buttons">
-            {{-- <a href="{{route('pass.reset' , ['id' => $userId , 'hash' => $userVerificationToken ])}}">
-                <button type="submit" class="button-pink">Reset Password</button>
-            </a> --}}
+            <a href="{{route('compiled')}}">
+                <button type="submit" class="button-pink">Get Documentation</button>
+            </a>
             <a href="" class="button-white">Need Support?</a>
         </div>
     </div>
