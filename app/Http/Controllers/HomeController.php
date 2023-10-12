@@ -102,8 +102,8 @@ class HomeController extends Controller
     public function compiled() {
 
         $user = Auth::user();
-        $report = reports::where('user_id' , $user->id);
-        return view('documentCompiled', compact(($report)));
+        $report = reports::where('user_id' , $user->id)->get();
+        return view('documentCompiled', compact('report'));
 
     }
 
