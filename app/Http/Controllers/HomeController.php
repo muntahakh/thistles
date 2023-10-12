@@ -67,11 +67,18 @@ class HomeController extends Controller
             ];
         }
 
-        $pdftotextPath = PHP_OS === 'WINNT'? Config::get('pdf.pdf_to_text.options.pdftotext_path'):'';
+        $fileText = null;
         $pdfPath = public_path('storage/documents/' . $detail['file_name']);
-        $fileText = (new Pdf($pdftotextPath))
-            ->setPdf($pdfPath)
-            ->text();
+        if (PHP_OS === 'WINNT') {
+            $fileText = (new Pdf(Config::get('pdf.pdf_to_text.options.pdftotext_path')))
+                ->setPdf($pdfPath)
+                ->text();
+        }else{
+
+            $fileText = (new Pdf())
+                ->setPdf($pdfPath)
+                ->text();
+        }
 
             // dd($fileText);
 
