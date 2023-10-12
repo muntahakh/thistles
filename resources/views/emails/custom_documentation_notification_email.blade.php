@@ -115,11 +115,11 @@
     <div class="email-heading">
         <h1 class="pt-2 fw-bold">Completed Documentation</h1>
         <p>We sent a email for: </p>
-        <a href="">{{$userEmail}}</a>
+        <a href="">{{$userEmail}}</a><br>
     </div>
     <div class="email-container">
 
-        <p>Dear User {{ucfirst($userName)}},</p>
+        <p>Dear {{ucfirst($userName)}},</p>
         <p>It is to notify you that documentation is completed.</p>
         <p>To proceed , please click the button below,</p>
 
@@ -134,8 +134,8 @@
     <div class="email-container">
         <p>If you did not sign up for Thistles, please disregard this email. Your account will remain inactive.</p>
 
-        <p>If you experience any issues during the verification process or have any questions,
-            feel free to contact our support team at <a href="mailto:info@thistles.com.au">info@thistles.com.au</a>.
+        <p>If you have any questions,feel free to contact our support team at
+            <a href="mailto:info@thistles.com.au">info@thistles.com.au</a>.
         </p>
 
     </div>

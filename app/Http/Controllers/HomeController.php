@@ -67,11 +67,13 @@ class HomeController extends Controller
             ];
         }
 
-        $pdftotextPath = Config::get('pdf.pdf_to_text.options.pdftotext_path');
+        $pdftotextPath = PHP_OS === 'WINNT'? Config::get('pdf.pdf_to_text.options.pdftotext_path'):'';
         $pdfPath = public_path('storage/documents/' . $detail['file_name']);
         $fileText = (new Pdf($pdftotextPath))
             ->setPdf($pdfPath)
             ->text();
+
+            // dd($fileText);
 
         $schedule = schedule::where('user_id' , $user->id)->whereNotNull('time_period')->get()->toArray();
         // dd($fileText,  $schedule);
@@ -122,7 +124,7 @@ class HomeController extends Controller
         );
 
         $user = User::find($request->user_id);
-        $user->sendDocumentationNotification();
+        // $user->sendDocumentationNotification();
         return response('');
 
     }
