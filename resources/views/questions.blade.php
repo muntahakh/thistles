@@ -23,8 +23,8 @@ $backlist = session('backlist');
 
                     @if ($list['data']['question']['guidance_notes'] !== null && trim($list['data']['question']['guidance_notes']) !== '')
                         <div class="main-heading-gd">
-                            <h1 class="pt-2 red-text">{{strtoupper($list['data']['heading']['name'])}}</h1>
-                            <h4 class="red-text pt-2">{{$list['data']['heading']['sub_heading']}}</h4>
+                            <h1 class="pt-2">{{strtoupper($list['data']['heading']['name'])}}</h1>
+                            <h4 class="red-text">{{$list['data']['heading']['sub_heading']}}</h4>
                         </div>
 
                         <div class="guidance-container">
@@ -32,8 +32,8 @@ $backlist = session('backlist');
                         </div>
                     @else
                         <div class="main-heading">
-                            <h1 class="pt-2 red-text">{{strtoupper($list['data']['heading']['name'])}}</h1>
-                            <h4 class="red-text pt-2">{{$list['data']['heading']['sub_heading']}}</h4>
+                            <h1 class="pt-2">{{strtoupper($list['data']['heading']['name'])}}</h1>
+                            <h4 class="pt-2">{{$list['data']['heading']['sub_heading']}}</h4>
                         </div>
                     @endif
                 </div>  <!-- center text -->

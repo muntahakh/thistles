@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Background_Info;
 use App\Models\User;
 use App\Models\reports;
 use App\Models\QuestionHeading;
@@ -40,17 +39,16 @@ class QuestionsController extends Controller
         $getQuestionsData = $this->QuestionList();
 
         $list = $this->GetCurrentAndNextQuestionDetails($head_sq, $question_sq);
-        $backlist = $this->getPreviousUrl($head_sq, $question_sq);
 
         $user = Auth::user();
         $quesId = $list['data']['question']['id'];
         $answer = Answers::where('user_id', $user->id)
         ->where('questions_id', $quesId)
         ->first();
-        session(['list' => $list, 'backlist' => $backlist]);
+        session(['list' => $list]);
 
         $show_schedule = true;
-        return view('questions', ['list' => $list, 'backlist' => $backlist, 'answer' => $answer, 'show_schedule' => $show_schedule]);
+        return view('questions', ['list' => $list,'answer' => $answer, 'show_schedule' => $show_schedule]);
 
     }
 
@@ -582,6 +580,7 @@ class QuestionsController extends Controller
         ->whereNotNull('time_period')->get()->toArray();
 
         $show_schedule = $this->show_schedule();
+
         return view('addSupport', compact('getSchedule','show_schedule'));
 
     }
@@ -600,6 +599,7 @@ class QuestionsController extends Controller
         $getSchedule = schedule::where('user_id' , $user->id)
         ->whereNotNull('time_period')->get()->toArray();
         $show_schedule = $this->show_schedule();
+
         return view('ViewAllSupports', compact('getSchedule','show_schedule'));
 
     }

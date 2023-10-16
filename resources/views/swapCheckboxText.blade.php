@@ -3,15 +3,15 @@
     @csrf
     <div class="form-group">
         @if ($list['data']['question']['questions'] !== null && trim($list['data']['question']['questions']) !== '')
-        <p class="text-blue">Question: {!! $list['data']['question']['questions'] !!}</p>
+        <p class="fw-bold ques-font">Question: {!! $list['data']['question']['questions'] !!}</p>
         @endif
     </div> <!-- form group -->
 
     <div class="form-group form-checkbox justify-content-center">
-        <p class="text-blue p-3">Yes</p>
+        <p class="p-3">Yes</p>
         <input type="checkbox" name="swapcheckbox" class="form-check p-3" id="form-check-yes" value="Yes" <?php if (!empty($answer) && !empty($answer->answer) && $answer->answer === 'Yes') echo 'checked'; ?> onclick="handleCheckboxClick(this)">
 
-        <p class="text-blue p-3">No</p>
+        <p class="p-3">No</p>
         <input type="checkbox" name="swapcheckbox" class="form-check p-3" id="form-check-no" value="No" <?php if (!empty($answer) && !empty($answer->answer) && $answer->answer === 'No') echo 'checked'; ?> onclick="handleCheckboxClick(this)">
     </div>
 

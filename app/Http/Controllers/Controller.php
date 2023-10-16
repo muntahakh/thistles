@@ -132,66 +132,6 @@ class Controller extends BaseController
        }
    }
 
-   public function getPreviousUrl(int $current_head_sq , int $current_question_sq){
-
-        $list = $this->QuestionList();
-        $url = null;
-        $headDecrement = false;
-        $temp_head_sq  = $current_head_sq;
-       $temp_question_sq  = $current_question_sq;
-        $message = "";
-
-        if($list[$current_head_sq]){
-            if($list[$current_head_sq]['questions'][$current_question_sq]){
-
-                $firstkey = array_key_first($list[$current_head_sq]['questions'][$current_question_sq]);
-                $status = $current_head_sq <= $firstkey ? true:false;
-
-                while($status){
-                    $current_question_sq--;
-
-                    if($current_question_sq < $firstkey){
-                        $headDecrement = true;
-                        $status = false;
-                    }
-
-
-                    if(isset($list[$current_head_sq]['questions'][$current_question_sq])){
-                       $url = url('/heading/'.$current_head_sq.'/question/'.$current_question_sq);
-                       $status = false;
-
-                    return [
-                        "url" => $url,
-                    ];
-                }
-                }
-                if($headDecrement){
-                    $current_head_sq--;
-                    if(isset($list[$current_head_sq]) && $list[$current_head_sq]['questions'] != []){
-
-                        $lastquestion = array_key_last($list[$current_head_sq]['questions']);
-                        $url = url('/heading/'.$current_head_sq.'/question/'.$lastquestion);
-
-                        return [
-                            "url" => $url,
-                        ];
-                    }else{
-                        return [
-                            "message" => 'heading decrement last question',
-                        ];
-                    }
-                }else{
-                    return back()->with('error', 'Heading not found');
-                }
-            }else{
-                return back()->with('error', 'questions not found');
-            }
-        }else{
-            return back()->with('error' , 'Heading not found');
-        }
-
-   }
-
    public function show_schedule(){
         $show_schedule = false;
 

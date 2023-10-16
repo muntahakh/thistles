@@ -6,9 +6,9 @@
                        <a href="{{ url('/') }}"><img src="{{ asset('Images/thistles_logo.png') }}" class="navbar-logo" alt="thistles"></a>
                        <a class="brand-name" href="{{ url('/') }}">Thistles</a>
 
-                       @unless(in_array(Route::currentRouteName(), ['homeAth1','questions' ,'compiled', 'index', 'documents', 'get.questions'
+                       @unless(in_array(Route::currentRouteName(), ['homeAth1','questions' , 'index', 'documents', 'get.questions'
                        , 'questions.submit', 'intro.page', 'questions_loop', 'questions.submit', 'get.schedule', 'add.schedule',
-                        'add.support', 'get.support', 'delete.schedule', 'show.schedule']))
+                        'add.support', 'get.support', 'delete.schedule', 'show.schedule', 'waiting']))
 
                        <!-- Left Side Of Navbar -->
                            <ul class="navbar-nav me-auto">
@@ -32,7 +32,7 @@
 
                         @if (in_array(Route::currentRouteName(), ['homeAth1','questions', 'documents', 'get.questions' , 'questions.submit',
                          'intro.page', 'index', 'questions_loop', 'questions.submit', 'get.schedule', 'add.schedule',
-                        'add.support', 'get.support', 'delete.schedule', 'show.schedule','home']))
+                        'add.support', 'get.support', 'delete.schedule', 'show.schedule','home', 'waiting']))
 
                         @auth()
 

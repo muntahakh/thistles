@@ -4,20 +4,18 @@
 
     <div class="form-group">
         @if ($list['data']['question']['questions'] !== null && trim($list['data']['question']['questions']) !== '')
-        <p class="text-blue">Question: {!! $list['data']['question']['questions'] !!}</p>
+        <p class="fw-bold ques-font">Question: {!! $list['data']['question']['questions'] !!}</p>
         @endif
     </div> <!-- form group -->
 
-
     <div class="form-group">
-
         <div class="form-icon">
             <textarea class="text-area big pt-3" placeholder="e.ag. Lorem ipsum" name="answer" cols="50" rows="20" required>{{$answer->answer ?? ''}}</textarea>
             <a href="#" data-toggle="popover" title="{{$list['data']['question']['instructions']}}" data-placement="top" data-content="Some content inside the popover">
                 <img src="{{ asset('svg/fi-rr-interrogation.svg')}}" alt=""></a>
         </div>
-
     </div> <!-- form group -->
+
     <input type="hidden" name="quesId" value="{{$list['data']['question']['id']}}">
     <input type="hidden" value="{{ url($list['url'] ?? '/compiled')}}" name="url">
 
