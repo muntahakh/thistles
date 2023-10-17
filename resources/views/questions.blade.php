@@ -9,22 +9,40 @@ $backlist = session('backlist');
 
 <div class="eula-background">
 
-    <div class="container-fluid main-home-content">
+    <div class="container-fluid main-home-content ">
         <div class="back-icon">
             @if (isset($back_url))
                 <a href="{{ $back_url }}"><img src="{{ asset('svg/back.svg') }}" alt="return_back">Back</a>
-            @else
-
             @endif
-
         </div>
-            <div class="content-center questions-section ">
+            <div class="progress-content">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: {{$list['data']['heading']['sequence'] *100/22 }}%" aria-valuenow="{{$list['data']['question']['sequence'] *100/22}}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <p class="text-lpink p-2">{{ceil($list['data']['heading']['sequence'] *100/22)}}% complete</p>
+                    </div>
+                    <div class="col-sm-12 col-md-6 ">
+                        <form action="{{route('save_progress')}}" method="post">
+                            @csrf
+                            Need a break and continue later?
+                            <input type="hidden" name="currentUrl" value="{{url()->current()}}">
+                            <button type="submit" class="save_progress">Save progress</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quesitons section -->
+            <div class="content-center questions-section">
+                <!-- center text -->
                 <div class="center-text">
 
                     @if ($list['data']['question']['guidance_notes'] !== null && trim($list['data']['question']['guidance_notes']) !== '')
                         <div class="main-heading-gd">
                             <h1 class="pt-2">{{strtoupper($list['data']['heading']['name'])}}</h1>
-                            <h4 class="red-text">{{$list['data']['heading']['sub_heading']}}</h4>
+                            <h4>{{$list['data']['heading']['sub_heading']}}</h4>
                         </div>
 
                         <div class="guidance-container">
@@ -36,7 +54,7 @@ $backlist = session('backlist');
                             <h4 class="pt-2">{{$list['data']['heading']['sub_heading']}}</h4>
                         </div>
                     @endif
-                </div>  <!-- center text -->
+                </div>
 
                 <div class="questions-container">
                     <!-- text input -->
@@ -87,15 +105,6 @@ $backlist = session('backlist');
 
                 </div> <!-- questions container -->
 
-                <!-- save progress link -->
-                <div class="signin-link pt-3">
-                    <form action="{{route('save_progress')}}" method="post">
-                        @csrf
-                    <p>Need a break and continue later?
-                        <input type="hidden" name="currentUrl" value="{{url()->current()}}">
-                        <button type="submit" class="save_progress">Save progress</button></p>
-                    </form>
-                </div> <!-- save progress link -->
 
             </div>  <!-- Questions section -->
         </div> <!-- container main home content -->

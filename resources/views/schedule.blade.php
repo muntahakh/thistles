@@ -15,7 +15,6 @@
     @endforeach
 </div>
 <input type="hidden" name="headingId" value="{{$list['data']['heading']['id']}}">
-
 <button type="submit" class="btn-pink form-button-pink">Next</button>
 
 </form>

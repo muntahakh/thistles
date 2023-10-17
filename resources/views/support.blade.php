@@ -6,7 +6,7 @@ $list = session('list');
 $backlist = session('backlist');
 @endphp
 
-    <div class="questions-table table-content-center table-responsive">
+    <div class="questions-table table-content-center">
         <table class="table-sm" border="1">
             <thead>
                 <tr>

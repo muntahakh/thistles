@@ -42,15 +42,9 @@
                             <li class="nav-item">
                                  <h3>Hello,</h3> <h3 class="text-lpink">{{ ucfirst(explode(' ', Auth::user()->name)[0]) }}</h3>
                             </li>
-
                             <li class="nav-item">
-                            @if (Auth::user()->authentication_type == 'form')
-                                <img src="{{ Auth::user()->image != null ? asset('Images/' . Auth::user()->image) : asset('Images/user-profile.jpg') }}" id="imageIcon" class="img-fluid avatar-img" alt="avatar">
-                            @else
-                                <img src="{{Auth::user()->url_image  ?? asset('Images/user-profile.jpg')}}" id="imageIcon" class="img-fluid avatar-img" alt="avatar">
-                            @endif
+                                <a href="{{route('logout')}}" class="text-decoration-none text-dark fw-bold">Sign Out</a>
                             </li>
-
                         </ul>
                         @endauth
                         {{-- @endif --}}
@@ -61,83 +55,3 @@
     </div>
 </div>
 
-@auth
-
-
-<div class="profile-card-container" id="card-container">
-    <div class="profile-card">
-        <div class="row">
-            <div class="col-3">
-                <form method="POST" action="{{ route('updateProfileImage', ['id' => Auth::user()->id]) }}" enctype="multipart/form-data" id="imageform">
-
-                @if (Auth::user()->authentication_type == 'form')
-                    <img src="{{ asset('Images/' . Auth::user()->image)}}" class="custom-select-avatar img-fluid" alt="avatar">
-                @else
-                    <img src="{{Auth::user()->url_image}}" class="custom-select-avatar img-fluid" alt="avatar">
-                @endif
-                    @csrf
-
-                    <input type="file" name="image" id="file-input-image">
-
-                        <script>
-                            const iconInput = document.getElementById('file-input-image');
-                            const customButton = document.querySelector('.custom-select-avatar');
-                            iconInput.style.display= 'none';
-                            customButton.addEventListener('click', () => {
-                                iconInput.click();
-                            });
-
-                            iconInput.addEventListener('change', () => {
-                                alert("A file has been selected.");
-                                document.getElementById('imageform').submit();
-                            });
-                        </script>
-
-                </form>
-            </div>
-            <div class="col-9">
-                <h5>{{ ucfirst(Auth::user()->name) }}</h5>
-                <span>{{ Auth::user()->email }}</span>
-            </div>
-        </div>
-        <hr>
-        <div class="row p-2">
-            <div class="col-3">
-                <img src="{{asset('svg/fi-rr-money.svg')}}" alt="">
-            </div>
-            <div class="col-9">
-                <h6>Donate to Us</h6>
-            </div>
-        </div>
-        <div class="row p-2">
-            <div class="col-3">
-                <a href="{{route('logout')}}"><img class="cursor-pointer" src="{{asset('svg/Group.svg')}}" alt=""></a>
-            </div>
-            <div class="col-9">
-                <a href="{{route('logout')}}" class="text-danger text-decoration-none cursor-pointer">Sign Out</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-const image = document.getElementById('imageIcon');
-const cardContainer = document.getElementById('card-container');
-const closeBtn = document.getElementById('close-btn');
-
-image.addEventListener('click', () => {
-    if (cardContainer.style.display === 'none') {
-        cardContainer.style.display = 'block';
-    } else {
-        cardContainer.style.display = 'none';
-    }
-});
-document.addEventListener('click', (event) => {
-    if (!cardContainer.contains(event.target) && event.target !== image) {
-        cardContainer.style.display = 'none';
-    }
-});
-
-
-</script>
-@endauth

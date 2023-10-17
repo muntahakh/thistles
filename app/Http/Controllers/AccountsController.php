@@ -57,7 +57,7 @@ class AccountsController extends Controller
 
         Auth::login($user);
 
-        return redirect('/index');
+        return redirect('/introPages');
     }
 
     public function confirmEmail()
@@ -158,7 +158,7 @@ class AccountsController extends Controller
 
     public function signin(){
         if (auth()->check()) {
-            return redirect('/index');
+            return redirect('/introPages');
         }
         else{
             return view('auth.login');
@@ -172,7 +172,7 @@ class AccountsController extends Controller
             $user = Auth::user();
 
             if ($user->email_verified_at !== 'null') {
-                return view('homeAth');
+                return view('introPage');
             }
             else {
                 return redirect()->route('signin')->with('error', 'Please verify your email address.');
@@ -183,24 +183,7 @@ class AccountsController extends Controller
         }
      }
 
-     public function updateProfileImage(Request $request, $id){
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5000',
-        ]);
-
-        if ($request->hasFile('image')) {
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('\Images'), $imageName);
-
-            $user = User::where('id', $id)->update(['image' => $imageName]);
-
-
-        }
-         return redirect()->route('index');
-
-     }
-
-     public function logout(Request $request)
+    public function logout()
     {
         Auth::logout();
         return redirect()->route('login');
@@ -232,8 +215,5 @@ class AccountsController extends Controller
         }
     }
 
-    // public function startQuestions(){
-
-    // }
 
 }

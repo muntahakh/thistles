@@ -226,9 +226,7 @@ class QuestionsController extends Controller
             return redirect($url);
         }
         else{
-            return [
-                'message' => 'No input found',
-            ];
+            return redirect()->back()->with('error' , 'Please upload file');
         }
 
     }
@@ -455,7 +453,7 @@ class QuestionsController extends Controller
         $answer = Answers::where('questions_id', $questionId)->where('user_id', $user->id)->first();
 
         if($answer->answer == 'Yes'){
-            $getModifiedUrl = $this->getNextUrl($head_sq, $question_sq);
+            $getModifiedUrl = $this->getUrlForNextQues($head_sq, $question_sq);
             $finalUrl = $getModifiedUrl['modifiedUrl'];
         }
 
@@ -463,7 +461,6 @@ class QuestionsController extends Controller
             $getModifiedUrl = $this->GetCurrentAndNextQuestionDetails($head_sq, $question_sq);
             $finalUrl = $getModifiedUrl['url'];
         }
-
         return redirect($finalUrl);
     }
 

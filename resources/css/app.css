@@ -294,12 +294,14 @@ a{
     border-radius: 8px;
     padding: 12px 32px;
     text-align: center;
+    background-color: transparent;
 }
 .outline-button a{
     text-decoration: none;
     color:#D0358C;
     font-size: 16px;
     font-family: Inter;
+
 }
 .outline-button:hover{
     background-color: #D0358C;
@@ -673,6 +675,7 @@ hr{
     transform: translateY(-50%);
     cursor: pointer;
 }
+
 .btn-pink {
     width: 100%;
     height: 60px;
@@ -691,6 +694,10 @@ hr{
     color: #D0358C;
     border: #D0358C 1px solid;
     font-weight: bold;
+}
+
+.btn-container{
+    width: 50%;
 }
 
 .sp-Line{
@@ -857,8 +864,10 @@ hr{
 .form-icon img{
     margin-left: 10px;
 }
+
 .questions-section{
-    padding-top: 80px;
+    position: relative;
+     top: 60px;
 }
 .questions-container{
     width: 70%;
@@ -1174,9 +1183,9 @@ hr{
       background-color: rgba(0, 0, 0, 0.5);
     }
     & > div {
-      width: 80%;
-      height: 500px;
-      overflow: scroll;
+      width: 60%;
+      height: 300px;
+      overflow-y: scroll;
       overflow-x: hidden;
       position: absolute;
       top: 55%;
@@ -1297,7 +1306,17 @@ hr{
   }
 
   .ques-font{
-    font-size: 17;
+    font-size: 16;
+  }
+
+  .dollar-symbol{
+    position: relative;
+    top: 40px;
+    left: 10px;
+    width: 20px;
+  }
+  .cost-field{
+    padding-left: 40px;
   }
 
   .custom-popover h3 {
@@ -1318,18 +1337,12 @@ hr{
     left: 90%;
   }
 .form-button-pink{
-    width: 95%;
+    width: 30%;
 }
 .intro-pages p{
-    color: #03C03C;
-    font-size: 14px;
+    font-size: 16px;
 }
- #tab-content1{
-    display: none;
- }
- #tab-content2{
-    display: none;
- }
+
 .modal-btn{
     outline: none;
     border: none;
@@ -1383,13 +1396,31 @@ hr{
     width: 100%;
     margin: 0 auto ;
     margin-top: 10%;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
 }
 .main-heading-gd{
-    width: 75%;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto ;
     margin-top: 10%;
+    text-align: center;
+}
+.intro-container{
+    width: 80%;
+    margin: 0 auto;
+
+}
+.submit-illustrative-exp{
+    display: inline;
+    justify-content: center;
+    align-items: center;
+}
+.progress-content{
+    position: absolute;
+    top: 50px;
+    left: 15%;
+    width: 80%;
+}
+.progress{
+    height: 22px !important;
+}
+.progress-bar{
+    background-color: #D0358C !important;
 }

@@ -2,152 +2,128 @@
 @section('content')
 
 <div class="eula-background">
-    <div class="container-fluid main-home-content">
-        <div class="content-center top-heading">
-            <div class="center-text">
 
-                <div class="modal-container">
-                    <div class="interior">
-                        <a class="btn" class="modal-links" href="#open-modal"> Basic CSS-Only Modal</a>
-                    </div>
-                </div>
+        <div class="eula-content">
+            <div class="intro-container p-5">
+                <h2 class="fw-bold">Getting started</h2>
+                <p>Welcome to Tengu, our online NDIS Reassessment Writer for school leavers from Special
+                    Developmental Schools or Specialist Schools.</p>
 
-                <div id="open-modal" class="modal-window">
-                    <div class="intro-pages">
-                        <a href="#" title="Close" class="modal-close text-decoration-none">X</a>
-                        <h3 class="red-text ">INTRODUCTORY PAGES</h3>
+                <p>Leaving school is a critical time in any person’s life.  And for people with disability who are leaving
+                    Special Developmental Schools or Specialist Schools, the funding provided by NDIS will need to be
+                    reassessed.  Generally, you will require significantly more NDIS funding to help you to build the
+                    capacities you need to take the next step, and to support you during the hours that you were
+                    previously in school.  Tengu is here to help you access that funding.</p>
 
-                        <div id="tab-content">
+                <p>Using cutting edge artificial intelligence, Tengu has been programmed specifically to help school
+                    leavers from Special Developmental Schools or Specialist Schools to apply for sufficient NDIS funds
+                    for the next stage of their lives.</p>
 
-                            <p class="text-decoration-underline">Getting started</p>
-                            <p>Welcome to Tengu, our online NDIS Reassessment Writer for school leavers from Special
-                                Developmental Schools or Specialist Schools.</p>
+                <p>Simply complete our questionnaire and Tengu will generate a long form, properly structured Report
+                    for you and your support coordinator to review, finalise, and provide to the NDIS as part of your
+                    Change of Circumstances application or annual Reassessment. </p>
 
-                            <p>Leaving school is a critical time in any person’s life.  And for people with disability who are leaving
-                                Special Developmental Schools or Specialist Schools, the funding provided by NDIS will need to be
-                                reassessed.  Generally, you will require significantly more NDIS funding to help you to build the
-                                capacities you need to take the next step, and to support you during the hours that you were
-                                previously in school.  Tengu is here to help you access that funding.</p>
+                <p><b>We recommend that you use Tengu in conjunction with your support coordinator. </b> If you can, we
+                    suggest that you complete the questionnaire first, generate the Report, and then take it to your
+                    support coordinator to review, discuss and finalise, before you submit it to the NDIA.  This will help
+                    your support coordinator by reducing the amount of time that they need to spend in preparing the
+                    Report.  It may also help to reduce the number of hours that your support coordinator will need to
+                    charge you. </p>
 
-                            <p>Using cutting edge artificial intelligence, Tengu has been programmed specifically to help school
-                                leavers from Special Developmental Schools or Specialist Schools to apply for sufficient NDIS funds
-                                for the next stage of their lives.</p>
+                <p>That said, depending on your circumstances, alternatively you may find it helpful to go through the
+                    questionnaire together with your support co-ordinator, discuss your answers with them, and
+                    complete the form together. </p>
 
-                            <p>Simply complete our questionnaire and Tengu will generate a long form, properly structured Report
-                                for you and your support coordinator to review, finalise, and provide to the NDIS as part of your
-                                Change of Circumstances application or annual Reassessment. </p>
+                <p>If you do not have a support coordinator, then Thistles can help you to find one.  Please email
+                <a href="mailto:info@thistles.com.au">info@thistles.com.au</a></p>
 
-                            <p><b>We recommend that you use Tengu in conjunction with your support coordinator. </b> If you can, we
-                                suggest that you complete the questionnaire first, generate the Report, and then take it to your
-                                support coordinator to review, discuss and finalise, before you submit it to the NDIA.  This will help
-                                your support coordinator by reducing the amount of time that they need to spend in preparing the
-                                Report.  It may also help to reduce the number of hours that your support coordinator will need to
-                                charge you. </p>
 
-                            <p>That said, depending on your circumstances, alternatively you may find it helpful to go through the
-                                questionnaire together with your support co-ordinator, discuss your answers with them, and
-                                complete the form together. </p>
+                <h2 class="fw-bold">Privacy</h2>
 
-                            <p>If you do not have a support coordinator, then Thistles can help you to find one.  Please email
-                            <a href="mailto:info@thistles.com.au">info@thistles.com.au</a></p>
-                        </div>
+                <p>Tengu has been developed with your privacy top of mind.  For your safety, and to give you peace of
+                    mind, we do not ask for, nor keep, any of your personal details such as your name, address, or NDIS
+                    number.  Instead, you simply add those details to the Report offline, once we have written it for you.</p>
 
-                        <div class="intro-pages " id="tab-content1">
+                <p>For the same reason, we do not ask you to upload any of your confidential expert reports to Tengu.  </p>
 
-                            <p class="text-decoration-underline">Privacy</p>
+                <p>And importantly, once Tengu has generated your document, we do not keep a copy on our server
+                    We are not in the business of data harvesting, sale, or exploitation. </p>
 
-                            <p>Tengu has been developed with your privacy top of mind.  For your safety, and to give you peace of
-                                mind, we do not ask for, nor keep, any of your personal details such as your name, address, or NDIS
-                                number.  Instead, you simply add those details to the Report offline, once we have written it for you.</p>
+                <p>Please note that Tengu uses ChatGPT as a plug in.  This means that any data that you input into
+                    Tengu will be exposed to ChatGPT’s platform and subject to the privacy policy of OpenAi (the
+                    developer of ChatGPT).  You can view OpenAi’s privacy policy <a href="https://openai.com/policies/privacy-policy">here</a>. The best way to mitigate any data security risks associated with
+                    ChatGPT is not to input any identifiable personal information into Tengu such as names, addresses,
+                    NDIS number, tax file number, or the like.  We have developed our questionnaire with this key
+                    principle in mind. </p>
 
-                            <p>For the same reason, we do not ask you to upload any of your confidential expert reports to Tengu.  </p>
+                <h2 class="fw-bold">Important notes</h2>
 
-                            <p>And importantly, once Tengu has generated your document, we do not keep a copy on our server
-                                We are not in the business of data harvesting, sale, or exploitation. </p>
+                <p>Please remember that the document generated by Tengu is only as good as the information that you
+                    provide.  So, please do take time to answer the questions carefully, truthfully, and with sufficient
+                    detail.  If you need help completing the questions, please email <a href="mailto:info@thistles.com.au">info@thistles.com.au</a> and we will
+                    assist.</p>
 
-                            <p>Please note that Tengu uses ChatGPT as a plug in.  This means that any data that you input into
-                                Tengu will be exposed to ChatGPT’s platform and subject to the privacy policy of OpenAi (the
-                                developer of ChatGPT).  You can view OpenAi’s privacy policy <b><a href="https://openai.com/policies/privacy-policy" class="text-green">here</a></b>. The best way to mitigate any data security risks associated with
-                                ChatGPT is not to input any identifiable personal information into Tengu such as names, addresses,
-                                NDIS number, tax file number, or the like.  We have developed our questionnaire with this key
-                                principle in mind. </p>
+                <p>Whilst Tengu is immensely helpful as a tool to assist you, please note that the final responsibility for
+                    the content and accuracy of the document is yours alone.  Please review the document generated by
+                    Tengu carefully, together with your support coordinator or another qualified professional, and make
+                    any necessary amendments.</p>
 
-                            <p class="text-decoration-underline">Important notes</p>
+                <p>Tengu is only suitable for School Leavers from Special Developmental Schools or Specialist Schools,
+                    for their general ongoing funding requirements.  It should not be used for any other purposes.  In
+                    particular, Tengu’s functionality does not extend to applications for funding for Specialist Disability
+                    Accommodation or Supported Independent Living.</p>
 
-                            <p>Please remember that the document generated by Tengu is only as good as the information that you
-                                provide.  So, please do take time to answer the questions carefully, truthfully, and with sufficient
-                                detail.  If you need help completing the questions, please email <a href="mailto:info@thistles.com.au">info@thistles.com.au</a> and we will
-                                assist.</p>
 
-                            <p>Whilst Tengu is immensely helpful as a tool to assist you, please note that the final responsibility for
-                                the content and accuracy of the document is yours alone.  Please review the document generated by
-                                Tengu carefully, together with your support coordinator or another qualified professional, and make
-                                any necessary amendments.</p>
+                <h2 class="fw-bold">Hints and tips</h2>
 
-                            <p>Tengu is only suitable for School Leavers from Special Developmental Schools or Specialist Schools,
-                                for their general ongoing funding requirements.  It should not be used for any other purposes.  In
-                                particular, Tengu’s functionality does not extend to applications for funding for Specialist Disability
-                                Accommodation or Supported Independent Living.</p>
+                <p>Here are some handy hints for how get the best out of Tengu and maximise the impact of your NDIS
+                    submission:</p>
 
-                        </div>
+                <ol>
+                    <li><b>Write in the first person:</b>  If you are completing the questionnaire on behalf of someone
+                        else, such as your child, please write the responses as if you were them.  So say “I” rather
+                        than “he”, “she”, or “they”, for example.</li>
 
-                        <div class="intro-pages" id="tab-content2">
+                    <li><b>Reasonable and necessary:</b>  Bear in mind that any supports or services that NDIS funds must
+                        be “reasonable and necessary”.  To be considered reasonable and necessary, a support or
+                        service:
+                        <ul>
+                            <li>must be related to your disability</li>
+                            <li>must not include day-to-day living costs not related to your disability support needs,
+                                such as groceries </li>
+                            <li>should represent value for money</li>
+                            <li>must be likely to be effective and work for you, and</li>
+                            <li>should consider support given to you by other government services, your family, carers,
+                                networks and the community. </li>
+                        </ul>
 
-                            <p class="text-decoration-underline">Hints and tips</p>
+                        <p>To find out more about the “reasonable and necessary” criteria from the NDIS website, click
+                        <a href="https://www.ndis.gov.au/understanding/supports-funded-ndis/reasonable-and-necessary-supports">here</a>.</p>
+                    </li>
 
-                            <p>Here are some handy hints for how get the best out of Tengu and maximise the impact of your NDIS
-                                submission:</p>
+                    <li><b>Collect Medical and Other Relevant Documentation:</b> These could include medical records,
+                        assessment reports, or letters from schools or allied health providers detailing your disability
+                        and how it affects your daily life and functioning. This evidence should be recent, relevant,
+                        and thorough.  And the more that you have, the better.</li>
 
-                            <ol class="text-green">
-                                <li><b>Write in the first person:</b>  If you are completing the questionnaire on behalf of someone
-                                    else, such as your child, please write the responses as if you were them.  So say “I” rather
-                                    than “he”, “she”, or “they”, for example.</li>
+                    <li><b>Cost Estimates:</b> Gather quotes or estimates for any supports, therapies, equipment, or
+                        modifications you are requesting. Make sure to explain why these are reasonable and
+                        necessary for your situation. </li>
 
-                                <li><b>Reasonable and necessary:</b>  Bear in mind that any supports or services that NDIS funds must
-                                    be “reasonable and necessary”.  To be considered reasonable and necessary, a support or
-                                    service:
-                                    <ul>
-                                        <li>must be related to your disability</li>
-                                        <li>must not include day-to-day living costs not related to your disability support needs,
-                                            such as groceries </li>
-                                        <li>should represent value for money</li>
-                                        <li>must be likely to be effective and work for you, and</li>
-                                        <li>should consider support given to you by other government services, your family, carers,
-                                            networks and the community. </li>
-                                    </ul>
+                    <li><b>Tell a Story:</b> Instead of just providing facts and figures, tell your story. Describe your journey,
+                        your struggles, and your victories. Make it personal and relatable.</li>
 
-                                    <p>To find out more about the “reasonable and necessary” criteria from the NDIS website, click
-                                        <b><a href="https://www.ndis.gov.au/understanding/supports-funded-ndis/reasonable-and-necessary-supports" class="text-green">here</a></b>.</p>
-                                </li>
+                    <li><b>Be Specific and Detailed:</b> The more details you can provide, the better, although please do
+                        not disclose personal information that could identify you such as names, addresses,
+                        telephone numbers or the like. Explain exactly how the disability affects you and why the
+                        requested supports are needed.</li>
 
-                                <li><b>Collect Medical and Other Relevant Documentation:</b> These could include medical records,
-                                    assessment reports, or letters from schools or allied health providers detailing your disability
-                                    and how it affects your daily life and functioning. This evidence should be recent, relevant,
-                                    and thorough.  And the more that you have, the better.</li>
-
-                                <li><b>Cost Estimates:</b> Gather quotes or estimates for any supports, therapies, equipment, or
-                                    modifications you are requesting. Make sure to explain why these are reasonable and
-                                    necessary for your situation. </li>
-
-                                <li><b>Tell a Story:</b> Instead of just providing facts and figures, tell your story. Describe your journey,
-                                    your struggles, and your victories. Make it personal and relatable.</li>
-
-                                <li><b>Be Specific and Detailed:</b> The more details you can provide, the better, although please do
-                                    not disclose personal information that could identify you such as names, addresses,
-                                    telephone numbers or the like. Explain exactly how the disability affects you and why the
-                                    requested supports are needed.</li>
-
-                                <li><b>Highlight the Long-term Benefits:</b> Explain how the supports will benefit you in the long term.
-                                    This could include increased independence, improved quality of life, or better prospects for
-                                    education or work.</li>
-                            </ol>
-                            <a href="{{route('start_documentation')}}"><button class="modal-btn" onclick="finish()">Finish</button></a>
-
-                        </div>
-
-                        <button class="modal-btn" id="nextButton" onclick="next()">Next</button>
-
-                    </div>
+                    <li><b>Highlight the Long-term Benefits:</b> Explain how the supports will benefit you in the long term.
+                        This could include increased independence, improved quality of life, or better prospects for
+                        education or work.</li>
+                </ol>
+                <div class="btn-container">
+                <button class="outline-button" onclick="finish()"><a href="{{route('index')}}">Finish</a></button>
                 </div>
 
             </div>
@@ -155,37 +131,4 @@
     </div>
 </div>
 
-<script>
-   function next() {
-    // Get references to the paragraphs
-    var paragraph1 = document.getElementById("tab-content");
-    var paragraph2 = document.getElementById("tab-content1");
-    var paragraph3 = document.getElementById("tab-content2");
-    var nextButton = document.getElementById("nextButton")
-
-    // Check the visibility of paragraph 1
-    if (paragraph1.style.display === "block") {
-        paragraph1.style.display = "none";
-        // If paragraph 1 is currently visible, hide it and show paragraph 2
-        paragraph2.style.display = "block";
-        paragraph3.style.display = "none";
-
-    } else if (paragraph2.style.display === "block") {
-        paragraph2.style.display = "none";
-        // If paragraph 2 is currently visible, hide it and show paragraph 3
-        paragraph3.style.display = "block";
-        paragraph1.style.display = "none";
-        nextButton.style.display = "none";
-    } else {
-        // If neither paragraph 1 nor paragraph 2 is visible, show paragraph 1
-        paragraph1.style.display = "block";
-        paragraph2.style.display = "none";
-        paragraph3.style.display = "none";
-    }
-}
-
-
-</script>
-
-</div>
 @endsection

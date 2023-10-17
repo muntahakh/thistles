@@ -170,7 +170,8 @@ class Controller extends BaseController
         $path = $parsedUrl['path'];
 
         $segments = explode('/', trim($path, '/'));
-        $segments[3] = (int)$segments[3] -1 ;
+
+        $segments[3] = (int)$segments[3] -1;
 
         if($segments[3] == 0){
             $headsq-1;
@@ -185,6 +186,31 @@ class Controller extends BaseController
             'modifiedUrl' => $modifiedUrl,
         ];
 
+   }
+
+   public function getUrlForNextQues($headsq, $questionsq){
+    $getQuestions = $this->GetCurrentAndNextQuestionDetails($headsq, $questionsq);
+        $url = $getQuestions['url'];
+        $parsedUrl = parse_url($url);
+        $path = $parsedUrl['path'];
+
+        $segments = explode('/', trim($path, '/'));
+
+        $segments[3] = (int)$segments[3] -1;
+
+        $list  = $this->QuestionList();
+
+        if($segments[3] == 0){
+            $ques_sq = array_key_last($list[$headsq]['questions']);
+            $modifiedUrl = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . ':' . $parsedUrl['port'] . '/heading/' . $headsq . '/question/' . $ques_sq;
+            }
+        else{
+            $modifiedUrl = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . ':' . $parsedUrl['port'] . '/' . implode('/', $segments);
+        }
+
+        return [
+            'modifiedUrl' => $modifiedUrl,
+        ];
    }
 
 }
