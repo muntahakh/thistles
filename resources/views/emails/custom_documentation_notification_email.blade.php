@@ -87,6 +87,9 @@
         transition: background-color 0.3s ease;
         font-weight: bold;
     }
+    .button-pink a{
+        text-decoration: none
+    }
     .button-white{
         width: 100%;
         height: 60px;
@@ -106,6 +109,7 @@
         cursor: pointer;
     }
 </style>
+
 
 <div class="container">
     {{-- Email template --}}
@@ -127,7 +131,8 @@
             <a href="{{route('compiled')}}">
                 <button type="submit" class="button-pink">Get Documentation</button>
             </a>
-            <a href="" class="button-white">Need Support?</a>
+            <a href="http://167.99.36.48:7020/{{$report->file_name}}" target="blank"><button class="button-white">Download Documentation</button></a>
+            <a href="https://www.ndis.gov.au/understanding/supports-funded-ndis/reasonable-and-necessary-supports" class="button-white">Need Support?</a>
         </div>
     </div>
 
@@ -138,6 +143,10 @@
             <a href="mailto:info@thistles.com.au">info@thistles.com.au</a>.
         </p>
 
+    </div>
+
+    <div class="email-conatiner">
+        <p>If you did not sign up for Thistles, please disregard this email. Your account will remain inactive.</p>
     </div>
 
 </div>

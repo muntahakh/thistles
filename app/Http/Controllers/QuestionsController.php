@@ -441,6 +441,7 @@ class QuestionsController extends Controller
         if($yes && $highCost){
             $getModifiedUrl = $this->GetCurrentAndNextQuestionDetails($head_sq, $question_sq);
             $finalUrl = $getModifiedUrl['url'];
+            Session::forget('yes');
         }
 
         return redirect($finalUrl);
