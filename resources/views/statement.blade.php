@@ -65,5 +65,4 @@
             <p>{{$list['data']['question']['instructions']}}</p>
         </div>
     </div>
-<button type="submit" id="form-submit" class="btn-pink form-button-pink">Next Question</button>
 </form> <!-- main form -->

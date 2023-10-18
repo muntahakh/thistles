@@ -98,14 +98,9 @@ class HomeController extends Controller
             'user_id' => $user->id,
             'name' => $user->name . '_' . $user->id
             ]);
-            $abc = ['responses' => $finalData,
-            'career_statement' => $careerstatement,
-            'schedule' => $scheduleData,
-            'user_id' => $user->id,
-            'name' => $user->name . '_' . $user->id];
 
-            return response()->json($abc);
-        // return redirect()->route('waiting');
+            // return response()->json($abc);
+        return redirect()->route('waiting');
     }
 
     public function eula()
