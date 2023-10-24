@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('instructions');
             $table->enum('input_type', ['checkbox', 'text', 'file', 'cost','table','radio','skipable','swap']);
             $table->bigInteger('sequence');
+            $table->bigInteger('number');
             $table->timestamps();
 
             $table->foreign('heading_id')->references('id')->on('question_headings')->onDelete('cascade');

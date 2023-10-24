@@ -20,7 +20,12 @@ $backlist = session('backlist');
             @if (isset($getSchedule))
             @foreach ($getSchedule as $key => $schedule)
             <tr>
-                <td><p>{{$schedule['day']}}</p></td>
+
+                @foreach ($days as $key => $value)
+                     @if(intval($schedule['day']) === $key )
+                        <td><p>{{$value}}</p></td>
+                    @endif
+                @endforeach
                 <td>
                     <div class="">
                         <p>{{$schedule['time_period']}}</p>

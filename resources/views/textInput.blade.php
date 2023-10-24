@@ -1,4 +1,5 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
    <form action="{{ route('questions.submit')}}" method="post" id="file__form" enctype="multipart/form-data">
     @csrf
 
@@ -10,7 +11,7 @@
 
     <!-- form group -->
     <div class="form-group">
-        <textarea class="text-area big pt-3" placeholder="e.ag. Lorem ipsum" name="answer" cols="50" rows="20" required>{{$answer->answer ?? ''}}</textarea>
+        <textarea class="text-area big pt-3" placeholder="Your answer here" name="answer" cols="50" rows="20" required>{{$answer->answer ?? ''}}</textarea>
     </div> <!-- form group -->
 
     <input type="hidden" name="quesId" value="{{$list['data']['question']['id']}}">
@@ -31,13 +32,33 @@
         @endif
     </div>
 
-    {{-- Illustrative example Modal  --}}
-    <div id="open-modal" class="modal-window">
-        <div class="intro-pages">
-            <a href="#" title="Close" class="modal-close text-decoration-none">X</a>
-            <h3>Illustrative Examples</h3>
-            <p>{!! $list['data']['question']['instructions'] !!}</p>
-        </div>
-    </div>
 
 </form> <!-- main form -->
+{{-- Illustrative example Modal  --}}
+<div id="open-modal" class="modal-window">
+    <div class="intro-pages">
+        <a href="#" title="Close" class="modal-close text-decoration-none">X</a>
+        <h3>Illustrative Examples</h3>
+        <p id="textCopy">{!! $list['data']['question']['instructions'] !!}</p>
+        <button class="outline-button" id="copyButton" onclick="copyText()">Copy Text</button>
+    </div>
+</div>
+
+
+<script>
+    function copyText() {
+      var copyText = document.getElementById("textCopy");
+      var range = document.createRange();
+      var closeModalOnCopyText = document.getElementById('open-modal');
+      range.selectNode(copyText);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand("copy");
+      console.log(copyText.value);
+      copyButton.innerHTML = "Copied";
+      setTimeout(function(){
+        closeModalOnCopyText.style.display = 'none';
+        copyButton.innerHTML = "Copy text";
+      }, 2000);
+    }
+  </script>

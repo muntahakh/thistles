@@ -57,7 +57,7 @@ class AccountsController extends Controller
 
         Auth::login($user);
 
-        return redirect('/introPages');
+        return redirect('/index');
     }
 
     public function confirmEmail()
@@ -158,7 +158,7 @@ class AccountsController extends Controller
 
     public function signin(){
         if (auth()->check()) {
-            return redirect('/introPages');
+            return redirect('/index');
         }
         else{
             return view('auth.login');
@@ -172,7 +172,7 @@ class AccountsController extends Controller
             $user = Auth::user();
 
             if ($user->email_verified_at !== 'null') {
-                return view('introPage');
+                return view('homeAth');
             }
             else {
                 return redirect()->route('signin')->with('error', 'Please verify your email address.');

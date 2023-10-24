@@ -58,7 +58,7 @@ class Controller extends BaseController
 
                $endkey =  array_key_last($list[$current_head_sq]['questions']);
                $status =  $current_question_sq <= $endkey ? true : false;
-                // dd($status);
+                
                while($status){
                    $current_question_sq++;
                    if($current_question_sq > $endkey){

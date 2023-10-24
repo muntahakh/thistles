@@ -8,7 +8,6 @@ $backlist = session('backlist');
 @endphp
 
 <div class="eula-background">
-
     <div class="container-fluid main-home-content ">
         <div class="back-icon">
             @if (isset($back_url))
@@ -19,9 +18,9 @@ $backlist = session('backlist');
                 <div class="row">
                     <div class="col-sm-12 col-md-6">
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: {{$list['data']['heading']['sequence'] *100/22 }}%" aria-valuenow="{{$list['data']['question']['sequence'] *100/22}}" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar" style="width: {{$list['data']['question']['number'] *100/135}}%" aria-valuenow="{{$list['data']['question']['number'] *100/135}}" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <p class="text-lpink p-2">{{ceil($list['data']['heading']['sequence'] *100/22)}}% complete</p>
+                        <p class="text-lpink p-2">{{ceil($list['data']['question']['number'] *100/135)}}% complete</p>
                     </div>
                     <div class="col-sm-12 col-md-6 ">
                         <form action="{{route('save_progress')}}" method="post">
@@ -107,7 +106,7 @@ $backlist = session('backlist');
 
 
             </div>  <!-- Questions section -->
-        </div> <!-- container main home content -->
+    </div> <!-- container main home content -->
 </div> <!-- Eula background -->
 
 @endsection

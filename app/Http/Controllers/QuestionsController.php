@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Spatie\PdfToText\Pdf;
 
 class QuestionsController extends Controller
 {
@@ -118,8 +119,7 @@ class QuestionsController extends Controller
             $fileName = $file->getClientOriginalName();
 
             $path = $file->storeAs('documents' , $user->id . '_' . $fileName  , 'public');
-
-            $answer = Answers::updateOrCreate(
+            Answers::updateOrCreate(
                 ['user_id' => $user->id, 'questions_id' => $quesId],
                 [
                     'answer' => null,
@@ -596,9 +596,10 @@ class QuestionsController extends Controller
         $user = Auth::user();
         $getSchedule = schedule::where('user_id' , $user->id)
         ->whereNotNull('time_period')->get()->toArray();
+        $days = config('days');
         $show_schedule = $this->show_schedule();
 
-        return view('ViewAllSupports', compact('getSchedule','show_schedule'));
+        return view('ViewAllSupports', compact('getSchedule','show_schedule', 'days'));
 
     }
 

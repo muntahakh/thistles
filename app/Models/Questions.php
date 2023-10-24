@@ -15,6 +15,7 @@ class Questions extends Model
         'instructions',
         'input_type',
         'sequence',
+        'number'
     ];
 
     public function QuestionHeading()

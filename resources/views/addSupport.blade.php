@@ -45,8 +45,8 @@ $daykey = session('daykey');
                     </td>
                     <td>
                         <textarea placeholder="I need [one-on-one] support because" name="explanation" cols="30"></textarea>
-                        <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn">Add more</button>
+                        <div class="d-flex justify-content-end pt-2">
+                            <button type="submit" class="outline-button">Add</button>
                         </div>
                     </td>
                 </tr>

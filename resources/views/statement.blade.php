@@ -9,7 +9,12 @@
     </div>
 
     <!-- form group -->
-    <div class="fileupload-card custom-select-file">
+    <div class="form-group">
+        <textarea class="text-area big pt-3" id="statement-answer" placeholder="Your answer here" name="answer" cols="50" rows="20">{{$answer->answer ?? ''}}</textarea>
+    </div> <!-- form group -->
+
+    <!-- form group -->
+    <div class="fileupload-card custom-select-file" id="statement-upload">
         <div class="row">
             <div class="col-3 mx-3 pt-3">
                 <img src="{{ asset('svg/fi-sr-document.svg')}}"  alt="">
@@ -19,6 +24,29 @@
             </div>
         </div>
     </div>
+
+    <button type="button" onclick="showStatementInput()" id="show-statement-button" class="button-white" >Or upload a document instead</button>
+
+    <script>
+        function showStatementInput(){
+            var statementUpload = document.getElementById('statement-upload');
+            var statementInput = document.getElementById('statement-answer');
+            var statementButton = document.getElementById('show-statement-button');
+
+
+            if(statementButton.innerHTML === "Write statement instead"){
+                statementUpload.style.display ='none';
+                statementInput.style.display ='block';
+                statementButton.innerHTML = "Or upload a document instead";
+            }
+            else{
+                statementUpload.style.display ='block';
+                statementInput.style.display ='none';
+                statementButton.innerHTML = "Write statement instead";
+            }
+
+        }
+    </script>
 
     <input type="file" name="file" id="document-input">
 
@@ -57,12 +85,32 @@
         @endif
     </div>
 
-    {{-- Illustrative example Modal  --}}
-    <div id="open-modal" class="modal-window">
-        <div class="intro-pages">
-            <a href="#" title="Close" class="modal-close text-decoration-none">X</a>
-            <h3>Illustrative Examples</h3>
-            <p>{{$list['data']['question']['instructions']}}</p>
-        </div>
-    </div>
 </form> <!-- main form -->
+{{-- Illustrative example Modal  --}}
+<div id="open-modal" class="modal-window">
+    <div class="intro-pages">
+        <a href="#" title="Close" class="modal-close text-decoration-none">X</a>
+        <h3>Illustrative Examples</h3>
+        <p id="textCopy">{!! $list['data']['question']['instructions'] !!}</p>
+        <button class="outline-button" id="copyButton" onclick="copyText()">Copy Text</button>
+    </div>
+</div>
+
+
+<script>
+    function copyText() {
+      var copyText = document.getElementById("textCopy");
+      var range = document.createRange();
+      var closeModalOnCopyText = document.getElementById('open-modal');
+      range.selectNode(copyText);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand("copy");
+      console.log(copyText.value);
+      copyButton.innerHTML = "Copied";
+      setTimeout(function(){
+        closeModalOnCopyText.style.display = 'none';
+        copyButton.innerHTML = "Copy text";
+      }, 2000);
+    }
+  </script>

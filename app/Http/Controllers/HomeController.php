@@ -66,14 +66,23 @@ class HomeController extends Controller
             ];
         }
 
+        if($detail['file_name'] !== null){
         $careerstatement = null;
         $pdfPath = public_path('storage/documents/' . $detail['file_name']);
+
         if (PHP_OS === 'WINNT') {
             $careerstatement = (new Pdf(Config::get('pdf.pdf_to_text.options.pdftotext_path')))->setPdf($pdfPath)->text();
-        } else {
+        } elseif(PHP_OS === 'Darwin') {
+            $careerstatement = (new Pdf(Config::get('pdf.pdf_to_text.options.pdftotext_path')))
+            ->setPdf($pdfPath)
+            ->text();
+        }else{
             $careerstatement = (new Pdf())->setPdf($pdfPath)->text();
         }
-
+        }
+        else{
+            $careerstatement = null;
+        }
         $schedule = schedule::where('user_id', $user->id)
             ->whereNotNull('time_period')
             ->get()
@@ -99,7 +108,6 @@ class HomeController extends Controller
             'name' => $user->name . '_' . $user->id
             ]);
 
-            // return response()->json($abc);
         return redirect()->route('waiting');
     }
 
