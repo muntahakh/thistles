@@ -83,32 +83,42 @@ class HomeController extends Controller
         else{
             $careerstatement = null;
         }
+
         $schedule = schedule::where('user_id', $user->id)
-            ->whereNotNull('time_period')
+            ->whereNotNull('hours')
             ->get()
             ->toArray();
 
-        foreach($schedule as $key => $tableData){
+        if($schedule !== [] ){
 
-            $scheduleData[$tableData['id']]= [
-                'days' => $tableData['day'],
-                'time_period' => $tableData['time_period'],
-                'support' => $tableData['support'],
-                'ratio' => $tableData['ratio'],
-                'explanation' => $tableData['explanation'],
+            foreach($schedule as $key => $tableData){
 
-            ];
+                $scheduleData[$tableData['id']]= [
+                    'days' => $tableData['day'],
+                    'hours' => $tableData['hours'],
+                    'timesOfDay' => $tableData['times_of_day'],
+                    'support' => $tableData['support'],
+                    'ratio' => $tableData['ratio'],
+                    'explanation' => $tableData['explanation'],
+
+                ];
+            }
+            $response = Http::post('http://167.99.36.48:7020/generate_report', [
+                'responses' => $finalData,
+                'career_statement' => $careerstatement,
+                'schedule' => $scheduleData,
+                'user_id' => $user->id,
+                'name' => $user->name . '_' . $user->id
+                ]);
+
+            return redirect()->route('waiting');
+
+        }
+        else{
+            return back()->with('error', 'Please update the schedule.');
         }
 
-        $response = Http::post('http://167.99.36.48:7020/generate_report', [
-            'responses' => $finalData,
-            'career_statement' => $careerstatement,
-            'schedule' => $scheduleData,
-            'user_id' => $user->id,
-            'name' => $user->name . '_' . $user->id
-            ]);
 
-        return redirect()->route('waiting');
     }
 
     public function eula()

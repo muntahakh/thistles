@@ -28,7 +28,8 @@ $backlist = session('backlist');
                 @endforeach
                 <td>
                     <div class="">
-                        <p>{{$schedule['time_period']}}</p>
+                        <p>{{$schedule['hours']}} hours</p>
+                        <p>{{$schedule['times_of_day']}}</p>
                         <p>{{$schedule['support']}}</p>
                     </div>
                 </td>
@@ -45,6 +46,11 @@ $backlist = session('backlist');
     </table>
 </div>
 </div>
+@if(session('error'))
+        <div class="text-red error-fs" id="alert-message">
+            *{{ session('error') }}
+        </div>
+    @endif
 <a href="{{ route('getDocumentation')}} "><button class="btn-pink form-button-pink">Compile My document</button></a>
 
 @endsection

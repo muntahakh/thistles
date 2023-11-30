@@ -1,7 +1,6 @@
 
 @extends('layouts.app')
 @section('content')
-
 @php
 $list = session('list');
 $backlist = session('backlist');
@@ -11,30 +10,32 @@ $backlist = session('backlist');
     <div class="container-fluid main-home-content ">
         <div class="back-icon">
             @if (isset($back_url))
-                <a href="{{ $back_url }}"><img src="{{ asset('svg/back.svg') }}" alt="return_back">Back</a>
+                <a href="{{ $back_url }}"><img src="{{ asset('svg/back.svg') }}" alt="return_back"></a>
             @endif
         </div>
-            <div class="progress-content">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6">
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: {{$list['data']['question']['number'] *100/135}}%" aria-valuenow="{{$list['data']['question']['number'] *100/135}}" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <p class="text-lpink p-2">{{ceil($list['data']['question']['number'] *100/135)}}% complete</p>
+
+        <div class="progress-content">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: {{$list['data']['question']['number'] *100/136}}%" aria-valuenow="{{$list['data']['question']['number'] *100/136}}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <div class="col-sm-12 col-md-6 ">
-                        <form action="{{route('save_progress')}}" method="post">
-                            @csrf
-                            Need a break and continue later?
-                            <input type="hidden" name="currentUrl" value="{{url()->current()}}">
-                            <button type="submit" class="save_progress">Save progress</button>
-                        </form>
-                    </div>
+                    <p class="text-lpink p-2">{{ceil($list['data']['question']['number'] *100/137)}}% complete</p>
+                </div>
+                <div class="col-sm-12 col-md-6 ">
+                    <form action="{{route('save_progress')}}" method="post">
+                        @csrf
+                        Need a break and continue later?
+                        <input type="hidden" name="currentUrl" value="{{url()->current()}}">
+                        <button type="submit" class="save_progress">Save progress</button>
+                    </form>
                 </div>
             </div>
+        </div>
 
             <!-- Quesitons section -->
-            <div class="content-center questions-section">
+            <div class="content_center_get_started questions-section">
+
                 <!-- center text -->
                 <div class="center-text">
 
@@ -98,15 +99,31 @@ $backlist = session('backlist');
                         @include('schedule')
                         @else
                         @yield('support')
-
                         @endif
                     @endif
 
                 </div> <!-- questions container -->
 
 
+                <script>
+                    var modal = document.getElementById('open-modal');
+                    var modalBtn = document.getElementById('openModalBtn');
+
+                    window.onclick = function(event) {
+                    if (event.target == modal && event.target !== modalBtn) {
+                        modal.style.display = "none";
+                    }
+                    if(event.target == modalBtn ){
+                        modal.style.display = "block";
+                    }
+                    }
+
+
+                </script>
             </div>  <!-- Questions section -->
     </div> <!-- container main home content -->
 </div> <!-- Eula background -->
+
+
 
 @endsection

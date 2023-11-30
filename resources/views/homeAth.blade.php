@@ -45,7 +45,7 @@
 
         <p>For the same reason, we do not ask you to upload any of your confidential expert reports to Tengu.  </p>
 
-        <p>And importantly, once Tengu has generated your document, we do not keep a copy on our server
+        <p>And importantly, once Tengu has generated your document, we do not keep a copy on our server.
             We are not in the business of data harvesting, sale, or exploitation. </p>
 
         <p>Please note that Tengu uses ChatGPT as a plug in.  This means that any data that you input into
@@ -120,13 +120,17 @@
             <li><b>Highlight the Long-term Benefits:</b> Explain how the supports will benefit you in the long term.
                 This could include increased independence, improved quality of life, or better prospects for
                 education or work.</li>
+            <li><b>Time required to complete our questionnaire:</b> Our questionnaire is necessarily quite detailed.  It may take you some time (more
+                than half an hour) to complete.  That said, you can always save your progress and return to the
+                questionnaire later once you have taken a break.</li>
+
         </ol>
     </div>
     </div>
     <div class="container-fluid main-home-content">
         <div class="row">
             {{-- backgroud image --}}
-            <div class="col-md-12 col-lg-12 col-sm-12 content-center">
+            <div class="col-md-12 col-lg-12 col-sm-12 content_center_get_started">
                 <div class="center-text">
                     <img src="{{ asset('Images/disabled student-rafiki 1.png') }}"  class="img-fluid home-img" alt="">
                     <h1 class="pt-2">Let’s Get Started</h1>

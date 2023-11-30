@@ -1,11 +1,12 @@
 
 <p class="fw-bold pt-2">Choose days on which support is required</p>
+
 <form action="{{route('add.schedule')}}" method="post" class="table-form">
 @csrf
 <div class="container">
     @foreach (config('days') as $key => $value)
     <div class="row">
-        <div class="col-1">
+        <div class="col-1 align-right">
             <input type="checkbox" name="days[]" class="form-check" value="{{$key}}">
         </div>
         <div class="col-10">
@@ -15,7 +16,7 @@
     @endforeach
 </div>
 <input type="hidden" name="headingId" value="{{$list['data']['heading']['id']}}">
-<button type="submit" class="btn-pink form-button-pink">Next</button>
+<center><button type="submit" class="btn-pink form-button-pink">Next</button></center>
 
 </form>
 

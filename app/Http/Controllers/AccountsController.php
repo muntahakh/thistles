@@ -27,7 +27,8 @@ class AccountsController extends Controller
     }
 
     public function signinWithGoogle(){
-        $user = Socialite::driver('google')->user();
+        // $user = Socialite::driver('google')->user();
+        $user = Socialite::driver('google')->stateless()->user();
         $existingUser = User::where('email', $user->email)->first();
 
         if ($existingUser) {
@@ -124,7 +125,6 @@ class AccountsController extends Controller
     public function pass_reset(Request $request , $id, $token)  {
         $user  = User::findOrFail($id);
         if($user->verification_token  == $token){
-
             return view('auth.passwords.newpassword',compact('user'));
         }
         else {

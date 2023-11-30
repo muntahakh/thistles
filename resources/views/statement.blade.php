@@ -4,7 +4,7 @@
 
     <div class="form-group">
         @if ($list['data']['question']['questions'] !== null && trim($list['data']['question']['questions']) !== '')
-        <p class="fw-bold ques-font">Question: {!! $list['data']['question']['questions'] !!}</p>
+        <p class="ques-font">Question: {!! $list['data']['question']['questions'] !!}</p>
         @endif
     </div>
 
@@ -90,7 +90,9 @@
 <div id="open-modal" class="modal-window">
     <div class="intro-pages">
         <a href="#" title="Close" class="modal-close text-decoration-none">X</a>
-        <h3>Illustrative Examples</h3>
+        <h3>Illustrative Examples</h3><br><br>
+        <i>You can copy and paste any relevant examples straight into the
+            questionnaire if that will assist</i>
         <p id="textCopy">{!! $list['data']['question']['instructions'] !!}</p>
         <button class="outline-button" id="copyButton" onclick="copyText()">Copy Text</button>
     </div>

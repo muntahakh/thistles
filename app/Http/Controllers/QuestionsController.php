@@ -226,7 +226,7 @@ class QuestionsController extends Controller
             return redirect($url);
         }
         else{
-            return redirect()->back()->with('error' , 'Please upload file');
+            return redirect()->back()->with('error' , 'Please fill up the respective field(s).');
         }
 
     }
@@ -501,15 +501,10 @@ class QuestionsController extends Controller
         $headingId = $request->headingId;
         $user = Auth::user();
         $checkedDays = $request->input('days',[]);
-
-        if($request->has('start_time') && $request->has('daykey')){
-            $checkDayExistInDatabase = schedule::where('day' , $request->daykey)->where('time_period', null)->get();
+        if($request->has('hours') && $request->has('daykey')){
+            $checkDayExistInDatabase = schedule::where('day' , $request->daykey)->where('hours', null)->get();
 
             if(!$checkDayExistInDatabase){
-                $startTime = $request->start_time;
-                $endTime = $request->end_time;
-                $time_period = $startTime . ' - ' . $endTime;
-                $dayKey = $request->daykey;
 
                 $schedule = schedule::UpdateOrCreate(
                     ['heading_id' => $headingId,
@@ -520,7 +515,8 @@ class QuestionsController extends Controller
                         'heading_id' => $headingId,
                         'user_id' => $user->id,
                         'day' => $request->daykey,
-                        'time_period' => $time_period,
+                        'hours' => $request->hours,
+                        'times_of_day' => $request->timeofday,
                         'support'=> $request->support,
                         'ratio' => $request->ratio,
                         'explanation' => $request->explanation,
@@ -528,24 +524,22 @@ class QuestionsController extends Controller
                 );
             }
             else{
-                $startTime = $request->start_time;
-                $endTime = $request->end_time;
-                $time_period = $startTime . ' - ' . $endTime;
-                $dayKey = $request->daykey;
 
                 $schedule = schedule::create(
                     [
                         'heading_id' => $headingId,
                         'user_id' => $user->id,
                         'day' => $request->daykey,
-                        'time_period' => $time_period,
+                        'hours' => $request->hours,
+                        'times_of_day' => $request->timeofday,
                         'support'=> $request->support,
                         'ratio' => $request->ratio,
                         'explanation' => $request->explanation,
                     ]
                 );
             }
-        return redirect()->route('show.schedule', ['dayKey' => $dayKey]);
+
+        return redirect()->route('show.schedule', ['dayKey' => $request->daykey]);
         }
 
         else{
@@ -575,7 +569,7 @@ class QuestionsController extends Controller
         $user = Auth::user();
         $getSchedule = schedule::where('day' , $dayKey)
         ->where('user_id' , $user->id)
-        ->whereNotNull('time_period')->get()->toArray();
+        ->whereNotNull('hours')->get()->toArray();
 
         $show_schedule = $this->show_schedule();
 
@@ -595,7 +589,7 @@ class QuestionsController extends Controller
     public function viewSupport(){
         $user = Auth::user();
         $getSchedule = schedule::where('user_id' , $user->id)
-        ->whereNotNull('time_period')->get()->toArray();
+        ->whereNotNull('hours')->get()->toArray();
         $days = config('days');
         $show_schedule = $this->show_schedule();
 

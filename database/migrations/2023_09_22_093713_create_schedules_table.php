@@ -16,7 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('heading_id');
             $table->unsignedBigInteger('user_id');
             $table->string('day');
-            $table->string('time_period')->nullable();
+            $table->string('hours')->nullable();
+            $table->string('times_of_day')->nullable();
             $table->text('support')->nullable();
             $table->string('ratio')->nullable();
             $table->text('explanation')->nullable();

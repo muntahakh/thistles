@@ -47,7 +47,7 @@ a{
     flex: 1 0 0;
     background-color:  rgba(255, 255, 255, 0.24);;
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid  #F3F2F2;
+    /* border-bottom: 1px solid  #F3F2F2; */
     position: fixed;
 }
 .brand-name{
@@ -597,7 +597,7 @@ hr{
     border: none;
 }
 .text-area{
-    width: 100%;
+    width: 95%;
     height: 100px;
     font-size: 16px;
     background: #FFFFFF;
@@ -629,6 +629,12 @@ hr{
 .form-checkbox {
     display: flex;
     align-items: center;
+}
+.radio-checkbox {
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 .form-check {
     margin-right: 8px;
@@ -1184,16 +1190,18 @@ hr{
     }
     & > div {
       width: 60%;
-      height: 300px;
+      height: 400px;
       overflow-y: scroll;
       overflow-x: hidden;
       position: absolute;
-      top: 55%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       padding: 3em;
       background: white;
       text-align: left;
+      border-radius: 5px;
+
     }
     header {
       font-weight: bold;
@@ -1219,25 +1227,15 @@ hr{
     }
   }
 
-  .modal-links {
-    color: black;
-    text-decoration: none;
+  .modal-window i{
+    color: rgb(106, 106, 106);
+  }
+  .modal-window h3{
+    text-align: center;
   }
 
-  .modal-btn-width{
-    position: relative;
-    width: 250px;
-  }
-
-  .modal-container {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    height: 80%;
-  }
-
-  .modal-window {
-      border-radius: 1rem;
+  .modal-window p{
+    font-size: 14px;
   }
 
   .modal-window div:not(:last-of-type) {
@@ -1306,7 +1304,11 @@ hr{
   }
 
   .ques-font{
-    font-size: 16;
+    font-size: 15;
+    font-weight: 450;
+  }
+  .ques-font i{
+    font-weight: 350;
   }
 
   .dollar-symbol{
@@ -1339,9 +1341,7 @@ hr{
 .form-button-pink{
     width: 30%;
 }
-.intro-pages p{
-    font-size: 16px;
-}
+
 
 .modal-btn{
     outline: none;
@@ -1392,7 +1392,7 @@ hr{
     align-items: center;
 }
 .main-heading{
-    width: 80%;
+    width: 100%;
     margin: 0 auto ;
     text-align: center;
 }
@@ -1410,9 +1410,9 @@ hr{
     align-items: center;
 }
 .progress-content{
-    position: absolute;
-    top: 50px;
-    left: 15%;
+    /* position: relative; */
+    padding-top: 70px;
+    margin-left: 17%;
     width: 80%;
 }
 .progress{
@@ -1439,4 +1439,10 @@ hr{
     justify-content: center;
     align-items: center;
     cursor: pointer;
+}
+.content_center_get_started{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 115vh;
 }

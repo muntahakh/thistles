@@ -29,13 +29,19 @@ $daykey = session('daykey');
                     <input type="hidden" name="daykey" value="{{$daykey}}">
                     <td>
                         <div class="">
-                            <input type="time" name="start_time" style="border: none"> -
-                            <input type="time" name="end_time" style="border: none">
-                            <textarea placeholder="Support you require" name="support" cols="30"></textarea>
+                            <p>How many hours per day?</p>
+                            <input type="number" name="hours" placeholder="6.." style="width: 45%; height: 25px">
+                            <select name="timeofday" id="" style="width: 50%">
+                                <option value="morning">Morning</option>
+                                <option value="afternoon">Afternoon</option>
+                                <option value="evening">Evening</option>
+                                <option value="all day">All Day</option>
+                            </select>
+                            <textarea class="mt-2" placeholder="Support you require" name="support" cols="30"></textarea>
                         </div>
                     </td>
                     <td>
-                    <div class="ratio-select" >
+                    <div class="ratio-select">
                         <select name="ratio" required>
                             @foreach(config('ratio') as $key => $value)
                                 <option value="{{ $key }}">{{ $value }}</option>
@@ -58,7 +64,8 @@ $daykey = session('daykey');
                         <td><p>{{$day}}</p></td>
                         <td>
                             <div class="">
-                                <p>{{$schedule['time_period']}}</p>
+                                <p>{{$schedule['hours']}} hours</p>
+                                <p>{{$schedule['times_of_day']}}</p>
                                 <p>{{$schedule['support']}}</p>
                             </div>
                         </td>
@@ -85,6 +92,6 @@ $daykey = session('daykey');
 
     </div>
 </form>
-<a href="{{ route('get.schedule')}}"><button class="btn-pink form-button-pink">Other Days</button></a>
+<center><a href="{{ route('get.schedule')}}"><button class="btn-pink form-button-pink">Other Days</button></a></center>
 
 @endsection
