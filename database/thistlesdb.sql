@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2023 at 10:58 AM
+-- Generation Time: Dec 14, 2023 at 11:47 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -692,7 +692,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `accept_agreement`, `verification_token`, `image`, `url_image`, `remember_token`, `created_at`, `updated_at`, `authentication_type`) VALUES
 (1, 'Muntaha Khan', 'muntahakhan982@gmail.com', NULL, NULL, 0, 'null', NULL, 'https://lh3.googleusercontent.com/a/ACg8ocKOA-GHR2D0udM3X44bO9DmGGO8jJbB06DCZLZtcmNt8Js=s96-c', NULL, NULL, NULL, 'google'),
-(6, 'user', 'muntahak165@gmail.com', '2023-10-23 05:09:57', '$2y$10$eIPKmI/R.1ajZWHk0UKftuCbmRrt7e/FY72mMADzzuJOODWeijFya', 1, 'eyJpdiI6IjQ5amlHTSt3MmV5bjZ4TlV0OHgyNXc9PSIsInZhbHVlIjoiL2pQTUtoZ05qQzg3Z1BRN04vQUtyUT09IiwibWFjIjoiODI1YjQ4YjQ0OThhMjhhYjkzN2VjZTI4NmE4ZTMwN2NmM2QxMmU5ZDEwY2M3MGJhNTZmNmM5YTdkYjI2ZTRjMyIsInRhZyI6IiJ9', 'user-profile.jpg', 'null', NULL, NULL, NULL, 'form');
+(6, 'user', 'muntahak165@gmail.com', '2023-10-23 05:09:57', '$2y$10$iV3WfJTEcpe.C.LXqfmwxuCqykV5VfOsRnqmi22vlLHzl.mNO1klu', 1, 'eyJpdiI6IjQ5amlHTSt3MmV5bjZ4TlV0OHgyNXc9PSIsInZhbHVlIjoiL2pQTUtoZ05qQzg3Z1BRN04vQUtyUT09IiwibWFjIjoiODI1YjQ4YjQ0OThhMjhhYjkzN2VjZTI4NmE4ZTMwN2NmM2QxMmU5ZDEwY2M3MGJhNTZmNmM5YTdkYjI2ZTRjMyIsInRhZyI6IiJ9', 'user-profile.jpg', 'null', NULL, NULL, NULL, 'form');
 
 --
 -- Indexes for dumped tables
