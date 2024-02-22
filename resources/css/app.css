@@ -71,7 +71,7 @@ a{
     height: auto;
 }
 .navbar-nav{
-    padding-right: 40px;
+    /* padding-right: 40px; */
     line-height: 40px;
 }
 .nav-item-link{
@@ -99,7 +99,7 @@ a{
 .nav-item{
     display: flex;
     width: 160px;
-    height: 60px;
+    /* height: 60px; */
     justify-content: center;
     align-items: center;
     gap: 8px;
@@ -123,6 +123,26 @@ a{
     }
     .button-nav-signup {
       display: inline-block;
+    }
+}
+/* .signout-icon{
+    display: none;
+} */
+
+@media (max-width:344px) {
+    .nav-item-link{
+        padding-left: 10px;
+    }
+    .navbar-logo{
+        padding-left: 20px;
+        width: 70px;
+        height: auto;
+    }
+    .signout{
+        display: none;
+    }
+    .signout-icon{
+        display: flex;
     }
 }
 .button-nav-signup{
@@ -170,9 +190,10 @@ a{
     justify-content: center;
     align-items: center;
     position: relative;
-    width: 90%;
+    width: 100%;
     top: 30%;
-    padding-left: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
     z-index: 2;
 }
 .overlay-h1{
@@ -191,14 +212,14 @@ a{
     width: 24px;
     height: 24px;
     padding: 15px 5px;
-    border:1px #D0358C solid;
+    border:1px #7F2055 solid;
     border-radius: 50%;
 }
 .arrow-icon img{
     width: 24px;
     height: 24px;
     position: relative;
-    color: #D0358C;
+    color: #7F2055;
 }
 @media (max-width:1213px) {
     .scroll-down{
@@ -213,7 +234,7 @@ a{
         z-index: 2;
     }
     .overlay-h1{
-        font-size: 54px;
+        font-size: 50px;
 
     }
     .scroll-down{
@@ -259,7 +280,7 @@ a{
         z-index: 2;
     }
     .overlay-h1{
-        font-size: 44px;
+        font-size: 38px;
         line-height: 150%;
     }
 }
@@ -1404,6 +1425,12 @@ hr{
     margin: 0 auto;
 
 }
+@media (max-width : 786px){
+    .intro-container{
+        width: 100%;
+    }
+}
+
 .submit-illustrative-exp{
     display: inline;
     justify-content: center;
@@ -1445,4 +1472,7 @@ hr{
     flex-direction: column;
     align-items: center;
     height: 115vh;
+}
+.intro-pages i{
+    color: blue;
 }

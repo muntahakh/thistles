@@ -43,7 +43,8 @@
                                  <h3>Hello,</h3> <h3 class="text-lpink">{{ ucfirst(explode(' ', Auth::user()->name)[0]) }}</h3>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('logout')}}" class="text-decoration-none text-dark fw-bold">Sign Out</a>
+                                <a href="{{route('logout')}}" class="text-decoration-none text-dark fw-bold signout">Sign Out</a>
+                                <a href="{{route('logout')}}" class="signout-icon"><img src="fi-rr-sign-out.svg" alt=""></a>
                             </li>
                         </ul>
                         @endauth

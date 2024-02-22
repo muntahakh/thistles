@@ -4,7 +4,7 @@
 
     <div class="form-group">
         @if ($list['data']['question']['questions'] !== null && trim($list['data']['question']['questions']) !== '')
-        <center><p class="ques-font">Question: {!! $list['data']['question']['questions'] !!}</p></center>
+        <p class="ques-font">Question: {!! $list['data']['question']['questions'] !!}</p>
         @endif
     </div> <!-- form group -->
 

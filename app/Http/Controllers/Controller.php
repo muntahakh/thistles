@@ -25,7 +25,7 @@ class Controller extends BaseController
 
        $headingwithQuestions = $headingwithQuestions->keyBy('sequence')->toArray();
 
-       foreach ($headingwithQuestions as  $key => $headingwithQuestion){
+       foreach ($headingwithQuestions as $key => $headingwithQuestion){
            if($headingwithQuestion['questions'] != []){
                foreach ($headingwithQuestion['questions'] as $key1 => $question) {
 
@@ -58,7 +58,7 @@ class Controller extends BaseController
 
                $endkey =  array_key_last($list[$current_head_sq]['questions']);
                $status =  $current_question_sq <= $endkey ? true : false;
-                
+
                while($status){
                    $current_question_sq++;
                    if($current_question_sq > $endkey){

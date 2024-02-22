@@ -27,13 +27,12 @@
         @if ($list['data']['question']['instructions'] == null)
         <center><button type="submit" id="form-submit" class="btn-pink form-button-pink">Next Question</button></center>
         @else
-        <p><button type="submit" id="form-submit" class="btn-pink form-button-pink">Next Question</button>&nbsp;&nbsp;
+        <button type="submit" id="form-submit" class="btn-pink form-button-pink">Next Question</button>&nbsp;&nbsp;
             @endif
         </form> <!-- main form -->
         @if ($list['data']['question']['instructions'] !== null && trim($list['data']['question']['instructions']) !== '')
             Want some illustrative examples of what to write?
             <a href="#open-modal" id="openModalBtn" class="modal-btn-width save_progress text-decoration-none fw-bold">Click here</a>
-            </p>
         @endif
     </div>
 

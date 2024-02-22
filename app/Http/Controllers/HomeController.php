@@ -66,6 +66,7 @@ class HomeController extends Controller
             ];
         }
 
+
         if($detail['file_name'] !== null){
         $careerstatement = null;
         $pdfPath = public_path('storage/documents/' . $detail['file_name']);
@@ -103,6 +104,16 @@ class HomeController extends Controller
 
                 ];
             }
+            // dd($finalData);
+
+            // return response()->json([
+            //     'responses' => $finalData,
+            //     'career_statement' => $careerstatement,
+            //     'schedule' => $scheduleData,
+            //     'user_id' => $user->id,
+            //     'name' => $user->name . '_' . $user->id
+            // ]);
+
             $response = Http::post('http://167.99.36.48:7020/generate_report', [
                 'responses' => $finalData,
                 'career_statement' => $careerstatement,

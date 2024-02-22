@@ -19,7 +19,7 @@ use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/',[HomeController::class,'home'])->name('home');
 
-// Route::get('test',[HomeController::class,'compiledData']);
+Route::get('test',[HomeController::class,'compiledData']);
 
 //  google login
 Route::get('/auth/redirect', function () {
@@ -93,7 +93,7 @@ Route::post('/questions/submit/', [QuestionsController::class,'submitAnswers'])-
 
 Route::get('/getschedule', [QuestionsController::class,'getSchedule'])->name('get.schedule')->middleware('controlurls');
 
-Route::post('/addschedule/', [QuestionsController::class,'addSchedule'])->name('add.schedule');
+Route::post('addschedule/', [QuestionsController::class,'addSchedule'])->name('add.schedule');
 
 Route::get('/addSupport/{day}/{dayKey}', [QuestionsController::class,'addSupportDay'])->name('add.support');
 
