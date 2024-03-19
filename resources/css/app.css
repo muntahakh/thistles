@@ -530,6 +530,10 @@ hr{
     position: relative;
     height: 100vh;
 }
+.form-bg-info{
+    background-color: #FFFFFF;
+    height: auto;
+}
 .backTohome{
     position: absolute;
     top: 5%;
@@ -1475,4 +1479,8 @@ hr{
 }
 .intro-pages i{
     color: blue;
+}
+.bg-info-content{
+    display: flex;
+    justify-content: center;
 }

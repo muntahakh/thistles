@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\{Controller,HomeController,AccountsController,QuestionsController};
+use App\Http\Controllers\{Controller,HomeController,AccountsController,QuestionsController, UserController};
 use App\Http\Controllers\Auth\{ForgotPasswordController,ResetPasswordController,VerificationController};
 use Laravel\Socialite\Facades\Socialite;
 
@@ -19,7 +19,7 @@ use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/',[HomeController::class,'home'])->name('home');
 
-Route::get('test',[HomeController::class,'compiledData']);
+Route::get('test',[HomeController::class,'check']);
 
 //  google login
 Route::get('/auth/redirect', function () {
@@ -73,15 +73,15 @@ Route::get('/documentation/email', [HomeController::class,'sendDocumentationEmai
 
 Route::post('/index', [AccountsController::class,'login'])->name('homeAth1');
 
-Route::get('/index', [HomeController::class,'index'])->name('index');
+Route::middleware(['auth'])->group(function () {
+
+Route::get('/userDetails', [UserController::class, 'userDetails'])->name('get.userDetails');
+
+Route::post('addUserDetails', [UserController::class, 'addUserDetails'])->name('add.userDetails');
 
 Route::get('/logout', [AccountsController::class,'logout'])->name('logout');
 
-Route::middleware(['auth'])->group(function () {
-
-Route::get('/introPages', function(){
-    return view('introPage');
-})->name('intro.page');
+Route::get('/index', [HomeController::class,'index'])->name('index');
 
 Route::get('/getQuestions',[QuestionsController::class,'getQuestions'])->name('start_documentation');
 
@@ -122,8 +122,6 @@ Route::post('/saveprogress', [AccountsController::class,'save_progress'])->name(
 Route::get('backUrl', [QuestionsController::class,'backUrl'])->name('back.url');
 
 Route::get('/start_documentation', [AccountsController::class,'start_documentation'])->name('save_progress_start');
-
-Route::get('/userDetails',[HomeController::class,'userDetails'])->name('userDetails');
 
 Route::get('/askToChatGPT',[HomeController::class,'ask'])->name('ask');
 

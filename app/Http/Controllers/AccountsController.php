@@ -19,7 +19,7 @@ class AccountsController extends Controller
 
     public function register(){
         if (auth()->check()) {
-            return redirect('/index');
+            return redirect('/userDetails');
         }
         else{
             return view('auth.register');
@@ -58,7 +58,7 @@ class AccountsController extends Controller
 
         Auth::login($user);
 
-        return redirect('/index');
+        return redirect('/userDetails');
     }
 
     public function confirmEmail()
@@ -158,7 +158,7 @@ class AccountsController extends Controller
 
     public function signin(){
         if (auth()->check()) {
-            return redirect('/index');
+            return redirect('/userDetails');
         }
         else{
             return view('auth.login');
@@ -172,7 +172,7 @@ class AccountsController extends Controller
             $user = Auth::user();
 
             if ($user->email_verified_at !== 'null') {
-                return view('homeAth');
+                return view('userDetails');
             }
             else {
                 return redirect()->route('signin')->with('error', 'Please verify your email address.');

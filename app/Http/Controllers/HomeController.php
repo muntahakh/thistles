@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\GenerateReportEvent;
 use App\Models;
-use App\Models\{User, QuestionHeading, Questions, QuestionOptions, Answers, schedule, reports};
+use App\Models\{User, QuestionHeading, Questions, QuestionOptions, Answers, schedule, reports, UserDetails};
 use App\Models\GeneratedReports;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
@@ -50,45 +50,66 @@ class HomeController extends Controller
         return $questionsWithHeadingAndAnswers;
     }
 
+    public function personalInformation(){
+        $user = Auth::user();
+        $user_details = UserDetails::where('user_id', $user->id)->first();
+        $personal_information = [
+            'fullname' => $user_details->full_name,
+            'age' => $user_details->age,
+            'address' => $user_details->address,
+            'email' => $user->email,
+            'type_of_disability' => $user_details->type_of_disability,
+            'ndis_nominee' => $user_details->ndis_nominee,
+            'support_coordinator' => $user_details->support_coordinator,
+        ];
+        return $personal_information;
+    }
+
     public function compiledData()
     {
         $user = Auth::user();
         $data = $this->AllData();
-        $finalData = [];
+        $personal_information = $this->personalInformation();
 
+        $finalData = [];
         foreach ($data as $key => $detail) {
             $finalData[$detail['questions_id']] = [
                 'question_headings_name' => $detail['question_headings_name'],
                 'question_headings_sub_heading' => $detail['question_headings_sub_heading'],
                 'questions' => $detail['questions'],
                 'answer' => $detail['answer'],
+                'filename' => $detail['file_name'],
                 'cost' => $detail['cost'],
             ];
         }
 
-
-        if($detail['file_name'] !== null){
         $careerstatement = null;
-        $pdfPath = public_path('storage/documents/' . $detail['file_name']);
+        if($finalData['138']['filename'] !== null && $finalData['138']['answer'] === null)
+        {
+            $pdfPath = public_path('storage/documents/' . $detail['file_name']);
 
-        if (PHP_OS === 'WINNT') {
-            $careerstatement = (new Pdf(Config::get('pdf.pdf_to_text.options.pdftotext_path')))->setPdf($pdfPath)->text();
-        } elseif(PHP_OS === 'Darwin') {
-            $careerstatement = (new Pdf(Config::get('pdf.pdf_to_text.options.pdftotext_path')))
-            ->setPdf($pdfPath)
-            ->text();
-        }else{
-            $careerstatement = (new Pdf())->setPdf($pdfPath)->text();
-        }
-        }
-        else{
-            $careerstatement = null;
-        }
+            if (PHP_OS === 'WINNT') {
+                $careerstatement = (new Pdf(Config::get('pdf.pdf_to_text.options.pdftotext_path')))->setPdf($pdfPath)->text();
+            } elseif(PHP_OS === 'Darwin') {
+                $careerstatement = (new Pdf(Config::get('pdf.pdf_to_text.options.pdftotext_path')))
+                ->setPdf($pdfPath)
+                ->text();
+            }else{
+                $careerstatement = (new Pdf())->setPdf($pdfPath)->text();
+            }
 
+        }elseif($finalData['138']['answer'] !== null && $finalData['138']['filename'] === null)
+        {
+            $careerstatement = $finalData['138']['answer'];
+        }
+        else
+        {
+            return back()->with('error', 'career statement not found');
+        }
         $schedule = schedule::where('user_id', $user->id)
-            ->whereNotNull('hours')
-            ->get()
-            ->toArray();
+        ->whereNotNull('hours')
+        ->get()
+        ->toArray();
 
         if($schedule !== [] ){
 
@@ -104,25 +125,22 @@ class HomeController extends Controller
 
                 ];
             }
-            // dd($finalData);
-
-            // return response()->json([
-            //     'responses' => $finalData,
-            //     'career_statement' => $careerstatement,
-            //     'schedule' => $scheduleData,
-            //     'user_id' => $user->id,
-            //     'name' => $user->name . '_' . $user->id
-            // ]);
-
-            $response = Http::post('http://167.99.36.48:7020/generate_report', [
-                'responses' => $finalData,
+            $response = [
+                'user_id' => $user->id,
+                'personal_information' => $personal_information,
+                'data' => $finalData,
                 'career_statement' => $careerstatement,
                 'schedule' => $scheduleData,
-                'user_id' => $user->id,
-                'name' => $user->name . '_' . $user->id
-                ]);
+                ];
 
-            return redirect()->route('waiting');
+            $converted_res = mb_convert_encoding($response, 'UTF-8', 'UTF-8');
+            return response()->json($converted_res);
+
+            // return response()->json(['status' => true, 'response' => $converted_res]);
+
+            // $send_res = Http::post('http://167.99.36.48:7020/generate_report', $converted_res);
+
+            // return redirect()->route('waiting');
 
         }
         else{
@@ -149,16 +167,13 @@ class HomeController extends Controller
         return view('documentCompiled', compact('report'));
     }
 
-    public function index()
-    {
-        $answer = Answers::where('user_id', auth()->user()->id)
-            ->get()
-            ->toArray();
-        if (auth()->check()) {
-            return view('homeAth', compact('answer'));
-        } else {
-            return redirect()->route('signin');
-        }
+    public function index() {
+        $user = Auth::user();
+        $answer = Answers::where('user_id', $user->id)
+        ->get()
+        ->toArray();
+
+        return view('homeAth', compact('answer'));
     }
 
     public function getGeneratedFile(Request $request)
@@ -179,5 +194,8 @@ class HomeController extends Controller
         $user = User::find($request->user_id);
         $user->sendDocumentationNotification();
         return response('');
+    }
+
+    public function check(){
     }
 }

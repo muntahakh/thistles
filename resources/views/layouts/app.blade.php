@@ -24,7 +24,7 @@
         @yield('background')
 
         @unless(in_array(Route::currentRouteName(), ['signin', 'register', 'signup', 'reset', 'password.email',
-        'resendpass.email', 'resend.email', 'pass.reset', 'email', 'login', 'password.email.get', 'confirm']))
+        'resendpass.email', 'resend.email', 'pass.reset', 'email', 'login', 'password.email.get', 'confirm', 'get.userDetails']))
             @include('layouts.navbar')
         @endunless
 

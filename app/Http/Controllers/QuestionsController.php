@@ -119,7 +119,7 @@ class QuestionsController extends Controller
             $fileName = $file->getClientOriginalName();
 
             $path = $file->storeAs('documents' , $user->id . '_' . $fileName  , 'public');
-            Answers::updateOrCreate(
+            $answer = Answers::updateOrCreate(
                 ['user_id' => $user->id, 'questions_id' => $quesId],
                 [
                     'answer' => null,
@@ -128,15 +128,14 @@ class QuestionsController extends Controller
                     'questions_id' => $quesId,
                     'user_id' => $user->id,
                     'is_skipped' => 0,
-                ]
+                    ]
                 );
+                return redirect($url);
+            }
 
-            return redirect($url);
-        }
+            if ($request->has('answer') && $request->has('cost') ) {
 
-        if ($request->has('answer') && $request->has('cost') ) {
-
-            $parsedUrl = parse_url($url);
+                $parsedUrl = parse_url($url);
             $path = $parsedUrl['path'];
             $segments = explode('/', trim($path, '/'));
             $head_sq = (int)$segments[1];
