@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2023 at 11:47 AM
+-- Generation Time: Mar 19, 2024 at 07:29 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -44,102 +44,102 @@ CREATE TABLE `answers` (
 --
 
 INSERT INTO `answers` (`id`, `answer`, `cost`, `file_name`, `questions_id`, `user_id`, `is_skipped`, `created_at`, `updated_at`) VALUES
-(1, 'I\'m Jack, and I\'m a 15-year-old with Coffin-Lowry syndrome, a lifelong condition that affects my cognitive and physical abilities. On my challenging days, I struggle with tasks like communication, mobility, and self-care. Despite these difficulties, I\'m determined to overcome obstacles and make the most out of my life as I prepare to leave school and face the world ahead.', NULL, NULL, 1, 1, 0, '2023-10-06 01:09:38', '2023-10-06 02:41:51'),
-(2, NULL, NULL, NULL, 2, 1, 1, '2023-10-06 01:10:06', '2023-11-28 03:58:57'),
-(3, NULL, NULL, NULL, 3, 1, 1, '2023-10-06 01:10:41', '2023-11-28 03:58:57'),
-(4, NULL, NULL, NULL, 4, 1, 1, '2023-10-06 01:11:05', '2023-11-28 03:58:57'),
-(5, NULL, NULL, NULL, 5, 1, 1, '2023-10-06 01:13:03', '2023-11-28 03:58:57'),
-(6, 'random randomrandomrandomrandomrandom', NULL, NULL, 6, 1, 0, '2023-10-06 01:14:53', '2023-11-28 01:20:48'),
-(7, 'randomrandomrandomrandom', NULL, NULL, 7, 1, 0, '2023-10-06 01:15:09', '2023-11-28 01:20:55'),
-(8, 'randomrandomrandomrandom', NULL, NULL, 8, 1, 0, '2023-10-06 01:15:27', '2023-11-28 01:21:00'),
-(9, 'randomrandomrandom', NULL, NULL, 9, 1, 0, '2023-10-06 01:16:02', '2023-11-28 01:21:06'),
-(10, 'you can copy and paste any relevant examples straight into the \r\nquestionnaire if that will assistyou can copy and paste any relevant examples straight into the \r\nquestionnaire if that will assistyou can copy and paste any relevant examples straight into the \r\nquestionnaire if that will assist', NULL, NULL, 10, 1, 0, '2023-10-06 01:16:42', '2023-11-28 01:24:37'),
-(11, NULL, NULL, NULL, 11, 1, 1, '2023-10-06 01:17:06', '2023-11-28 03:58:57'),
+(1, NULL, NULL, NULL, 1, 1, 1, '2023-10-06 01:09:38', '2024-03-19 00:50:55'),
+(2, NULL, NULL, NULL, 2, 1, 1, '2023-10-06 01:10:06', '2024-03-19 00:38:18'),
+(3, NULL, NULL, NULL, 3, 1, 1, '2023-10-06 01:10:41', '2024-03-19 00:38:18'),
+(4, NULL, NULL, NULL, 4, 1, 1, '2023-10-06 01:11:05', '2024-03-19 00:38:18'),
+(5, NULL, NULL, NULL, 5, 1, 1, '2023-10-06 01:13:03', '2024-03-19 00:38:18'),
+(6, 'My goal for mobility is to become more independent in traveling short distances within my community, like going to a nearby store or park, within the next year. I\'d also like to work on my communication skills to make public transportation and car rides more manageable for longer trips within the next two years.', NULL, NULL, 6, 1, 0, '2023-10-06 01:14:53', '2024-03-19 00:10:26'),
+(7, 'Yes, I do experience limited movement due to Coffin-Lowry syndrome. I have challenges with fine and gross motor skills, making tasks like walking, standing for extended periods, and climbing stairs more difficult for me compared to others my age.', NULL, NULL, 7, 1, 0, '2023-10-06 01:15:09', '2024-03-19 00:10:39'),
+(8, 'Yes, I do have balance issues, which increase my risk of falls and potential injuries. These balance issues are primarily related to my motor coordination difficulties associated with Coffin-Lowry syndrome. I often require support or assistive devices to maintain stability and reduce the risk of falls.', NULL, NULL, 8, 1, 0, '2023-10-06 01:15:27', '2024-03-19 00:10:55'),
+(9, 'I don\'t rely on wheelchairs or mobility aids for movement. However, due to my mobility challenges associated with Coffin-Lowry syndrome, I may require assistance or accommodations when navigating environments that are not wheelchair-accessible. This includes having someone to support me in unfamiliar or challenging settings.', NULL, NULL, 9, 1, 0, '2023-10-06 01:16:02', '2024-03-19 00:11:08'),
+(10, 'I struggle with using public transportation or traveling in a private car due to communication difficulties and sensory sensitivities. This limits my ability to access services, maintain social connections, and participate in employment or educational opportunities, as I often require additional support and preparation to navigate these situations.', NULL, NULL, 10, 1, 0, '2023-10-06 01:16:42', '2024-03-19 00:11:19'),
+(11, NULL, NULL, NULL, 11, 1, 1, '2023-10-06 01:17:06', '2024-03-19 00:38:18'),
 (12, NULL, NULL, NULL, 13, 1, 1, '2023-10-06 01:17:28', '2023-11-28 03:59:23'),
 (13, NULL, NULL, NULL, 12, 1, 1, '2023-10-06 01:19:24', '2023-11-28 03:58:57'),
 (14, NULL, NULL, NULL, 14, 1, 1, '2023-10-06 01:19:24', '2023-10-23 05:12:29'),
 (15, NULL, NULL, NULL, 15, 1, 1, '2023-10-06 01:19:24', '2023-11-28 03:59:23'),
 (16, NULL, NULL, NULL, 16, 1, 1, '2023-10-06 01:19:24', '2023-10-23 05:12:29'),
 (17, NULL, NULL, NULL, 17, 1, 1, '2023-10-06 01:19:24', '2023-10-23 05:12:29'),
-(18, 'Make sure to adjust the logic or styling according to your specific requirements.', NULL, NULL, 18, 1, 0, '2023-10-06 01:21:01', '2023-11-28 03:42:51'),
-(19, 'Make sure to adjust the logic or styling according to your specific requirements.', NULL, NULL, 19, 1, 0, '2023-10-06 01:21:33', '2023-11-28 03:42:56'),
-(20, 'Make sure to adjust the logic or styling according to your specific requirements.', NULL, NULL, 20, 1, 0, '2023-10-06 01:22:02', '2023-11-28 03:43:00'),
-(21, 'Make sure to adjust the logic or styling according to your specific requirements.', NULL, NULL, 21, 1, 0, '2023-10-06 01:22:21', '2023-11-28 03:43:04'),
+(18, 'My goal for communication is to improve my verbal and non-verbal communication skills, reducing the reliance on technology to express myself within the next two years. I also aim to work with a speech pathologist to enhance my communication abilities.', NULL, NULL, 18, 1, 0, '2023-10-06 01:21:01', '2024-03-19 00:12:42'),
+(19, 'I face challenges in both verbal and non-verbal communication due to Coffin-Lowry syndrome. While I understand spoken language to a certain extent, I often rely on gestures, signs, pictures, and some basic technology to express myself. However, my ability to convey complex ideas or emotions is limited, which can lead to frustration and difficulty in understanding others fully.', NULL, NULL, 19, 1, 0, '2023-10-06 01:21:33', '2024-03-19 00:12:56'),
+(20, 'My communication challenges restrict my independence by making it harder to convey my needs and preferences in various settings, including home, school, and recreational activities. This limitation affects my ability to fully participate in learning, engage in social interactions, and potentially limits my future opportunities in the workforce. It can also hinder my engagement in community activities as I may struggle to communicate and build relationships effectively.', NULL, NULL, 20, 1, 0, '2023-10-06 01:22:02', '2024-03-19 00:13:07'),
+(21, 'Yes, I anticipate requiring ongoing help from a speech pathologist after finishing school to continue improving my communication skills, both verbally and through signs or assistive technology. This support will be crucial for my continued development and independence.', NULL, NULL, 21, 1, 0, '2023-10-06 01:22:21', '2024-03-19 00:13:20'),
 (22, 'Yes', NULL, NULL, 22, 1, 0, '2023-10-06 01:22:35', '2023-11-28 03:43:24'),
-(23, 'Make sure to adjust the logic or styling according to your specific requirements.', '2000', NULL, 23, 1, 0, '2023-10-06 01:23:58', '2023-11-28 03:43:34'),
-(24, 'Yes', NULL, NULL, 24, 1, 0, '2023-10-06 01:24:15', '2023-11-28 03:44:00'),
-(25, 'Make sure to adjust the logic or styling according to your specific requirements.', NULL, NULL, 26, 1, 0, '2023-10-06 01:26:13', '2023-11-28 03:44:13'),
-(26, 'When you leave school, you are likely to require additional support during the days, \r\nparticularly during times when you were previously at school.  Please complete the table to below to \r\nindicate the days and hours during which you will require support.  Generally speaking, you are likely \r\nto require additional support for at least the hours that you were in school, maybe more.', NULL, NULL, 29, 1, 0, '2023-10-06 01:39:17', '2023-11-28 06:42:40'),
-(27, 'Please fill up the respective field(s)', NULL, NULL, 30, 1, 0, '2023-10-06 01:40:04', '2023-11-28 03:52:35'),
-(28, 'Please fill up the respective field(s)', NULL, NULL, 31, 1, 0, '2023-10-06 01:40:23', '2023-11-28 03:52:39'),
-(29, 'Please fill up the respective field(s)', NULL, NULL, 32, 1, 0, '2023-10-06 01:46:00', '2023-11-28 03:52:43'),
+(23, 'I require augmentative and alternative communication (AAC) devices to facilitate communication due to my verbal communication challenges related to Coffin-Lowry syndrome.', '1700', NULL, 23, 1, 0, '2023-10-06 01:23:58', '2024-03-19 00:13:45'),
+(24, 'No', NULL, NULL, 24, 1, 0, '2023-10-06 01:24:15', '2024-03-19 00:14:02'),
+(25, 'I can confirm that the expert providing the letter or report is Dr. Sarah Johnson, and the report was dated on May 15, 2023. In her report, Dr. Johnson details the need for the augmentative and alternative communication (AAC) device, explains its value in improving my communication skills and achieving my goals, and estimates the cost to be $1,700.', NULL, NULL, 26, 1, 0, '2023-10-06 01:26:13', '2024-03-19 00:14:26'),
+(26, 'My goals relating to social interaction include improving my ability to initiate and maintain conversations with others, as well as enhancing my non-verbal communication skills within the next year. Over the next two years, I aim to build more meaningful social connections and engage in group activities to increase my social inclusion and overall well-being.', NULL, NULL, 29, 1, 0, '2023-10-06 01:39:17', '2024-03-19 00:14:37'),
+(27, 'I currently engage in activities like art classes and local community events. I hope to continue participating in these and explore new ones to build friendships, gain a sense of belonging, and improve my social skills. The benefits I expect to receive include increased social interaction, improved self-esteem, and a more fulfilling social life.', NULL, NULL, 30, 1, 0, '2023-10-06 01:40:04', '2024-03-19 00:14:51'),
+(28, 'For the activities I engage in, I currently require occasional one-on-one support from a family member or caregiver to help me navigate social situations and ensure my safety. I engage in these activities approximately once a week. However, I aspire to increase my independence gradually and reduce the need for one-on-one support in the future.', NULL, NULL, 31, 1, 0, '2023-10-06 01:40:23', '2024-03-19 00:15:02'),
+(29, 'It can be hard to understand and express myself, which makes social situations challenging. I also experience physical limitations that make it difficult to participate in certain activities.', NULL, NULL, 32, 1, 0, '2023-10-06 01:46:00', '2024-03-19 00:15:28'),
 (30, 'Yes', NULL, NULL, 33, 1, 0, '2023-10-06 01:46:22', '2023-11-28 03:54:09'),
-(31, 'Please fill up the respective field(s)', '1600', NULL, 34, 1, 0, '2023-10-06 02:01:38', '2023-11-28 03:54:16'),
-(32, 'Yes', NULL, NULL, 35, 1, 0, '2023-10-06 02:01:45', '2023-11-28 03:54:53'),
-(33, 'Please fill up the respective field(s)', NULL, NULL, 37, 1, 0, '2023-10-06 02:03:26', '2023-11-28 03:55:13'),
-(34, 'Please fill up the respective field(s)', NULL, NULL, 41, 1, 0, '2023-10-06 02:05:30', '2023-11-28 03:56:35'),
-(35, 'Please fill up the respective field(s)', NULL, NULL, 42, 1, 0, '2023-10-06 02:07:45', '2023-11-28 03:56:45'),
-(36, 'Please fill up the respective field(s)', NULL, NULL, 43, 1, 0, '2023-10-06 02:08:20', '2023-11-28 03:56:50'),
+(31, 'Personal FM system', '2000', NULL, 34, 1, 0, '2023-10-06 02:01:38', '2024-03-19 00:16:10'),
+(32, 'No', NULL, NULL, 35, 1, 0, '2023-10-06 02:01:45', '2024-03-19 00:16:16'),
+(33, 'I can confirm that the expert providing the letter or report is Dr. Sarah Johnson, and the report was dated on May 20, 2023. In her report, Dr. Johnson details the need for the device, explains its value in improving my hearing skills and achieving my goals, and estimates the cost to be $2,000.', NULL, NULL, 37, 1, 0, '2023-10-06 02:03:26', '2024-03-19 00:16:31'),
+(34, 'Within the next year, I aim to enhance my ability to perform daily tasks independently, such as personal care, meal preparation, and household chores. Over the next two years, I want to work on enhancing my decision-making abilities, including making choices related to my healthcare, finances, and social activities.', NULL, NULL, 41, 1, 0, '2023-10-06 02:05:30', '2024-03-19 00:17:00'),
+(35, 'I may become physically aggressive towards others, especially when I am feeling overwhelmed or frustrated. I may engage in self-injurious behaviors, such as hitting myself or banging my head against objects, when I am experiencing sensory overload or anxiety.', NULL, NULL, 42, 1, 0, '2023-10-06 02:07:45', '2024-03-19 00:17:21'),
+(36, 'Support workers may need to be particularly vigilant with me in certain environments. For example, busy, noisy, or unfamiliar environments can be overwhelming and trigger my behavioral vulnerabilities, such as aggression or self-injury. In such situations, I may create a risk to myself or others, and it is essential for support workers to provide appropriate support and intervention to manage my behavior and ensure my safety.', NULL, NULL, 43, 1, 0, '2023-10-06 02:08:20', '2024-03-19 00:45:18'),
 (37, 'Yes', NULL, NULL, 44, 1, 0, '2023-10-06 02:08:41', '2023-11-28 03:56:56'),
-(38, 'Please fill up the respective field(s)', NULL, NULL, 45, 1, 0, '2023-10-06 02:09:11', '2023-11-28 03:57:04'),
+(38, 'Positive behavior support', NULL, NULL, 45, 1, 0, '2023-10-06 02:09:11', '2024-03-19 00:18:20'),
 (39, 'Yes', NULL, NULL, 46, 1, 0, '2023-10-06 02:09:43', '2023-11-28 03:58:12'),
-(40, 'This message indicates that the user should fill in the respective field(s) before submitting the form. Adjust the code based on your specific data structure and requirements.', NULL, NULL, 47, 1, 0, '2023-10-06 02:10:51', '2023-11-28 03:58:53'),
+(40, 'I may damage property when I am feeling overwhelmed, frustrated, or anxious. The specific circumstances that may trigger this behaviour can vary, but they often involve changes in routine, loud noises, or sensory overload. When I do damage property, it tends to be objects that are within my reach, such as furniture, household items, or personal belongings. It is important for me to receive appropriate support and intervention to manage my behavior and reduce the risk of harm to myself and others.', NULL, NULL, 47, 1, 0, '2023-10-06 02:10:51', '2024-03-19 00:21:14'),
 (41, 'No', NULL, NULL, 48, 1, 0, '2023-10-06 02:11:33', '2023-10-06 02:11:33'),
-(42, 'This message indicates that the user should fill in the respective field(s) before submitting the form. Adjust the code based on your specific data structure and requirements.', NULL, NULL, 55, 1, 0, '2023-10-06 02:12:09', '2023-11-28 03:59:04'),
-(43, 'This message indicates that the user should fill in the respective field(s) before submitting the form. Adjust the code based on your specific data structure and requirements.', NULL, NULL, 56, 1, 0, '2023-10-06 02:13:12', '2023-11-28 03:59:08'),
-(44, 'This message indicates that the user should fill in the respective field(s) before submitting the form. Adjust the code based on your specific data structure and requirements.', NULL, NULL, 57, 1, 0, '2023-10-06 02:13:38', '2023-11-28 03:59:11'),
-(45, 'This message indicates that the user should fill in the respective field(s) before submitting the form. Adjust the code based on your specific data structure and requirements.', NULL, NULL, 58, 1, 0, '2023-10-06 02:14:37', '2023-11-28 03:59:14'),
-(46, 'This message indicates that the user should fill in the respective field(s) before submitting the form. Adjust the code based on your specific data structure and requirements.', NULL, NULL, 59, 1, 0, '2023-10-06 02:15:20', '2023-11-28 03:59:18'),
-(47, 'Yes', NULL, NULL, 60, 1, 0, '2023-10-06 02:16:15', '2023-11-28 03:59:29'),
-(48, 'What is the reason this item needs to be replaced', NULL, NULL, 67, 1, 0, '2023-10-06 02:17:08', '2023-11-28 04:58:20'),
-(49, 'What is the reason this item needs to be replaced', NULL, NULL, 68, 1, 0, '2023-10-06 02:18:08', '2023-11-28 04:59:57'),
-(50, 'What is the reason this item needs to be replaced', NULL, NULL, 69, 1, 0, '2023-10-06 02:18:25', '2023-11-28 05:00:01'),
-(51, 'What is the reason this item needs to be replaced', NULL, NULL, 70, 1, 0, '2023-10-06 02:18:59', '2023-11-28 05:00:15'),
-(52, 'What is the reason this item needs to be replaced', NULL, NULL, 71, 1, 0, '2023-10-06 02:19:31', '2023-11-28 05:00:23'),
-(53, 'What is the reason this item needs to be replaced', NULL, NULL, 72, 1, 0, '2023-10-06 02:20:06', '2023-11-28 05:00:27'),
-(54, 'Yes', NULL, NULL, 73, 1, 0, '2023-10-06 02:20:25', '2023-11-28 05:00:33'),
-(55, 'What is the reason this item needs to be replaced', NULL, NULL, 83, 1, 0, '2023-10-06 02:21:11', '2023-11-28 05:01:31'),
-(56, 'What is the reason this item needs to be replaced', NULL, NULL, 84, 1, 0, '2023-10-06 02:21:31', '2023-11-28 05:01:59'),
-(57, 'What is the reason this item needs to be replaced', NULL, NULL, 85, 1, 0, '2023-10-06 02:22:08', '2023-11-28 05:02:04'),
-(58, 'What is the reason this item needs to be replaced', NULL, NULL, 86, 1, 0, '2023-10-06 02:22:25', '2023-11-28 05:02:11'),
-(59, 'What is the reason this item needs to be replaced', NULL, NULL, 87, 1, 0, '2023-10-06 02:22:41', '2023-11-28 05:02:15'),
+(42, 'Over the next two years, I aim to develop vocational skills that will prepare me for future employment opportunities. This may involve participating in vocational training programs, internships, or work experience programs. Within the next five years, I want to pursue higher education opportunities that align with my interests and abilities. This may involve enrolling in college or university courses, or pursuing vocational qualifications that will enhance my career prospects.', NULL, NULL, 55, 1, 0, '2023-10-06 02:12:09', '2024-03-19 00:21:45'),
+(43, 'I am interested in seeking employment upon leaving school. The nature of the job that I am seeking will depend on my interests and abilities, as well as the availability of suitable opportunities. I am open to exploring different types of jobs, such as part-time, full-time, or casual work, that align with my skills and interests. Some examples of jobs that I may be able to do include data entry, filing, or customer service roles.', NULL, NULL, 56, 1, 0, '2023-10-06 02:13:12', '2024-03-19 00:22:44'),
+(44, 'I want to develop practical skills that will help me with daily living tasks, such as cooking, budgeting, and managing personal finances. I am interested in learning specific skills related to a particular trade or profession that aligns with my interests and abilities. This could involve vocational training or apprenticeships.', NULL, NULL, 57, 1, 0, '2023-10-06 02:13:38', '2024-03-19 00:23:10'),
+(45, 'I face specific challenges in my learning and employment. These challenges can include cognitive difficulties, such as learning new information or processing complex concepts. I may also face physical barriers, such as limited mobility or fine motor skills, which can impact my ability to perform certain tasks. Sensory issues, such as sensitivity to noise or bright lights, can also be a challenge for me. Additionally, I may experience social and emotional challenges, such as difficulty with communication or regulating emotions. It is important for me to receive appropriate support and accommodations to help me overcome these challenges and achieve my goals.', NULL, NULL, 58, 1, 0, '2023-10-06 02:14:37', '2024-03-19 00:23:39'),
+(46, 'I may benefit from using assistive technology devices, such as text-to-speech software, speech recognition software, or specialized keyboards, to help me with written communication or other tasks. Depending on the nature of my job, workplace modifications such as adjustable desks, ergonomic chairs, or specialized equipment may be required to help me perform my job tasks effectively.', NULL, NULL, 59, 1, 0, '2023-10-06 02:15:20', '2024-03-19 00:24:54'),
+(47, 'No', NULL, NULL, 60, 1, 0, '2023-10-06 02:16:15', '2024-03-19 00:25:01'),
+(48, 'Over the next year, I aim to improve my physical fitness by engaging in regular exercise and activities that are suitable for my abilities. This may include exercises to improve strength, flexibility, and cardiovascular health. In long term, I want to prioritize my mental health by engaging in activities that promote relaxation, stress management, and emotional well-being. This may include mindfulness practices, therapy sessions, or participating in hobbies that bring me joy.', NULL, NULL, 67, 1, 0, '2023-10-06 02:17:08', '2024-03-19 00:49:06'),
+(49, 'In the morning, tasks like dressing and grooming can be difficult, requiring assistance to ensure I\'m ready for the day. In the evening, I need help with tasks like bathing and getting ready for bed. Overall, I require consistent support to maintain my daily routines and ensure my well-being.', NULL, NULL, 68, 1, 0, '2023-10-06 02:18:08', '2024-03-19 00:49:23'),
+(50, 'Yes, I do have physical difficulties with eating and behavioral issues associated with food and mealtimes due to my condition. These challenges include difficulty with fine motor skills and sensory sensitivities, which can make eating independently challenging. I may require assistance with meal preparation, adaptive utensils, and a supportive mealtime environment to help me with eating.', NULL, NULL, 69, 1, 0, '2023-10-06 02:18:25', '2024-03-19 00:49:48'),
+(51, 'I require support with food preparation due to my challenges with fine motor skills. These difficulties affect my ability to prepare meals independently, and the support I need includes assistance in meal planning, ingredient handling, and cooking tasks to ensure my nutritional needs are met and to ease the burden on my family.', NULL, NULL, 70, 1, 0, '2023-10-06 02:18:59', '2024-03-19 00:50:07'),
+(52, 'My nighttime routine involves getting ready for bed with assistance, such as bathing and changing into pajamas. I sometimes experience difficulty sleeping through the night due to sensory sensitivities or discomfort. This can lead to disrupted sleep patterns, affecting both my well-being and that of my family. I may require support to establish a more consistent sleep routine and strategies to manage nighttime awakenings.', NULL, NULL, 71, 1, 0, '2023-10-06 02:19:31', '2024-03-19 00:50:28'),
+(53, 'My nighttime routine involves getting ready for bed with assistance, such as bathing and changing into pajamas. I sometimes experience difficulty sleeping through the night due to sensory sensitivities or discomfort. This can lead to disrupted sleep patterns, affecting both my well-being and that of my family. I may require support to establish a more consistent sleep routine and strategies to manage nighttime awakenings.', NULL, NULL, 72, 1, 0, '2023-10-06 02:20:06', '2024-03-19 00:50:45'),
+(54, 'No', NULL, NULL, 73, 1, 0, '2023-10-06 02:20:25', '2024-03-19 00:50:55'),
+(55, 'I require short-term accommodation (STA) for respite care approximately every three months, typically for one week at a time. These scheduled stays provide both my primary caregiver and me with temporary relief and allow me to adjust to new experiences, contributing to my overall well-being.', NULL, NULL, 83, 1, 0, '2023-10-06 02:21:11', '2024-03-19 00:51:26'),
+(56, 'Yes, there are regular times when my family member, who serves as my primary caregiver, is unavailable for short periods. This occurs approximately every three months when I require short-term accommodation (STA) for one week at a time. These planned breaks in caregiving provide necessary respite for my caregiver and help me build independence and adaptability.', NULL, NULL, 84, 1, 0, '2023-10-06 02:21:31', '2024-03-19 00:51:45'),
+(57, 'My parents or primary caregivers typically plan short breaks or holidays every three months when I require short-term accommodation for one week at a time. These breaks are essential for their well-being and offer me the opportunity to experience new environments and routines.', NULL, NULL, 85, 1, 0, '2023-10-06 02:22:08', '2024-03-19 00:52:00'),
+(58, 'Yes, respite care will assist with the mental and physical health of my primary caregiver. It provides them with a necessary break from the caregiving responsibilities, which can be physically and emotionally demanding. This respite allows them to recharge, reduce stress, and prevent long-term care fatigue, ultimately benefiting their overall well-being and ability to continue providing care effectively.', NULL, NULL, 86, 1, 0, '2023-10-06 02:22:25', '2024-03-19 00:52:29'),
+(59, 'Yes, respite care can help me achieve my goals, particularly in learning to live with other people and building my capacity for independence. By experiencing short-term stays in different environments, I can gradually adapt to new living arrangements and routines. This experience is valuable for my future transition to independent living.', NULL, NULL, 87, 1, 0, '2023-10-06 02:22:41', '2024-03-19 00:52:43'),
 (60, 'Yes', NULL, NULL, 88, 1, 0, '2023-10-06 02:22:59', '2023-11-28 05:03:01'),
-(61, 'What is the reason this item needs to be replaced', NULL, NULL, 89, 1, 0, '2023-10-06 02:23:31', '2023-11-28 05:03:07'),
+(61, 'I require occupational therapy (OT) to focus on developing my daily living skills, such as personal care routines, meal preparation, and independent mobility. The aim is to build my capacity for greater independence and enhance my ability to adapt to new settings and responsibilities as I transition from school to adult life.', NULL, NULL, 89, 1, 0, '2023-10-06 02:23:31', '2024-03-19 00:53:04'),
 (62, 'Yes', NULL, NULL, 90, 1, 0, '2023-10-06 02:23:48', '2023-11-28 05:03:14'),
-(63, 'What is the reason this item needs to be replaced', NULL, NULL, 91, 1, 0, '2023-10-06 02:24:08', '2023-11-28 05:04:59'),
+(63, 'I require speech therapy to work on improving both verbal and non-verbal communication skills. This therapy is essential to enhance my ability to express myself effectively, understand others better, and navigate various communication challenges that I may encounter in employment or higher education settings.', NULL, NULL, 91, 1, 0, '2023-10-06 02:24:08', '2024-03-19 00:53:27'),
 (64, 'Yes', NULL, NULL, 92, 1, 0, '2023-10-06 02:24:29', '2023-11-28 05:05:50'),
-(65, 'What is the reason this item needs to be replaced', NULL, NULL, 93, 1, 0, '2023-10-06 02:24:42', '2023-11-28 05:09:21'),
+(65, 'I require physical therapy to focus on improving my mobility, strength, and endurance. This therapy is essential to address the physical challenges associated with my condition and to ensure I can navigate diverse environments with greater independence and confidence. It plays a crucial role in enhancing my overall physical well-being and ability to engage in various activities and settings.', NULL, NULL, 93, 1, 0, '2023-10-06 02:24:42', '2024-03-19 00:53:54'),
 (66, 'Yes', NULL, NULL, 94, 1, 0, '2023-10-06 02:24:57', '2023-11-28 05:12:47'),
-(67, 'What \r\nbehaviour therapy services do you require, and why', NULL, NULL, 95, 1, 0, '2023-10-06 02:25:18', '2023-11-28 05:12:55'),
+(67, 'I require psychological or counseling services to address the emotional challenges and stress associated with the transition from school to adulthood. These services are essential for providing coping strategies, addressing potential mental health concerns, and helping me build the social and emotional skills necessary to navigate this significant life change successfully.', NULL, NULL, 95, 1, 0, '2023-10-06 02:25:18', '2024-03-19 00:54:18'),
 (68, 'Yes', NULL, NULL, 96, 1, 0, '2023-10-06 02:25:23', '2023-11-28 05:12:59'),
-(69, 'What \r\nbehaviour therapy services do you require, and why', NULL, NULL, 97, 1, 0, '2023-10-06 02:28:38', '2023-11-28 05:13:06'),
+(69, 'I require psychological or counseling services for behavioral support to address specific behavioral challenges associated with my condition, Coffin-Lowry syndrome. These services are essential for developing strategies to manage and improve my behavior in various settings, ensuring my well-being and successful social interactions as I transition into adulthood.', NULL, NULL, 97, 1, 0, '2023-10-06 02:28:38', '2024-03-19 00:54:37'),
 (70, 'Yes', NULL, NULL, 98, 1, 0, '2023-10-06 02:28:56', '2023-11-28 05:13:12'),
-(71, 'What \r\nbehaviour therapy services do you require, and why', NULL, NULL, 99, 1, 0, '2023-10-06 02:29:15', '2023-11-28 05:13:49'),
-(72, 'Yes', NULL, NULL, 100, 1, 0, '2023-10-06 02:29:21', '2023-11-28 05:15:03'),
-(73, 'Yes', NULL, NULL, 102, 1, 0, '2023-10-06 02:29:29', '2023-11-28 05:15:13'),
-(74, 'What \r\nbehaviour therapy services do you require, and why', NULL, NULL, 104, 1, 0, '2023-10-06 02:30:01', '2023-11-28 05:15:23'),
-(75, 'What \r\nbehaviour therapy services do you require, and why', NULL, NULL, 105, 1, 0, '2023-10-06 02:30:30', '2023-11-28 05:16:32'),
-(76, 'What \r\nbehaviour therapy services do you require, and why', NULL, NULL, 106, 1, 0, '2023-10-06 02:30:34', '2023-11-28 05:16:37'),
-(77, 'Yes', NULL, NULL, 107, 1, 0, '2023-10-06 02:31:45', '2023-11-28 05:16:46'),
-(78, 'Yes', NULL, NULL, 109, 1, 0, '2023-10-06 02:31:59', '2023-11-28 05:17:01'),
-(79, 'Yes', NULL, NULL, 111, 1, 0, '2023-10-06 02:32:13', '2023-11-28 05:17:14'),
-(80, 'Yes', NULL, NULL, 113, 1, 0, '2023-10-06 02:32:19', '2023-11-28 05:17:21'),
-(81, 'Yes', NULL, NULL, 115, 1, 0, '2023-10-06 02:32:36', '2023-11-28 05:17:33'),
-(82, 'Yes', NULL, NULL, 117, 1, 0, '2023-10-06 02:32:41', '2023-11-28 05:17:42'),
-(83, 'Yes', NULL, NULL, 119, 1, 0, '2023-10-06 02:32:46', '2023-11-28 05:17:51'),
+(71, 'I require vocational rehabilitation services to support my transition into employment or higher education. These services are necessary to assess my vocational skills, identify suitable career paths, and provide training or support tailored to my abilities and goals. This support will help me achieve greater independence and success in my future endeavors.', NULL, NULL, 99, 1, 0, '2023-10-06 02:29:15', '2024-03-19 00:54:57'),
+(72, 'No', NULL, NULL, 100, 1, 0, '2023-10-06 02:29:21', '2024-03-19 00:55:23'),
+(73, 'No', NULL, NULL, 102, 1, 0, '2023-10-06 02:29:29', '2024-03-19 00:55:33'),
+(74, 'I currently live with my parents in our family home.', NULL, NULL, 104, 1, 0, '2023-10-06 02:30:01', '2024-03-19 00:56:10'),
+(75, 'I intend to continue living in my current home for the foreseeable future, as it provides a stable and supportive environment for me. Therefore, I am seeking funding for modifications to enhance the accessibility and functionality of my home for long-term use and improved quality of life.', NULL, NULL, 105, 1, 0, '2023-10-06 02:30:30', '2024-03-19 00:56:36'),
+(76, 'These modifications may include installing ramps, grab bars, and widening doorways to accommodate mobility aids. The estimated cost for these modifications is approximately $10,000. Cheaper alternatives may not be suitable as they might not provide the level of accessibility and safety needed to maintain my independence and overall well-being.', NULL, NULL, 106, 1, 0, '2023-10-06 02:30:34', '2024-03-19 00:57:00'),
+(77, 'No', NULL, NULL, 107, 1, 0, '2023-10-06 02:31:45', '2024-03-19 00:57:10'),
+(78, 'No', NULL, NULL, 109, 1, 0, '2023-10-06 02:31:59', '2024-03-19 00:57:21'),
+(79, 'No', NULL, NULL, 111, 1, 0, '2023-10-06 02:32:13', '2024-03-19 00:57:24'),
+(80, 'No', NULL, NULL, 113, 1, 0, '2023-10-06 02:32:19', '2024-03-19 00:57:28'),
+(81, 'No', NULL, NULL, 115, 1, 0, '2023-10-06 02:32:36', '2024-03-19 00:57:31'),
+(82, 'No', NULL, NULL, 117, 1, 0, '2023-10-06 02:32:41', '2024-03-19 00:57:33'),
+(83, 'No', NULL, NULL, 119, 1, 0, '2023-10-06 02:32:46', '2024-03-19 00:57:38'),
 (84, 'No', NULL, NULL, 121, 1, 0, '2023-10-06 02:32:50', '2023-11-28 05:18:01'),
 (85, 'No', NULL, NULL, 123, 1, 0, '2023-10-06 02:32:54', '2023-11-28 05:18:06'),
 (86, 'No', NULL, NULL, 125, 1, 0, '2023-10-06 02:32:57', '2023-11-28 05:20:39'),
-(87, '</center>', NULL, NULL, 127, 1, 0, '2023-10-06 02:33:24', '2023-11-28 05:20:46'),
+(87, 'Yes, I require support coordination in my plan for when I leave school. Support coordination is crucial to help me navigate the complex transition from school to adulthood, ensuring I have access to the necessary services, supports, and resources required for a successful transition. It will assist in coordinating various aspects of my life, including education, employment, housing, and social inclusion, to help me achieve my goals and lead a fulfilling life.', NULL, NULL, 127, 1, 0, '2023-10-06 02:33:24', '2024-03-19 00:58:06'),
 (88, 'No', NULL, NULL, 128, 1, 0, '2023-10-06 02:33:48', '2023-11-28 05:21:22'),
 (89, 'No', NULL, NULL, 130, 1, 0, '2023-10-06 02:33:56', '2023-11-28 05:21:26'),
-(90, 'No', NULL, NULL, 132, 1, 0, '2023-10-06 02:34:11', '2023-11-28 05:21:30'),
-(91, NULL, NULL, NULL, 133, 1, 1, '2023-10-06 02:35:31', '2023-10-23 05:23:41'),
+(90, 'Yes', NULL, NULL, 132, 1, 0, '2023-10-06 02:34:11', '2024-03-19 00:58:38'),
+(91, 'No, exceptional circumstances do not apply to me that would justify receiving greater than Level 3 transport funding for employment-related supports.', NULL, NULL, 133, 1, 0, '2023-10-06 02:35:31', '2024-03-19 00:58:50'),
 (92, 'My current support network consists of my parents, family members, and some close friends who provide emotional and practical support. Additionally, I receive support from healthcare professionals, including speech therapists, occupational therapists, and physical therapists, to address my specific needs associated with Coffin-Lowry syndrome.', NULL, NULL, 134, 1, 0, '2023-10-06 02:35:48', '2023-10-06 02:35:48'),
 (93, 'The current limitations and constraints on my support network\'s time include their own work and personal commitments. They may have limited availability due to their own responsibilities, which can sometimes impact the level of support they can provide. Additionally, as I transition into adulthood, my support network may have increasing demands on their time, which could affect their ability to assist me as much as they have in the past.', NULL, NULL, 135, 1, 0, '2023-10-06 02:36:04', '2023-10-06 02:36:04'),
 (94, 'I may face challenges in contributing to household chores in the same way as other young adults. These challenges may be due to physical or cognitive limitations, which can impact my ability to perform certain tasks. However, with the appropriate support and accommodations, I can still contribute to household chores to the best of my abilities. This may involve breaking tasks down into smaller steps, using assistive devices or technology, or receiving assistance from support workers or family members.', NULL, NULL, 136, 1, 0, '2023-10-06 02:36:57', '2023-10-06 02:36:57'),
 (95, 'I am unable to contribute to household chores like any other school leaver. I am therefore requesting funding for assistance with household chores such as cleaning and gardening.', NULL, NULL, 137, 1, 0, '2023-10-06 02:38:07', '2023-10-06 02:38:07'),
-(96, '</center>', NULL, NULL, 138, 1, 0, '2023-10-06 05:20:34', '2023-11-28 05:22:51'),
+(96, NULL, NULL, '1_family-statement.pdf', 138, 1, 0, '2023-10-06 05:20:34', '2024-03-19 01:02:12'),
 (97, 'This message indicates that the user should fill in the respective field(s) before submitting the form. Adjust the code based on your specific data structure and requirements.', '1600', NULL, 61, 1, 0, '2023-10-10 01:05:45', '2023-11-28 04:01:10'),
 (98, 'No', NULL, NULL, 62, 1, 0, '2023-10-10 01:05:53', '2023-11-29 01:00:30'),
 (99, 'I require a speech therapist to \r\nprovide training on functional communication skills that are necessary for adult life.  These include \r\nskills like making phone calls, asking for assistance, navigating public transport, or communicating in \r\na workplace environment', NULL, NULL, 65, 1, 0, '2023-10-10 01:06:01', '2023-11-28 07:30:53'),
@@ -169,7 +169,29 @@ INSERT INTO `answers` (`id`, `answer`, `cost`, `file_name`, `questions_id`, `use
 (123, 'What is the reason this item needs to be replaced', '16000', NULL, 74, 1, 0, '2023-11-28 05:00:41', '2023-11-28 05:00:41'),
 (124, 'No', NULL, NULL, 75, 1, 0, '2023-11-28 05:00:48', '2023-11-28 05:00:48'),
 (125, 'What is the reason this item needs to be replaced', NULL, NULL, 78, 1, 0, '2023-11-28 05:00:55', '2023-11-28 05:00:55'),
-(126, 'What is the reason this item needs to be replaced', NULL, NULL, 81, 1, 0, '2023-11-28 05:01:00', '2023-11-28 05:01:00');
+(126, 'What is the reason this item needs to be replaced', NULL, NULL, 81, 1, 0, '2023-11-28 05:01:00', '2023-11-28 05:01:00'),
+(127, 'answwer', NULL, NULL, 1, 6, 0, '2024-01-29 05:55:39', '2024-01-29 05:55:39'),
+(128, 'answwer', NULL, NULL, 2, 6, 0, '2024-01-29 05:55:51', '2024-01-29 05:55:51'),
+(129, 'answwer', NULL, NULL, 3, 6, 0, '2024-01-29 05:55:54', '2024-01-29 05:55:54'),
+(130, 'answwer', NULL, NULL, 4, 6, 0, '2024-01-29 05:55:57', '2024-01-29 05:55:57'),
+(131, 'answwer', NULL, NULL, 5, 6, 0, '2024-01-29 05:55:59', '2024-01-29 05:55:59'),
+(132, 'answwer', NULL, NULL, 6, 6, 0, '2024-01-29 05:56:04', '2024-01-29 05:56:04'),
+(133, 'answwer', NULL, NULL, 7, 6, 0, '2024-01-29 05:56:06', '2024-01-29 05:56:06'),
+(134, 'answwer', NULL, NULL, 8, 6, 0, '2024-01-29 05:56:08', '2024-01-29 05:56:08'),
+(135, 'answwer', NULL, NULL, 9, 6, 0, '2024-01-29 05:56:11', '2024-01-29 05:56:11'),
+(136, 'answwer', NULL, NULL, 10, 6, 0, '2024-01-29 05:56:14', '2024-01-29 05:56:14'),
+(137, 'Yes', NULL, NULL, 11, 6, 0, '2024-01-29 05:56:18', '2024-01-29 05:56:18'),
+(138, 'answwer', '2000', NULL, 12, 6, 0, '2024-01-29 05:56:26', '2024-01-29 06:11:47'),
+(139, NULL, NULL, NULL, 14, 6, 1, '2024-01-29 05:56:26', '2024-01-29 05:56:26'),
+(140, NULL, NULL, NULL, 15, 6, 1, '2024-01-29 05:56:26', '2024-01-29 06:11:40'),
+(141, NULL, NULL, NULL, 16, 6, 1, '2024-01-29 05:56:26', '2024-01-29 06:11:40'),
+(142, NULL, NULL, NULL, 17, 6, 1, '2024-01-29 05:56:26', '2024-01-29 06:11:40'),
+(143, 'answwer', NULL, NULL, 18, 6, 0, '2024-01-29 06:07:35', '2024-01-29 06:07:35'),
+(144, 'answwer', NULL, NULL, 19, 6, 0, '2024-01-29 06:07:38', '2024-01-29 06:07:38'),
+(145, 'answwer', NULL, NULL, 20, 6, 0, '2024-01-29 06:07:47', '2024-01-29 06:07:47'),
+(146, 'answwer', NULL, NULL, 21, 6, 0, '2024-01-29 06:07:51', '2024-01-29 06:07:51'),
+(147, 'Yes', NULL, NULL, 22, 6, 0, '2024-01-29 06:07:55', '2024-01-29 06:07:55'),
+(148, 'answwer', '3000', NULL, 23, 6, 0, '2024-01-29 06:10:00', '2024-01-29 06:10:00');
 
 -- --------------------------------------------------------
 
@@ -190,20 +212,121 @@ CREATE TABLE `back_urls` (
 --
 
 INSERT INTO `back_urls` (`id`, `back_url`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'http://localhost:8000/getschedule', 1, '2023-11-28 06:43:47', '2023-11-28 06:43:47'),
-(2, 'http://localhost:8000/heading/9/question/8', 1, '2023-11-28 07:08:28', '2023-11-28 07:08:28'),
-(3, 'http://localhost:8000/viewSchedule', 1, '2023-11-28 07:08:41', '2023-11-28 07:08:41'),
-(4, 'http://localhost:8000/heading/2/question/1', 1, '2023-11-28 07:09:28', '2023-11-28 07:09:28'),
-(5, 'http://localhost:8000/heading/22/question/1', 1, '2023-11-28 07:09:28', '2023-11-28 07:09:28'),
-(6, 'http://localhost:8000/heading/9/question/9', 1, '2023-11-28 07:30:44', '2023-11-28 07:30:44'),
-(7, 'http://localhost:8000/heading/9/question/11', 1, '2023-11-28 07:30:49', '2023-11-28 07:30:49'),
-(8, 'http://localhost:8000/heading/9/question/12', 1, '2023-11-28 07:30:53', '2023-11-28 07:30:53'),
-(9, 'http://localhost:8000/heading/10/question/1', 1, '2023-11-28 07:30:59', '2023-11-28 07:30:59'),
-(10, 'http://localhost:8000/heading/10/question/2', 1, '2023-11-28 07:35:30', '2023-11-28 07:35:30'),
-(11, 'http://localhost:8000/heading/11/question/1', 1, '2023-11-28 07:58:12', '2023-11-28 07:58:12'),
-(12, 'http://localhost:8000/heading/11/question/2', 1, '2023-11-28 07:58:19', '2023-11-28 07:58:19'),
-(13, 'http://localhost:8000/heading/1/question/1', 1, '2023-11-29 01:00:57', '2023-11-29 01:00:57'),
-(14, 'http://localhost:8000/heading/1/question/2', 1, '2023-11-29 01:11:52', '2023-11-29 01:11:52');
+(1, 'http://localhost:8000/heading/1/question/1', 1, '2024-03-19 00:32:40', '2024-03-19 00:32:40'),
+(3, 'http://localhost:8000/heading/1/question/2', 1, '2024-03-19 00:33:09', '2024-03-19 00:33:09'),
+(5, 'http://localhost:8000/heading/1/question/3', 1, '2024-03-19 00:33:40', '2024-03-19 00:33:40'),
+(6, 'http://localhost:8000/heading/1/question/4', 1, '2024-03-19 00:33:50', '2024-03-19 00:33:50'),
+(7, 'http://localhost:8000/heading/1/question/5', 1, '2024-03-19 00:34:17', '2024-03-19 00:34:17'),
+(8, 'http://localhost:8000/heading/2/question/1', 1, '2024-03-19 00:34:35', '2024-03-19 00:34:35'),
+(10, 'http://localhost:8000/heading/2/question/2', 1, '2024-03-19 00:35:09', '2024-03-19 00:35:09'),
+(11, 'http://localhost:8000/heading/2/question/fi-rr-sign-out.svg', 1, '2024-03-19 00:35:10', '2024-03-19 00:35:10'),
+(12, 'http://localhost:8000/heading/2/question/3', 1, '2024-03-19 00:35:12', '2024-03-19 00:35:12'),
+(13, 'http://localhost:8000/heading/2/question/4', 1, '2024-03-19 00:35:13', '2024-03-19 00:35:13'),
+(14, 'http://localhost:8000/heading/2/question/5', 1, '2024-03-19 00:35:15', '2024-03-19 00:35:15'),
+(15, 'http://localhost:8000/heading/2/question/6', 1, '2024-03-19 00:35:17', '2024-03-19 00:35:17'),
+(16, 'http://localhost:8000/heading/2/question/7', 1, '2024-03-19 00:36:05', '2024-03-19 00:36:05'),
+(17, 'http://localhost:8000/heading/3/question/1', 1, '2024-03-19 00:36:32', '2024-03-19 00:36:32'),
+(18, 'http://localhost:8000/heading/3/question/fi-rr-sign-out.svg', 1, '2024-03-19 00:36:32', '2024-03-19 00:36:32'),
+(19, 'http://localhost:8000/heading/3/question/2', 1, '2024-03-19 00:36:59', '2024-03-19 00:36:59'),
+(20, 'http://localhost:8000/heading/3/question/3', 1, '2024-03-19 00:37:01', '2024-03-19 00:37:01'),
+(21, 'http://localhost:8000/heading/3/question/4', 1, '2024-03-19 00:37:03', '2024-03-19 00:37:03'),
+(22, 'http://localhost:8000/heading/3/question/5', 1, '2024-03-19 00:37:04', '2024-03-19 00:37:04'),
+(23, 'http://localhost:8000/heading/3/question/6', 1, '2024-03-19 00:37:24', '2024-03-19 00:37:24'),
+(24, 'http://localhost:8000/heading/3/question/7', 1, '2024-03-19 00:37:26', '2024-03-19 00:37:26'),
+(25, 'http://localhost:8000/heading/3/question/9', 1, '2024-03-19 00:37:30', '2024-03-19 00:37:30'),
+(26, 'http://localhost:8000/heading/4/question/1', 1, '2024-03-19 00:37:32', '2024-03-19 00:37:32'),
+(28, 'http://localhost:8000/heading/4/question/2', 1, '2024-03-19 00:37:35', '2024-03-19 00:37:35'),
+(29, 'http://localhost:8000/heading/4/question/3', 1, '2024-03-19 00:37:38', '2024-03-19 00:37:38'),
+(30, 'http://localhost:8000/heading/4/question/4', 1, '2024-03-19 00:37:40', '2024-03-19 00:37:40'),
+(31, 'http://localhost:8000/heading/4/question/5', 1, '2024-03-19 00:37:41', '2024-03-19 00:37:41'),
+(32, 'http://localhost:8000/heading/4/question/6', 1, '2024-03-19 00:37:44', '2024-03-19 00:37:44'),
+(33, 'http://localhost:8000/heading/4/question/7', 1, '2024-03-19 00:37:47', '2024-03-19 00:37:47'),
+(34, 'http://localhost:8000/heading/4/question/9', 1, '2024-03-19 00:37:50', '2024-03-19 00:37:50'),
+(35, 'http://localhost:8000/heading/5/question/1', 1, '2024-03-19 00:37:53', '2024-03-19 00:37:53'),
+(36, 'http://localhost:8000/heading/5/question/fi-rr-sign-out.svg', 1, '2024-03-19 00:37:53', '2024-03-19 00:37:53'),
+(37, 'http://localhost:8000/heading/6/question/1', 1, '2024-03-19 00:37:55', '2024-03-19 00:37:55'),
+(38, 'http://localhost:8000/heading/6/question/fi-rr-sign-out.svg', 1, '2024-03-19 00:37:56', '2024-03-19 00:37:56'),
+(39, 'http://localhost:8000/heading/6/question/2', 1, '2024-03-19 00:37:57', '2024-03-19 00:37:57'),
+(40, 'http://localhost:8000/heading/6/question/3', 1, '2024-03-19 00:37:59', '2024-03-19 00:37:59'),
+(41, 'http://localhost:8000/heading/6/question/4', 1, '2024-03-19 00:38:01', '2024-03-19 00:38:01'),
+(42, 'http://localhost:8000/heading/6/question/5', 1, '2024-03-19 00:38:04', '2024-03-19 00:38:04'),
+(43, 'http://localhost:8000/heading/7/question/1', 1, '2024-03-19 00:38:06', '2024-03-19 00:38:06'),
+(44, 'http://localhost:8000/heading/7/question/fi-rr-sign-out.svg', 1, '2024-03-19 00:38:07', '2024-03-19 00:38:07'),
+(45, 'http://localhost:8000/heading/8/question/1', 1, '2024-03-19 00:38:09', '2024-03-19 00:38:09'),
+(46, 'http://localhost:8000/heading/8/question/fi-rr-sign-out.svg', 1, '2024-03-19 00:38:09', '2024-03-19 00:38:09'),
+(47, 'http://localhost:8000/heading/9/question/1', 1, '2024-03-19 00:38:18', '2024-03-19 00:38:18'),
+(48, 'http://localhost:8000/heading/9/question/fi-rr-sign-out.svg', 1, '2024-03-19 00:38:19', '2024-03-19 00:38:19'),
+(49, 'http://localhost:8000/heading/5/question/2', 1, '2024-03-19 00:40:33', '2024-03-19 00:40:33'),
+(50, 'http://localhost:8000/heading/9/question/2', 1, '2024-03-19 00:47:20', '2024-03-19 00:47:20'),
+(51, 'http://localhost:8000/heading/9/question/3', 1, '2024-03-19 00:47:22', '2024-03-19 00:47:22'),
+(52, 'http://localhost:8000/heading/9/question/4', 1, '2024-03-19 00:47:24', '2024-03-19 00:47:24'),
+(53, 'http://localhost:8000/heading/9/question/5', 1, '2024-03-19 00:47:25', '2024-03-19 00:47:25'),
+(54, 'http://localhost:8000/heading/9/question/6', 1, '2024-03-19 00:47:27', '2024-03-19 00:47:27'),
+(55, 'http://localhost:8000/heading/10/question/1', 1, '2024-03-19 00:47:30', '2024-03-19 00:47:30'),
+(56, 'http://localhost:8000/heading/10/question/fi-rr-sign-out.svg', 1, '2024-03-19 00:47:31', '2024-03-19 00:47:31'),
+(57, 'http://localhost:8000/heading/10/question/2', 1, '2024-03-19 00:49:06', '2024-03-19 00:49:06'),
+(58, 'http://localhost:8000/heading/11/question/1', 1, '2024-03-19 00:49:24', '2024-03-19 00:49:24'),
+(59, 'http://localhost:8000/heading/11/question/fi-rr-sign-out.svg', 1, '2024-03-19 00:49:24', '2024-03-19 00:49:24'),
+(60, 'http://localhost:8000/heading/11/question/2', 1, '2024-03-19 00:49:49', '2024-03-19 00:49:49'),
+(61, 'http://localhost:8000/heading/11/question/3', 1, '2024-03-19 00:50:07', '2024-03-19 00:50:07'),
+(62, 'http://localhost:8000/heading/12/question/1', 1, '2024-03-19 00:50:29', '2024-03-19 00:50:29'),
+(63, 'http://localhost:8000/heading/12/question/fi-rr-sign-out.svg', 1, '2024-03-19 00:50:29', '2024-03-19 00:50:29'),
+(64, 'http://localhost:8000/heading/12/question/2', 1, '2024-03-19 00:50:45', '2024-03-19 00:50:45'),
+(65, 'http://localhost:8000/heading/14/question/1', 1, '2024-03-19 00:50:55', '2024-03-19 00:50:55'),
+(66, 'http://localhost:8000/heading/14/question/fi-rr-sign-out.svg', 1, '2024-03-19 00:50:56', '2024-03-19 00:50:56'),
+(67, 'http://localhost:8000/heading/14/question/2', 1, '2024-03-19 00:51:26', '2024-03-19 00:51:26'),
+(68, 'http://localhost:8000/heading/14/question/3', 1, '2024-03-19 00:51:45', '2024-03-19 00:51:45'),
+(69, 'http://localhost:8000/heading/14/question/4', 1, '2024-03-19 00:52:01', '2024-03-19 00:52:01'),
+(70, 'http://localhost:8000/heading/14/question/5', 1, '2024-03-19 00:52:29', '2024-03-19 00:52:29'),
+(71, 'http://localhost:8000/heading/15/question/1', 1, '2024-03-19 00:52:44', '2024-03-19 00:52:44'),
+(72, 'http://localhost:8000/heading/15/question/fi-rr-sign-out.svg', 1, '2024-03-19 00:52:44', '2024-03-19 00:52:44'),
+(73, 'http://localhost:8000/heading/15/question/2', 1, '2024-03-19 00:52:50', '2024-03-19 00:52:50'),
+(74, 'http://localhost:8000/heading/15/question/3', 1, '2024-03-19 00:53:04', '2024-03-19 00:53:04'),
+(75, 'http://localhost:8000/heading/15/question/4', 1, '2024-03-19 00:53:07', '2024-03-19 00:53:07'),
+(76, 'http://localhost:8000/heading/15/question/5', 1, '2024-03-19 00:53:27', '2024-03-19 00:53:27'),
+(77, 'http://localhost:8000/heading/15/question/6', 1, '2024-03-19 00:53:30', '2024-03-19 00:53:30'),
+(78, 'http://localhost:8000/heading/15/question/7', 1, '2024-03-19 00:53:54', '2024-03-19 00:53:54'),
+(79, 'http://localhost:8000/heading/15/question/8', 1, '2024-03-19 00:53:57', '2024-03-19 00:53:57'),
+(80, 'http://localhost:8000/heading/15/question/9', 1, '2024-03-19 00:54:18', '2024-03-19 00:54:18'),
+(81, 'http://localhost:8000/heading/15/question/10', 1, '2024-03-19 00:54:21', '2024-03-19 00:54:21'),
+(82, 'http://localhost:8000/heading/15/question/11', 1, '2024-03-19 00:54:37', '2024-03-19 00:54:37'),
+(83, 'http://localhost:8000/heading/15/question/12', 1, '2024-03-19 00:54:40', '2024-03-19 00:54:40'),
+(84, 'http://localhost:8000/heading/15/question/13', 1, '2024-03-19 00:54:57', '2024-03-19 00:54:57'),
+(85, 'http://localhost:8000/heading/15/question/14', 1, '2024-03-19 00:55:02', '2024-03-19 00:55:02'),
+(86, 'http://localhost:8000/heading/15/question/15', 1, '2024-03-19 00:55:24', '2024-03-19 00:55:24'),
+(87, 'http://localhost:8000/heading/16/question/1', 1, '2024-03-19 00:55:34', '2024-03-19 00:55:34'),
+(88, 'http://localhost:8000/heading/16/question/fi-rr-sign-out.svg', 1, '2024-03-19 00:55:34', '2024-03-19 00:55:34'),
+(89, 'http://localhost:8000/heading/16/question/2', 1, '2024-03-19 00:56:10', '2024-03-19 00:56:10'),
+(90, 'http://localhost:8000/heading/16/question/3', 1, '2024-03-19 00:56:36', '2024-03-19 00:56:36'),
+(91, 'http://localhost:8000/heading/17/question/1', 1, '2024-03-19 00:57:00', '2024-03-19 00:57:00'),
+(92, 'http://localhost:8000/heading/17/question/fi-rr-sign-out.svg', 1, '2024-03-19 00:57:01', '2024-03-19 00:57:01'),
+(93, 'http://localhost:8000/heading/17/question/3', 1, '2024-03-19 00:57:10', '2024-03-19 00:57:10'),
+(94, 'http://localhost:8000/heading/17/question/5', 1, '2024-03-19 00:57:22', '2024-03-19 00:57:22'),
+(95, 'http://localhost:8000/heading/17/question/7', 1, '2024-03-19 00:57:25', '2024-03-19 00:57:25'),
+(96, 'http://localhost:8000/heading/17/question/9', 1, '2024-03-19 00:57:29', '2024-03-19 00:57:29'),
+(97, 'http://localhost:8000/heading/17/question/11', 1, '2024-03-19 00:57:32', '2024-03-19 00:57:32'),
+(98, 'http://localhost:8000/heading/17/question/13', 1, '2024-03-19 00:57:34', '2024-03-19 00:57:34'),
+(99, 'http://localhost:8000/heading/17/question/15', 1, '2024-03-19 00:57:39', '2024-03-19 00:57:39'),
+(100, 'http://localhost:8000/heading/17/question/17', 1, '2024-03-19 00:57:45', '2024-03-19 00:57:45'),
+(101, 'http://localhost:8000/heading/17/question/19', 1, '2024-03-19 00:57:47', '2024-03-19 00:57:47'),
+(102, 'http://localhost:8000/heading/18/question/1', 1, '2024-03-19 00:57:50', '2024-03-19 00:57:50'),
+(103, 'http://localhost:8000/heading/18/question/fi-rr-sign-out.svg', 1, '2024-03-19 00:57:51', '2024-03-19 00:57:51'),
+(104, 'http://localhost:8000/heading/19/question/1', 1, '2024-03-19 00:58:06', '2024-03-19 00:58:06'),
+(105, 'http://localhost:8000/heading/19/question/fi-rr-sign-out.svg', 1, '2024-03-19 00:58:07', '2024-03-19 00:58:07'),
+(106, 'http://localhost:8000/heading/19/question/3', 1, '2024-03-19 00:58:30', '2024-03-19 00:58:30'),
+(107, 'http://localhost:8000/heading/19/question/5', 1, '2024-03-19 00:58:33', '2024-03-19 00:58:33'),
+(108, 'http://localhost:8000/heading/19/question/6', 1, '2024-03-19 00:58:38', '2024-03-19 00:58:38'),
+(109, 'http://localhost:8000/heading/20/question/1', 1, '2024-03-19 00:58:50', '2024-03-19 00:58:50'),
+(110, 'http://localhost:8000/heading/20/question/fi-rr-sign-out.svg', 1, '2024-03-19 00:58:50', '2024-03-19 00:58:50'),
+(111, 'http://localhost:8000/heading/20/question/2', 1, '2024-03-19 00:58:55', '2024-03-19 00:58:55'),
+(112, 'http://localhost:8000/heading/20/question/3', 1, '2024-03-19 00:58:58', '2024-03-19 00:58:58'),
+(113, 'http://localhost:8000/heading/20/question/4', 1, '2024-03-19 00:58:59', '2024-03-19 00:58:59'),
+(114, 'http://localhost:8000/heading/21/question/1', 1, '2024-03-19 00:59:01', '2024-03-19 00:59:01'),
+(115, 'http://localhost:8000/heading/21/question/fi-rr-sign-out.svg', 1, '2024-03-19 00:59:01', '2024-03-19 00:59:01'),
+(116, 'http://localhost:8000/heading/22/question/1', 1, '2024-03-19 01:02:12', '2024-03-19 01:02:12'),
+(117, 'http://localhost:8000/heading/22/question/fi-rr-sign-out.svg', 1, '2024-03-19 01:02:13', '2024-03-19 01:02:13'),
+(118, 'http://localhost:8000/getschedule', 1, '2024-03-19 01:02:36', '2024-03-19 01:02:36'),
+(119, 'http://localhost:8000/viewSchedule', 1, '2024-03-19 01:02:42', '2024-03-19 01:02:42');
 
 -- --------------------------------------------------------
 
@@ -330,7 +453,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (180, '2023_09_11_103246_create_answers_table', 9),
 (181, '2023_09_22_093713_create_schedules_table', 9),
 (182, '2023_10_03_121910_create_back_urls_table', 10),
-(183, '2023_10_11_095804_create_jobs_table', 11);
+(183, '2023_10_11_095804_create_jobs_table', 11),
+(186, '2024_02_22_113138_create_user_details_table', 12);
 
 -- --------------------------------------------------------
 
@@ -642,7 +766,7 @@ CREATE TABLE `save_progresses` (
 --
 
 INSERT INTO `save_progresses` (`id`, `current_route`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'http://localhost:8000/heading/9/question/8', 1, '2023-09-20 05:16:37', '2023-11-28 04:02:38');
+(1, 'http://localhost:8000/heading/10/question/1', 1, '2023-09-20 05:16:37', '2024-03-19 00:26:42');
 
 -- --------------------------------------------------------
 
@@ -663,6 +787,14 @@ CREATE TABLE `schedules` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `schedules`
+--
+
+INSERT INTO `schedules` (`id`, `heading_id`, `user_id`, `day`, `hours`, `times_of_day`, `support`, `ratio`, `explanation`, `created_at`, `updated_at`) VALUES
+(1, 22, 1, '1', NULL, NULL, NULL, NULL, NULL, '2024-02-21 02:07:53', '2024-02-21 02:07:53'),
+(3, 22, 1, '1', '6', 'afternoon', 'behavior support', 'One-on-two', 'I need one on one support to help in my behavior', '2024-03-19 01:03:29', '2024-03-19 01:03:29');
 
 -- --------------------------------------------------------
 
@@ -691,8 +823,34 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `accept_agreement`, `verification_token`, `image`, `url_image`, `remember_token`, `created_at`, `updated_at`, `authentication_type`) VALUES
-(1, 'Muntaha Khan', 'muntahakhan982@gmail.com', NULL, NULL, 0, 'null', NULL, 'https://lh3.googleusercontent.com/a/ACg8ocKOA-GHR2D0udM3X44bO9DmGGO8jJbB06DCZLZtcmNt8Js=s96-c', NULL, NULL, NULL, 'google'),
+(1, 'Muntaha Khan', 'muntahakhan982@gmail.com', NULL, NULL, 0, 'null', NULL, 'https://lh3.googleusercontent.com/a/ACg8ocK7QhnwWPCBf3tIHrc83_B4B89KIXo-c50AYOljs4fx-w=s96-c', NULL, NULL, NULL, 'google'),
 (6, 'user', 'muntahak165@gmail.com', '2023-10-23 05:09:57', '$2y$10$iV3WfJTEcpe.C.LXqfmwxuCqykV5VfOsRnqmi22vlLHzl.mNO1klu', 1, 'eyJpdiI6IjQ5amlHTSt3MmV5bjZ4TlV0OHgyNXc9PSIsInZhbHVlIjoiL2pQTUtoZ05qQzg3Z1BRN04vQUtyUT09IiwibWFjIjoiODI1YjQ4YjQ0OThhMjhhYjkzN2VjZTI4NmE4ZTMwN2NmM2QxMmU5ZDEwY2M3MGJhNTZmNmM5YTdkYjI2ZTRjMyIsInRhZyI6IiJ9', 'user-profile.jpg', 'null', NULL, NULL, NULL, 'form');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_details`
+--
+
+CREATE TABLE `user_details` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `full_name` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `age` varchar(255) NOT NULL,
+  `type_of_disability` varchar(255) NOT NULL,
+  `ndis_nominee` varchar(255) DEFAULT NULL,
+  `support_coordinator` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user_details`
+--
+
+INSERT INTO `user_details` (`id`, `user_id`, `full_name`, `address`, `age`, `type_of_disability`, `ndis_nominee`, `support_coordinator`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Jack', 'Petersen Radial, Adamview, South Carolina', '15', 'Coffin-Lowry syndrome', 'No', 'No', '2024-02-23 02:12:04', '2024-03-19 00:07:27');
 
 --
 -- Indexes for dumped tables
@@ -819,6 +977,13 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_details`
+--
+ALTER TABLE `user_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_details_user_id_foreign` (`user_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -826,13 +991,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 
 --
 -- AUTO_INCREMENT for table `back_urls`
 --
 ALTER TABLE `back_urls`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT for table `documents`
@@ -862,7 +1027,7 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -904,13 +1069,19 @@ ALTER TABLE `save_progresses`
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `user_details`
+--
+ALTER TABLE `user_details`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -974,6 +1145,12 @@ ALTER TABLE `save_progresses`
 ALTER TABLE `schedules`
   ADD CONSTRAINT `schedules_heading_id_foreign` FOREIGN KEY (`heading_id`) REFERENCES `question_headings` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `schedules_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `user_details`
+--
+ALTER TABLE `user_details`
+  ADD CONSTRAINT `user_details_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
