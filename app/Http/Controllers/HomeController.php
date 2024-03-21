@@ -55,11 +55,13 @@ class HomeController extends Controller
         $user_details = UserDetails::where('user_id', $user->id)->first();
         $personal_information = [
             'fullname' => $user_details->full_name,
-            'age' => $user_details->age,
+            'date_of_birth' => $user_details->date_of_birth,
             'address' => $user_details->address,
+            'phone_number' => $user_details->phone_number,
             'email' => $user->email,
             'type_of_disability' => $user_details->type_of_disability,
-            'ndis_nominee' => $user_details->ndis_nominee,
+            'ndis_number' => $user_details->ndis_number,
+            'ndis_nomine' => $user_details->ndis_nominee,
             'support_coordinator' => $user_details->support_coordinator,
         ];
         return $personal_information;

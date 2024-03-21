@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Questions;
 use App\Models\QuestionHeading;
-use App\Models\QuestionOptions;
-use App\Models\Answers;
-use App\Models\BackUrl;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;

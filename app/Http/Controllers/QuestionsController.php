@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\reports;
-use App\Models\QuestionHeading;
 use App\Models\Questions;
 use App\Models\Answers;
 use App\Models\schedule;
-use App\Models\BackUrl;
 use App\Models\QuestionOptions;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;

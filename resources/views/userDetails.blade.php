@@ -15,7 +15,7 @@
                     </a>
                 </div>
                 {{-- <div class="center-text"> --}}
-                    <img src="{{ asset('Images/thistles_logo.png') }}" class="img-fluid pt-3" alt="">
+                    <img src="{{ asset('Images/thistles_logo.png') }}" class="img-fluid pt-5" alt="">
                     <h1 class="pt-2">Background Information</h1>
                 {{-- </div> --}}
             </div>
@@ -28,17 +28,22 @@
 
                             <div class="form-group">
                                 <label for="name">Full Name:</label>
-                                <input type="name" class="form-fields" name="full_name" placeholder="Enter individual's full name" required>
+                                <input type="name" class="form-fields" name="full_name" value="{{isset($userDetails) ? $userDetails->full_name : ''}}" placeholder="Enter individual's full name" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="name">Address:</label>
-                                <input type="name" class="form-fields" name="address" placeholder="Enter address" required>
+                                <input type="text" class="form-fields" name="address" value="{{isset($userDetails) ? $userDetails->address : ''}}" placeholder="Enter address" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="Age">Age:</label>
-                                <input type="text" class="form-fields" name="age" placeholder="Enter age" required>
+                                <label for="date__of_birth">Date of Birth:</label>
+                                <input type="text" class="form-fields" name="date_of_birth" value="{{isset($userDetails) ? $userDetails->date_of_birth : ''}}" placeholder="Enter date of birth" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone_number">Phone Number:</label>
+                                <input type="text" class="form-fields" name="phone_number" value="{{isset($userDetails) ? $userDetails->phone_number : ''}}" placeholder="Enter phone number" required>
                             </div>
                         </div>
                     </div>
@@ -47,16 +52,22 @@
                         <div class="form-container">
                             <div class="form-group">
                                 <label for="Type of Disability">Type of disability:</label>
-                                <input type="text" class="form-fields" name="type_of_disability" placeholder="Enter type of disability" required>
+                                <input type="text" class="form-fields" name="type_of_disability" value="{{isset($userDetails) ? $userDetails->type_of_disability : ''}}" placeholder="Enter type of disability" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="ndis_nominee">NDIS nominee:</label>
-                                <input type="text" class="form-fields" name="ndis_nominee" placeholder="Enter ndis nominee if you have any" >
+                                <label for="ndis_nominee">NDIS Nominee:</label>
+                                <input type="text" class="form-fields" name="ndis_nominee" value="{{isset($userDetails) ? $userDetails->ndis_nominee : ''}}" placeholder="Enter ndis nominee if you have any" >
                             </div>
+
+                            <div class="form-group">
+                                <label for="ndis_number">NDIS Number:</label>
+                                <input type="text" class="form-fields" name="ndis_number" value="{{isset($userDetails) ? $userDetails->ndis_number : ''}}" placeholder="Enter ndis number" >
+                            </div>
+
                             <div class="form-group">
                                 <label for="support_coordinator">Support Co ordinator:</label>
-                                <input type="text" class="form-fields" name="support_coordinator" placeholder="Enter support coordinator if you have any" >
+                                <input type="text" class="form-fields" name="support_coordinator" value="{{isset($userDetails) ? $userDetails->support_coordinator : ''}}"  placeholder="Enter support coordinator if you have any" >
                             </div>
                         </div>
                     </div>

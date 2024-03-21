@@ -16,6 +16,9 @@ class UserDetails extends Model
         'type_of_disability',
         'ndis_nominee',
         'support_coordinator',
+        'date_of_birth',
+        'ndis_number',
+        'phone_number'
     ];
 
 }

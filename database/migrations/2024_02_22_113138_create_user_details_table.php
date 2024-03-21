@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('full_name');
             $table->string('address');
-            $table->string('age');
+            $table->string('age')->nullable();
             $table->string('type_of_disability');
             $table->string('ndis_nominee')->nullable();
             $table->string('support_coordinator')->nullable();
