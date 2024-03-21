@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2024 at 07:29 AM
+-- Generation Time: Mar 21, 2024 at 07:13 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -44,17 +44,17 @@ CREATE TABLE `answers` (
 --
 
 INSERT INTO `answers` (`id`, `answer`, `cost`, `file_name`, `questions_id`, `user_id`, `is_skipped`, `created_at`, `updated_at`) VALUES
-(1, NULL, NULL, NULL, 1, 1, 1, '2023-10-06 01:09:38', '2024-03-19 00:50:55'),
-(2, NULL, NULL, NULL, 2, 1, 1, '2023-10-06 01:10:06', '2024-03-19 00:38:18'),
-(3, NULL, NULL, NULL, 3, 1, 1, '2023-10-06 01:10:41', '2024-03-19 00:38:18'),
-(4, NULL, NULL, NULL, 4, 1, 1, '2023-10-06 01:11:05', '2024-03-19 00:38:18'),
-(5, NULL, NULL, NULL, 5, 1, 1, '2023-10-06 01:13:03', '2024-03-19 00:38:18'),
+(1, NULL, NULL, NULL, 1, 1, 1, '2023-10-06 01:09:38', '2024-03-20 02:52:32'),
+(2, NULL, NULL, NULL, 2, 1, 1, '2023-10-06 01:10:06', '2024-03-20 02:50:43'),
+(3, NULL, NULL, NULL, 3, 1, 1, '2023-10-06 01:10:41', '2024-03-20 02:50:43'),
+(4, NULL, NULL, NULL, 4, 1, 1, '2023-10-06 01:11:05', '2024-03-20 02:50:43'),
+(5, NULL, NULL, NULL, 5, 1, 1, '2023-10-06 01:13:03', '2024-03-20 02:50:43'),
 (6, 'My goal for mobility is to become more independent in traveling short distances within my community, like going to a nearby store or park, within the next year. I\'d also like to work on my communication skills to make public transportation and car rides more manageable for longer trips within the next two years.', NULL, NULL, 6, 1, 0, '2023-10-06 01:14:53', '2024-03-19 00:10:26'),
 (7, 'Yes, I do experience limited movement due to Coffin-Lowry syndrome. I have challenges with fine and gross motor skills, making tasks like walking, standing for extended periods, and climbing stairs more difficult for me compared to others my age.', NULL, NULL, 7, 1, 0, '2023-10-06 01:15:09', '2024-03-19 00:10:39'),
 (8, 'Yes, I do have balance issues, which increase my risk of falls and potential injuries. These balance issues are primarily related to my motor coordination difficulties associated with Coffin-Lowry syndrome. I often require support or assistive devices to maintain stability and reduce the risk of falls.', NULL, NULL, 8, 1, 0, '2023-10-06 01:15:27', '2024-03-19 00:10:55'),
 (9, 'I don\'t rely on wheelchairs or mobility aids for movement. However, due to my mobility challenges associated with Coffin-Lowry syndrome, I may require assistance or accommodations when navigating environments that are not wheelchair-accessible. This includes having someone to support me in unfamiliar or challenging settings.', NULL, NULL, 9, 1, 0, '2023-10-06 01:16:02', '2024-03-19 00:11:08'),
 (10, 'I struggle with using public transportation or traveling in a private car due to communication difficulties and sensory sensitivities. This limits my ability to access services, maintain social connections, and participate in employment or educational opportunities, as I often require additional support and preparation to navigate these situations.', NULL, NULL, 10, 1, 0, '2023-10-06 01:16:42', '2024-03-19 00:11:19'),
-(11, NULL, NULL, NULL, 11, 1, 1, '2023-10-06 01:17:06', '2024-03-19 00:38:18'),
+(11, NULL, NULL, NULL, 11, 1, 1, '2023-10-06 01:17:06', '2024-03-20 02:50:43'),
 (12, NULL, NULL, NULL, 13, 1, 1, '2023-10-06 01:17:28', '2023-11-28 03:59:23'),
 (13, NULL, NULL, NULL, 12, 1, 1, '2023-10-06 01:19:24', '2023-11-28 03:58:57'),
 (14, NULL, NULL, NULL, 14, 1, 1, '2023-10-06 01:19:24', '2023-10-23 05:12:29'),
@@ -139,7 +139,7 @@ INSERT INTO `answers` (`id`, `answer`, `cost`, `file_name`, `questions_id`, `use
 (93, 'The current limitations and constraints on my support network\'s time include their own work and personal commitments. They may have limited availability due to their own responsibilities, which can sometimes impact the level of support they can provide. Additionally, as I transition into adulthood, my support network may have increasing demands on their time, which could affect their ability to assist me as much as they have in the past.', NULL, NULL, 135, 1, 0, '2023-10-06 02:36:04', '2023-10-06 02:36:04'),
 (94, 'I may face challenges in contributing to household chores in the same way as other young adults. These challenges may be due to physical or cognitive limitations, which can impact my ability to perform certain tasks. However, with the appropriate support and accommodations, I can still contribute to household chores to the best of my abilities. This may involve breaking tasks down into smaller steps, using assistive devices or technology, or receiving assistance from support workers or family members.', NULL, NULL, 136, 1, 0, '2023-10-06 02:36:57', '2023-10-06 02:36:57'),
 (95, 'I am unable to contribute to household chores like any other school leaver. I am therefore requesting funding for assistance with household chores such as cleaning and gardening.', NULL, NULL, 137, 1, 0, '2023-10-06 02:38:07', '2023-10-06 02:38:07'),
-(96, NULL, NULL, '1_family-statement.pdf', 138, 1, 0, '2023-10-06 05:20:34', '2024-03-19 01:02:12'),
+(96, NULL, NULL, '1_family-statement.pdf', 138, 1, 0, '2023-10-06 05:20:34', '2024-03-20 02:58:17'),
 (97, 'This message indicates that the user should fill in the respective field(s) before submitting the form. Adjust the code based on your specific data structure and requirements.', '1600', NULL, 61, 1, 0, '2023-10-10 01:05:45', '2023-11-28 04:01:10'),
 (98, 'No', NULL, NULL, 62, 1, 0, '2023-10-10 01:05:53', '2023-11-29 01:00:30'),
 (99, 'I require a speech therapist to \r\nprovide training on functional communication skills that are necessary for adult life.  These include \r\nskills like making phone calls, asking for assistance, navigating public transport, or communicating in \r\na workplace environment', NULL, NULL, 65, 1, 0, '2023-10-10 01:06:01', '2023-11-28 07:30:53'),
@@ -326,7 +326,9 @@ INSERT INTO `back_urls` (`id`, `back_url`, `user_id`, `created_at`, `updated_at`
 (116, 'http://localhost:8000/heading/22/question/1', 1, '2024-03-19 01:02:12', '2024-03-19 01:02:12'),
 (117, 'http://localhost:8000/heading/22/question/fi-rr-sign-out.svg', 1, '2024-03-19 01:02:13', '2024-03-19 01:02:13'),
 (118, 'http://localhost:8000/getschedule', 1, '2024-03-19 01:02:36', '2024-03-19 01:02:36'),
-(119, 'http://localhost:8000/viewSchedule', 1, '2024-03-19 01:02:42', '2024-03-19 01:02:42');
+(119, 'http://localhost:8000/viewSchedule', 1, '2024-03-19 01:02:42', '2024-03-19 01:02:42'),
+(120, 'http://localhost:8000/heading/1/question/fi-rr-sign-out.svg', 6, '2024-03-20 01:37:49', '2024-03-20 01:37:49'),
+(121, 'http://localhost:8000/heading/4/question/fi-rr-sign-out.svg', 1, '2024-03-20 01:52:20', '2024-03-20 01:52:20');
 
 -- --------------------------------------------------------
 
@@ -454,7 +456,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (181, '2023_09_22_093713_create_schedules_table', 9),
 (182, '2023_10_03_121910_create_back_urls_table', 10),
 (183, '2023_10_11_095804_create_jobs_table', 11),
-(186, '2024_02_22_113138_create_user_details_table', 12);
+(186, '2024_02_22_113138_create_user_details_table', 12),
+(187, '2024_03_19_101053_add_columns_to_user_details', 13),
+(188, '2024_03_20_070209_add_column_to_user_details', 14);
 
 -- --------------------------------------------------------
 
@@ -766,7 +770,7 @@ CREATE TABLE `save_progresses` (
 --
 
 INSERT INTO `save_progresses` (`id`, `current_route`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'http://localhost:8000/heading/10/question/1', 1, '2023-09-20 05:16:37', '2024-03-19 00:26:42');
+(1, 'http://localhost:8000/viewSchedule', 1, '2023-09-20 05:16:37', '2024-03-20 02:55:49');
 
 -- --------------------------------------------------------
 
@@ -837,20 +841,24 @@ CREATE TABLE `user_details` (
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `full_name` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `age` varchar(255) NOT NULL,
+  `age` varchar(255) DEFAULT NULL,
   `type_of_disability` varchar(255) NOT NULL,
   `ndis_nominee` varchar(255) DEFAULT NULL,
   `support_coordinator` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `date_of_birth` varchar(255) NOT NULL,
+  `ndis_number` varchar(255) NOT NULL,
+  `phone_number` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `user_details`
 --
 
-INSERT INTO `user_details` (`id`, `user_id`, `full_name`, `address`, `age`, `type_of_disability`, `ndis_nominee`, `support_coordinator`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Jack', 'Petersen Radial, Adamview, South Carolina', '15', 'Coffin-Lowry syndrome', 'No', 'No', '2024-02-23 02:12:04', '2024-03-19 00:07:27');
+INSERT INTO `user_details` (`id`, `user_id`, `full_name`, `address`, `age`, `type_of_disability`, `ndis_nominee`, `support_coordinator`, `created_at`, `updated_at`, `date_of_birth`, `ndis_number`, `phone_number`) VALUES
+(1, 1, 'Jack', 'Petersen Radial, Adamview, South Carolina', '15', 'Coffin-Lowry syndrome', 'No', 'No', '2024-02-23 02:12:04', '2024-03-20 02:11:43', '18-12-2009', '23344', '34668990'),
+(2, 6, 'Jack', 'Petersen Radial, Adamview, South Carolina', NULL, 'Coffin-Lowry syndrome', NULL, 'No', '2024-03-20 01:37:42', '2024-03-20 01:37:42', '18-12-2009', '23348', '');
 
 --
 -- Indexes for dumped tables
@@ -997,7 +1005,7 @@ ALTER TABLE `answers`
 -- AUTO_INCREMENT for table `back_urls`
 --
 ALTER TABLE `back_urls`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT for table `documents`
@@ -1027,7 +1035,7 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=189;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1081,7 +1089,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_details`
 --
 ALTER TABLE `user_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
